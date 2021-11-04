@@ -1,0 +1,23 @@
+{
+  "name": "gestion_expedientes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mysql.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/t3729/gestion_expedientes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/t3729/gestion_expedientes/issues"
+  },
+  "homepage": "https://gitlab.com/t3729/gestion_expedientes#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,0 +1,185 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f1e8e8;
+}
+
+/*-----ENCABEZADO CON MENU*/
+.barra{
+   background: cornsilk;
+}
+
+/*--- ENCABEZADO---------*/
+header{
+    flex-basis: 12vh;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(240, 180, 16);
+    align-items: center;
+    }
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;  
+   }
+   .logo img{
+    width: 265px;
+}  
+
+.logo2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo2 a{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#140881;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.4s;
+}
+.logo2 a:hover{
+    color: #faf5f6;
+}
+.barraTareas h2{ 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#ffffff;
+    padding-left: 5%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+
+/*-------lista------------*/
+.menu{
+    display: flex;
+    align-items: center;
+    font-family: pompiere, sans-serif;
+    font-size: 1rem;
+    list-style: none;
+    padding-right: 1vh;
+}
+.menu li{
+    padding-left: 1rem;
+}
+.menu a{
+    text-decoration: none;
+    transition: color 0.4s;
+}
+.menu a:hover{
+    color: #faf5f6;
+}
+/*--- ENCABEZADO---------*/
+
+
+/*--------------MAIN--------------*/
+main{
+    flex-basis: 78vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 2%;
+    }
+
+.IncioSnecio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 4%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.titulo{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 5%;
+    text-align: center;
+    font-size: 3rem;
+    padding-bottom: 5%;
+} 
+
+label{
+    font-size: 2rem;
+    padding-bottom: 10%;
+}
+
+.NC{
+    font-size: 150%;
+    padding-bottom: 2%;
+}
+
+.rutas{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5%;
+    
+}
+
+.RC{
+    margin-left: 5%;
+}
+
+/*-------------FOOTER-------------*/
+footer{
+    flex-basis: 8vh;
+    padding-left: 2vh;
+    display: flex;
+    color: rgb(175, 175, 175);
+    font-size: 0.8rem;
+    }
+
+
+/*-----------------BOTONES-------*/
+.buton button{
+    border: none;
+    color: white;
+    background: #021d75;
+    width: 140px;
+    border-radius: 10px;
+    padding: 1rem 0 1rem 0;
+    font-weight:  bold;
+    font-family: montserrat, sans-serif;
+    margin: auto;
+    display: block;
+    transition: background 0.5s;
+
+}
+
+
+.buton button:hover{
+    background:   rgb(240, 180, 16);
+    cursor: pointer;
+}
+    .logo1{
+        position: absolute;
+        top: 35%;
+        left: 15%;
+        z-index: -1;
+        width: 15%;
+    }
+    .logo4{
+        position: absolute;
+        left: 70%;
+        top: 25%;
+        z-index: -1;
+        width: 25%;
+    }
+    
+    .logo5{
+        position: absolute;
+        left: 85%;
+        bottom:0;
+        z-index: -1;
+        width: 15%;
+    }
