@@ -1,10 +1,10 @@
 <?php
     include 'conexionC.php';
         //recuperar las variables
-        $NombreCarrera=$_POST['NombreCarrera'];
+        $NombreCarrera=$_POST['nombre'];
         $Siglas=$_POST['Siglas'];
 
-    $sql="INSERT INTO carreras VALUES (DEFAULT,'$NombreCarrera','$Siglas')";
+    $sql="INSERT INTO asesorias VALUES (DEFAULT,'$NombreCarrera','$Siglas')";
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){

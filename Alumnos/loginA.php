@@ -1,3 +1,10 @@
+<?php include("conexionA.php"); ?>
+<?php 
+session_start();
+$txtUser=(isset($_POST['txtUser']))?$_POST['txtUser']:"";
+$txtPass=(isset($_POST['txtPass']))?$_POST['txtPass']:"";
+$btnlogin=(isset($_POST['btnlogin']))?$_POST['btnlogin']:"";
+?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>

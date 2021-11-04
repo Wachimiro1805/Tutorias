@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+    <form action = "#" method ="">
+        <fieldset>
+            <legend>Formulario</legend>
+        <label>
+            Nombre
+        </label>
+        <input type = "text" placeholder="Ecriba el nombre completo ">
+        <br>
+        <br>
+
+        <label>
+            Contraseña
+        </label>
+         <input type ="password">
+         <br>
+         <br>
+
+         <label>
+             Correo
+         </label>
+         <input type="email">
+        
+
+         <br>
+         <br>
+
+         <labe  for = "fecha">
+             Fecha de nacimiento
+         </labe>
+         <input type="date" id = "fecha">
+
+         <br>
+         <br>
+
+         <label>
+             Edad
+         </label>
+         <input type="number" min="18" max="100" step ="1">
+       <br>
+       <br>
+
+         <label>
+            Ingresos
+        </label>
+        <!--any para ingresar numeros con mayor punto decimal-->
+        <input type="number" min="0" max="100000" step ="0.01">
+       
+         <br>
+
+         <Label>Estado civil</Label>
+         <select required>
+             <option value=""selected>
+                 Selecciona opcion
+             </option>
+             <option>
+                Soltero
+             </option>
+            <option>
+                Casado
+            </option>
+            <option>
+                Divorciado
+            </option>
+         </select>
+<br>
+<br>
+
+<select required size="4" multiple>
+    <option value=""selected>
+        Selecciona opcion
+    </option>
+    <option>
+       Soltero
+    </option>
+   <option>
+       Casado
+   </option>
+   <option>
+       Divorciado
+   </option>
+</select>
+
+         <br>
+         <br>
+         <label for = "id">
+             No soy un robot
+         </label>
+         <input type= "checkbox" checked id ="robot">
+         <br>
+
+         <label>
+             Genero
+         </label>
+         <label>Masculino:</label><input type="radio" name = "genero">
+         <label>Femenino:</label><input type="radio" name =  "genero" checked>
+<br>
+<label> Comentarios: </label>
+<br>
+<textarea cols = "30" rows="5" placeholder=" Escribe tus comentarios"></textarea>
+
+<br>
+<br>
+<Label>Archivo</Label>
+<input type="file" accept=".pdf, .doc,.png">
+<br>
+<br>
+
+<!----audio/* ,video/* ,image/* ---->
+
+    <input type="submit" value="Registrar"> 
+    <input type="reset">
+</fieldset>
+    </form >
+
+
+</body>
+</html>
