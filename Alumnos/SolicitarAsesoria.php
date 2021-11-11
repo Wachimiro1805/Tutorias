@@ -1,6 +1,7 @@
 <?php
     include 'conexionA.php';
         //recuperar las variables
+        //cambio
         $firstname=$_POST['firstname'];
         $lasttname=$_POST['lasttname'];
         $lastname2=$_POST['lastname2'];
