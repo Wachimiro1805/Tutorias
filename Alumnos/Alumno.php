@@ -44,10 +44,19 @@ $resultado2 = $conexion->query($sql2);
 <!--recibe numero de control-->
 
 
-<?php 
-$m = $_POST['control']; 
-echo "<p> $m </p>";
+<?php
+if (isset($_GET['numero'])) {
+    echo $_GET['numero']; 
+/*
+    if (isset($_GET['tipo'])) {
+       echo $_GET['tipo'];
+       echo $_POST['alumnos'];
+*/
 
+  
+} else {
+    // Fallback behaviour goes here
+}
 ?>
     <main>
     <h1 align="center">Asesorias</h1>
@@ -103,7 +112,7 @@ echo "<p> $m </p>";
           include 'conexionA.php';
           $consulta = "SELECT * FROM asesorias";
           $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-          echo "<select required name = 'carreras'>";
+          echo "<select required name='alumnos'>";
           while ($columna = mysqli_fetch_array( $resultado ))
           {
              
@@ -113,7 +122,12 @@ echo "<p> $m </p>";
           }
           echo "<select>";
           mysqli_close( $conexion );
+
+          
           ?>
+
+
+<div class = "buton"><button method="POST" style="margin-right: 10px" onclick="location.href='Alumno.php?numero=16401013&tipo=asesoria'" name="btnSolicitar">SOLICITAR</button></div>
     </main>
 
 

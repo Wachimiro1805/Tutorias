@@ -10,6 +10,7 @@
     <script src="../js/jquery-3.6.0.js"></script>
 </head>
 <body>
+
     <header class = "barraTareas">
         <div class = "logo">
         <img src ="../Imagenes/Incio/Icono4.png" alt ="Icono2" width="200">
@@ -25,11 +26,9 @@
 
     <main>   
     <form action="validarA.php" method="post">
-
-    <form action="Alumno.php" method='post'>
-
     <h2 class ="titulo">Inicar Sesion</h2>
     <div class = "IncioSnecio">
+    <form action="Alumno.php" method='post'>    
     <label>Numero de Control</label>
    
     <input name = "control"  
@@ -42,11 +41,19 @@
     <label>Contraseña </label>
     <input class = "NC" type = "password" placeholder="contraseña" name = "pass"  require>
     <br>
+    <?php
+if (isset($_GET['error'])) {
+    echo "Error al iniciar sesion";   
+} else {
+    // Fallback behaviour goes here
+}
+?>
     <br>
     </div>
 
        <div class = "rutas">
         <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Alumno.php'" name="btnIngresar">INGRESAR</button></div>
+        </form>  
         <div class = "buton"><button style="margin-left: 10px" onclick="location.href='../index.html'" >CANCELAR</button></div>
       </div>
 
@@ -55,7 +62,7 @@
     </div>
 
     
-    </form>  
+
     </form>
     </main>
 

@@ -11,17 +11,14 @@ $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){     
-    header("location:Alumno.php");
-    ?>
-   <?php
+    header("location:Alumno.php?numero=$NumCon");
+
+   
    
 }else{
-   echo '<script language="javascript">';
-   echo 'alert("error de autentificacion")';
-   echo '</script>';
-    ?>
-  
-    <?php
+   
+   header("location:loginA.php?error=true");
+
     
 }
 mysqli_free_result($resultado);
