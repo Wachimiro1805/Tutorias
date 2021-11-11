@@ -12,18 +12,13 @@ body{
     background: #f1e8e8;
 }
 
-/*-----ENCABEZADO CON MENU*/
-.barra{
-   background: cornsilk;
-}
-
 /*--- ENCABEZADO---------*/
 header{
     flex-basis: 12vh;
-    display: flex;
+    display:flex;
     justify-content: space-between;
     background: rgb(240, 180, 16);
-    align-items: center;
+    align-items: center; 
     }
 
 .logo{
@@ -72,7 +67,7 @@ header{
 }
 .menu li{
     padding-left: 1rem;
-} 
+}
 .menu a{
     text-decoration: none;
     transition: color 0.4s;
@@ -84,16 +79,15 @@ header{
 
 
 /*--------------MAIN--------------*/
-
-    .mainLogin{
-        flex-basis: 78vh;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding-left: 2%;
-        justify-content: center;
-        
-        }    
+main{
+    flex-basis: 78vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 2%;
+    justify-content: center;
+    background: #f1e8e8;
+    } 
 
 .IncioSnecio{
     display: flex;
@@ -122,7 +116,7 @@ label{
     border-radius: 10px;
     margin-bottom: 10px;
     width: 90%;
-} 
+}
 
 .rutas{
     display: flex;
@@ -130,13 +124,13 @@ label{
     align-items: center;
     justify-content: center;
     width: 100%;
-     
+    
 }
-
-.RC{
-    margin-left: 5%;
-}
-
+  .RC{
+        margin-left: 5%;
+    }
+    
+ 
 /*-------------FOOTER-------------*/
 footer{
     flex-basis: 8vh;
@@ -146,13 +140,32 @@ footer{
     color: rgb(175, 175, 175);
     font-size: 0.8rem;
     width: 100%;
-    position: absolute;
-    bottom:0;
+    background: #f1e8e8; 
+}
+
+  
+/*-----------------BOTONES-------*/
+.buton button{
+    border: none;
+    color: white;
+    background: #021d75;
     
+    border-radius: 10px;
+    padding: 1rem 0 1rem 0;
+    font-weight:  bold;
+    font-family: montserrat, sans-serif;
+    margin: auto;
+    display: block;
+    transition: background 0.5s;
+
 }
 
 
-/*-----------------BOTONES-------*/
+.buton button:hover{
+    background:   rgb(240, 180, 16);
+    cursor: pointer;
+}
+
 .buton button{
     border: none;
     color: white;
@@ -167,7 +180,7 @@ footer{
     transition: background 0.5s;
 
 }
-
+ 
 
 .buton button:hover{
     background:   rgb(240, 180, 16);
@@ -192,7 +205,7 @@ footer{
         position: absolute;
         left: 85%;
         bottom:0;
-        z-index: -1;
+        z-index:  1;
         width: 15%;
     }
     .formulario{
@@ -204,4 +217,7 @@ footer{
     .contenedor-form{
         width: 100%;
         padding: 15px;
+    }
+    .row-input{
+        flex-direction: row;
     }

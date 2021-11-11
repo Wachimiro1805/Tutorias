@@ -6,15 +6,15 @@ $_SESSION['control']=$NumCon;
 
 
 $conexion=mysqli_connect("localhost","root","","bd_tutorias");
-$consulta="SELECT nombre, apellido_p, numero_control FROM alumnos WHERE numero_control = '$NumCon' and contraseña = '$Pass'";
+$consulta="SELECT * FROM jefe_departamento WHERE ususario = '$NumCon' and contraseña = '$Pass'";
 $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){     
-    header("location:Alumno.php?numero=$NumCon");   
+    header("location:Departamento.php?numero=$NumCon");   
 }else{
    
-   header("location:loginA.php?error=true");
+   header("location:loginD.php?error=true");
 
     
 }

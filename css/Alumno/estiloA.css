@@ -15,10 +15,10 @@ body{
 /*--- ENCABEZADO---------*/
 header{
     flex-basis: 12vh;
-    display: flex;
+    display:flex;
     justify-content: space-between;
     background: rgb(240, 180, 16);
-    align-items: center;
+    align-items: center; 
     }
 
 .logo{
@@ -166,7 +166,7 @@ footer{
     cursor: pointer;
 }
 
-.butonC button{
+.buton button{
     border: none;
     color: white;
     background: #021d75;
@@ -182,7 +182,7 @@ footer{
 }
  
 
-.butonC button:hover{
+.buton button:hover{
     background:   rgb(240, 180, 16);
     cursor: pointer;
 }

@@ -26,21 +26,31 @@
 
     <main class="mainLogin">   
     
-    <form class="formulario">
+    <form action="validarT.php" method="post" class="formulario">
       <h2 class ="titulo">Iniciar Sesion</h2>
       <div class="contenedor-form">
+      <form action="Tutor.html" method='post' class="formulario"> 
         <div class="input-contenedor">
           <span class="material-icons icon"> account_circle </span>
-          <input class = "NC" type = "text" placeholder="RFC">  
+          <input name = "control" class = "NC" type = "text" placeholder="Usuario">  
+        </div>  
           <br> 
           <span class="material-icons"> password </span>
-          <input class = "NC" type = "password" placeholder="Contraseña">
+          <input class = "NC" type = "password" placeholder="Contraseña" name = "pass"  require>
         </div>
       </div>      
       <div class = "rutas" style="margin-top: 10px">
+</form>
         <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Tutor.html'" >INGRESAR</button></div>
       </div>
     </form>
+    <?php
+if (isset($_GET['error'])) {
+    echo "Error al iniciar sesion";   
+} else {
+    // Fallback behaviour goes here
+}
+?>
     <h4><a class = "rutas" style="margin-top: 10px" href="Tutor.html">Recuperar Contraseña</a></h4>      
     
     </div>

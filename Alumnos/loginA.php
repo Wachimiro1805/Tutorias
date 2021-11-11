@@ -32,6 +32,7 @@
     <form action="Alumno.php" method='post' class="formulario">   
         <div class="row-input">
         <span class="material-icons icon"> account_circle </span>
+        
         <input name = "control"  
         class = "NC" type = "text" 
         placeholder="No. Control" 
@@ -42,13 +43,7 @@
         <span class="material-icons"> password </span>
     <input class = "NC" type = "password" placeholder="Contraseña" name = "pass"  require>
     
-    <?php
-if (isset($_GET['error'])) {
-    echo "Error al iniciar sesion";   
-} else {
-    // Fallback behaviour goes here
-}
-?>
+
     <br>
     </div>
 
@@ -58,6 +53,13 @@ if (isset($_GET['error'])) {
       </div>
     </div>
     </form>
+    <?php
+if (isset($_GET['error'])) {
+    echo "Error al iniciar sesion";   
+} else {
+    // Fallback behaviour goes here
+}
+?>
     <h4><a class = "rutas" style="margin-top: 10px" href="../index.html">Recuperar Contraseña</a></h4>      
     </main>
 

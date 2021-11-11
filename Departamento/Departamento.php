@@ -23,7 +23,7 @@
             <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">GESTIONAR USUSARIOS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">FORMATO TUTORES</a></li>
             <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
-            <li class="nav-item"><a href="loginD.html" class="nav-link">CERRAR SESIÓN</a></li>
+            <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>

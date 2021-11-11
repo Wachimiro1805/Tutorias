@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header class = "barraTareas">
+    <header class = "barraTareas"> 
         <div class = "logo">
         <img src ="../Imagenes/Incio/Icono4.png" alt ="Icono2" width="200">
         </div> 
@@ -26,24 +26,33 @@
 
 
     <main class="mainLogin">   
-    
-      <form class="formulario">
+    <form action="validarD.php" method="post" class="formulario">
         <h3 class ="titulo">Iniciar Sesion</h3>
         <div class="contenedor-form">
+        <form action="Departamento.php" method='post' class="formulario"> 
           <div class="input-contenedor">
             <span class="material-icons icon"> account_circle </span>
-            <input class = "NC" type = "text" placeholder="RFC">  
+            <input name = "control" class = "NC" type = "text" placeholder="Usuario">
             <br> 
             <span class="material-icons"> password </span>
-            <input class = "NC" type = "password" placeholder="Contraseña">
+            <input class = "NC" type = "password" placeholder="Contraseña" name = "pass"  require>
           </div>
+    
           <div class = "rutas" style="margin-top: 10px">
-            <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Departamento.html'" >INGRESAR</button></div>
+            <div class = "buton"><button style="margin-right: 10px" onclick="location.href='validarD.php'" >INGRESAR</button></div>
+             </form>  
           </div>
         </div>      
       </form>
       
-      <h4><a class = "rutas" style="margin-top: 10px" href="Departamento.html">Recuperar Contraseña</a></h4>
+      <?php
+if (isset($_GET['error'])) {
+    echo "Error al iniciar sesion";   
+} else {
+    // Fallback behaviour goes here
+}
+?>
+      <h4><a class = "rutas" style="margin-top: 10px" href="Departamento.php">Recuperar Contraseña</a></h4>
        
       </div>
       </main>
