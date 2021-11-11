@@ -1,10 +1,3 @@
-<?php include("conexionA.php"); ?>
-<?php 
-session_start();
-$txtUser=(isset($_POST['txtUser']))?$_POST['txtUser']:"";
-$txtPass=(isset($_POST['txtPass']))?$_POST['txtPass']:"";
-$btnlogin=(isset($_POST['btnlogin']))?$_POST['btnlogin']:"";
-?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
@@ -31,27 +24,39 @@ $btnlogin=(isset($_POST['btnlogin']))?$_POST['btnlogin']:"";
        </header> 
 
     <main>   
-    <h2 class ="titulo">Inicar Sesion</h2>
+    <form action="validarA.php" method="post">
 
+    <form action="Alumno.php" method='post'>
+
+    <h2 class ="titulo">Inicar Sesion</h2>
     <div class = "IncioSnecio">
     <label>Numero de Control</label>
-    <input class = "NC" type = "text" placeholder="No. Control">
+   
+    <input name = "control"  
+    class = "NC" type = "text" 
+    placeholder="No. Control" 
+    require>
+ 
     <br>
     <br>
     <label>Contraseña </label>
-    <input class = "NC" type = "password" placeholder="contraseña">
+    <input class = "NC" type = "password" placeholder="contraseña" name = "pass"  require>
     <br>
     <br>
     </div>
 
        <div class = "rutas">
-        <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Alumno.php'" >INGRESAR</button></div>
+        <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Alumno.php'" name="btnIngresar">INGRESAR</button></div>
         <div class = "buton"><button style="margin-left: 10px" onclick="location.href='../index.html'" >CANCELAR</button></div>
       </div>
 
         <a class = "RC" style="margin-top: 10px" href="#">Recuperar Contraseña</a>
 
     </div>
+
+    
+    </form>  
+    </form>
     </main>
 
 

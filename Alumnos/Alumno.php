@@ -36,12 +36,19 @@ $resultado2 = $conexion->query($sql2);
             <li class="nav-item"><a href="#" class="nav-link">REALIZAR ENTREVISTA</a></li>
             <li class="nav-item"><a href="#" class="nav-link">CANALIZACION</a></li>
             <li class="nav-item"><a href="#" class="nav-link">CAMBIAR DATOS</a></li>
-            <li class="nav-item"><a href="loginA.html" class="nav-link">CERRAR SESIÓN</a></li>
+            <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
+<!--recibe numero de control-->
 
+
+<?php 
+$m = $_POST['control']; 
+echo "<p> $m </p>";
+
+?>
     <main>
     <h1 align="center">Asesorias</h1>
     <table width="70%" border="1px" align="center">
