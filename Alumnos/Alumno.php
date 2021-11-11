@@ -33,9 +33,9 @@ $resultado2 = $conexion->query($sql2);
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
            <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">REALIZAR ENTREVISTA</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">CANALIZACION</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">CAMBIAR DATOS</a></li>
+            <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
+            <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+            <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
             <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
@@ -122,8 +122,6 @@ if (isset($_GET['numero'])) {
           }
           echo "<select>";
           mysqli_close( $conexion );
-
-          
           ?>
 
 

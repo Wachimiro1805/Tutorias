@@ -29,23 +29,20 @@
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
  
-
+ 
   <main>
-  <h2 class ="titulo">REGISTRAR ASESORIAS</h2>
-      <form action="guardarAS.php" method="POST">  
-      <div class = "IncioSnecio">
-       
-      <label>Nombre</label>
+    <div class=logo"">
+    <form action="guardarAS.php" method="POST" class="formulario">  
+      <h2 class ="titulo">REGISTRAR ASESORIAS</h2>
+      <div class = "contenedor-form">
       <input name = "nombre" class = "NC" type = "text" placeholder="Nombre de la asesoria">
-  
-
-     <label >Fecha de inicio</label>
-      <input name = "fecha" type="date">
-  
-      <label>Tipo de asesoria:</label>
-      <select name = "asesoria" required>
+      <div class="row-input">
+      <input class="NC" name = "fecha" type="date" placeholder="Fecha de inicio">
+      </div>
+      <div class="row-input">      
+      <select class="NC" name = "asesoria" required>
              <option value=""selected>
-                 Selecciona opcion
+                 Tipo de asesoria
              </option>
              <option>
                 Taller
@@ -63,16 +60,18 @@
                 Tutoria
             </option>
          </select>
-     
-         <label>Descripcion</label>
-        <textarea name = "descripcion" cols = "30" rows="5" placeholder=" Escribe tus comentarios"></textarea>
+      </div>
+
+        <div class="row-input">
+        <textarea name = "descripcion" cols = "30" rows="5" placeholder=" Escribe tus comentarios" class="NC"></textarea>
+        </div>
    
       </div>
 
          <div class = "rutas">
           <div class = "buton"><button type="submit">REGISTRAR</button></div>
-          </form>
-         </div>
+          </form>     
+    </div>
   </main>
 
 

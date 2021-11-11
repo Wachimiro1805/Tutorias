@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Realizar Encuesta</title>
+    
+    <link rel="stylesheet" href="../css/Alumno/estiloA.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" href="../css/estiloD.css">
-  </head>
-
+</head>
 <body>
 
   <header class="navbar navbar-dark bg-dark navbar-expand-md">
@@ -19,30 +19,24 @@
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="#" class="nav-link">SOLICITUDES</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">GESTIONAR USUSARIOS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">FORMATO TUTORES</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
-            <li class="nav-item"><a href="loginD.html" class="nav-link">CERRAR SESIÓN</a></li>
+           <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
+            <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
+            <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+            <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
+            <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
-    <main>
-
-      
-      <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      
-
-    </main>
  
+    <main>
+      <h2 style="color:#021d75;">Encuesta de nuevo ingreso</h2>
+      <h6>Para el departamento es de suma importancia saber informacion basica de sus alumnos, por lo cual se realiza una pequeña encuesta con el fin de recabar informacion para el posterior seguimiento del alumno</h6>
+      <br>
+      <h5>Por favor, llena la siguiente encuesta  y manda tus respuestas para poder conocerte y tener informacion que nos servira en un futuro</h5>
+      <div class = "buton"><button style="margin-right: 10px"  >Realizar encuesta</button></div>
+    </main>
+
 
 
     <footer>
