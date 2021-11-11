@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -25,22 +26,22 @@
        </header> 
 
     <main>   
-    <form action="validarA.php" method="post">
+    <form action="validarA.php" method="post" class="formulario">
     <h2 class ="titulo">Inicar Sesion</h2>
-    <div class = "IncioSnecio">
-    <form action="Alumno.php" method='post'>    
-    <label>Numero de Control</label>
-   
-    <input name = "control"  
-    class = "NC" type = "text" 
-    placeholder="No. Control" 
-    require>
- 
-    <br>
-    <br>
-    <label>Contraseña </label>
-    <input class = "NC" type = "password" placeholder="contraseña" name = "pass"  require>
-    <br>
+    <div class = "contenedor-form">
+    <form action="Alumno.php" method='post' class="formulario">   
+        <div class="row-input">
+        <span class="material-icons icon"> account_circle </span>
+        <input name = "control"  
+        class = "NC" type = "text" 
+        placeholder="No. Control" 
+        require>
+        </div>  
+        
+        <br>
+        <span class="material-icons"> password </span>
+    <input class = "NC" type = "password" placeholder="Contraseña" name = "pass"  require>
+    
     <?php
 if (isset($_GET['error'])) {
     echo "Error al iniciar sesion";   
@@ -54,17 +55,12 @@ if (isset($_GET['error'])) {
        <div class = "rutas">
         <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Alumno.php'" name="btnIngresar">INGRESAR</button></div>
         </form>  
-        <div class = "buton"><button style="margin-left: 10px" onclick="location.href='../index.html'" >CANCELAR</button></div>
       </div>
-
-        <a class = "RC" style="margin-top: 10px" href="#">Recuperar Contraseña</a>
-
     </div>
-
-    
-
     </form>
+    <h4><a class = "rutas" style="margin-top: 10px" href="../index.html">Recuperar Contraseña</a></h4>      
     </main>
+
 
 
     <footer>

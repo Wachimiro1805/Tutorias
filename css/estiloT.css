@@ -90,6 +90,8 @@ header{
     align-items: center;
     flex-direction: column;
     padding-left: 2%;
+    justify-content: center;
+    
     }
 
 
@@ -105,8 +107,9 @@ header{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-left: 5%;
     text-align: center;
-    font-size: 3rem;
-    padding-bottom: 5%;
+    font-size: 2rem;
+    
+    color: "#la2537";
 } 
 
 label{
@@ -115,23 +118,22 @@ label{
 }
 
 .NC{
-    font-size: 150%;
-    padding-bottom: 2%;
+    font-size: 20px;
+    padding: 5px;
     border-radius: 10px;
     margin-bottom: 10px;
+    width: 90%;
 }
 
 .rutas{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 5%;
+    justify-content: center;
+    width: 100%;
     
 }
 
-.RC{
-    margin-left: 5%;
-}
 
 /*-------------FOOTER-------------*/
 footer{
@@ -221,3 +223,17 @@ footer{
     flex-flow:row wrap;
     justify-content: center;;
 }
+.formulario{
+    background: white;
+    width: 60%;
+    padding: 3px;
+    border-radius:10px;
+}
+.contenedor-form{
+    width: 100%;
+    padding: 15px;
+}
+
+
+
+
