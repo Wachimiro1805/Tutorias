@@ -22,7 +22,7 @@
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="#" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR</a></li>
-            <li class="nav-item"><a href="Coordinador.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li>
                     
         </ul>
       </div>

@@ -6,11 +6,11 @@
     <title>Coordinador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/jquery-3.6.0.js"></script> 
   <link rel="stylesheet" href="../css/estiloC.css">
   </head>
 
-<body>
+<body> 
 
   <header class="navbar navbar-dark bg-dark navbar-expand-md">
     <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
@@ -24,7 +24,7 @@
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
+            <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             
             <li class="nav-item"><a href="loginC.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -35,24 +35,25 @@
  
 
   <main>
+
+  <h2 class ="titulo">Seleccione la accion que desea realizar de la barra de navegación</h2>
            
   </main>
 
+ 
 
-
-    <div class="renglon">
-      <div class="col">
-        <h4>Instituto Tecnologico de Tepic</h4>
-        <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
-        <p>(311) 211 9400</p>
-        <p>Tepic, Nayarit. Mexico</p>
+  <footer>
+      <div class = footerDatos>     
+      <h4>Instituto Tecnologico de Tepic</h4>
+      <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
+      <p>(311) 211 9400</p>
+      <p>Tepic, Nayarit. Mexico</p>
       </div>
-      <div class="col end-justify">
-        <img  src ="../Imagenes/Incio/Icono5.png" width="200">
-      </div>
-    </div>
-  </div>
+    </footer>
 
 
+    <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">
+
+  
 </body>
 </html>

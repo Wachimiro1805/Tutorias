@@ -22,7 +22,7 @@
             <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">AGREGAR ALUMNOS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">ELIMINAR ALUMNOS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="Coordinador.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -88,7 +88,7 @@
          </div>
   
       </main>
-      <div class = "buton"><button  style="margin-left: 52%" onclick="location.href='Coordinador.html'" >CANCELAR</button></div>
+      <div class = "buton"><button  style="margin-left: 52%" onclick="location.href='Coordinador.php'" >CANCELAR</button></div>
   
       <footer>
           <div class = footerDatos>     

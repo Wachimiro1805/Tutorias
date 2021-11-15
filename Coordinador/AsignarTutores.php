@@ -37,7 +37,7 @@ $resultado2 = $conexion->query($sql2);
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
+            <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             
             <li class="nav-item"><a href="loginC.html" class="nav-link">CERRAR SESIÓN</a></li>
@@ -104,15 +104,15 @@ $resultado2 = $conexion->query($sql2);
 
 
 
-    <div class="renglon">
-      <div class="col">
-        <h4>Instituto Tecnologico de Tepic</h4>
-        <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
-        <p>(311) 211 9400</p>
-        <p>Tepic, Nayarit. Mexico</p>
+  <footer>
+      <div class = footerDatos>     
+      <h4>Instituto Tecnologico de Tepic</h4>
+      <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
+      <p>(311) 211 9400</p>
+      <p>Tepic, Nayarit. Mexico</p>
       </div>
-      <div class="col end-justify">
-        <img  src ="../Imagenes/Incio/Icono5.png" width="200">
-      </div>
-    </div>
+    </footer>
+
+
+    <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">
   </div>
