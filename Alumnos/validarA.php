@@ -6,7 +6,7 @@ $_SESSION['control']=$NumCon;
 
 
 $conexion=mysqli_connect("localhost","root","","bd_tutorias");
-$consulta="SELECT nombre, apellido_p, numero_control FROM alumnos WHERE numero_control = '$NumCon' and contraseña = '$Pass'";
+$consulta="SELECT * FROM alumnos WHERE numero_control = '$NumCon' and contraseña = '$Pass'";
 $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
 

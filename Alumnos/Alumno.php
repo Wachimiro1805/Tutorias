@@ -47,15 +47,9 @@ $resultado2 = $conexion->query($sql2);
 <?php
 if (isset($_GET['numero'])) {
     echo $_GET['numero']; 
-/*
-    if (isset($_GET['tipo'])) {
-       echo $_GET['tipo'];
-       echo $_POST['alumnos'];
-*/
-
   
 } else {
-    // Fallback behaviour goes here
+
 }
 ?>
     <main>
@@ -71,7 +65,7 @@ if (isset($_GET['numero'])) {
     <?php 
         while($datos=$resultado->fetch_array()){
         ?>
-            <tr>
+            <tr align="center">
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>
@@ -81,7 +75,7 @@ if (isset($_GET['numero'])) {
         }
 
      ?>
-    </table>
+    </table >
     <h1 align="center">Solicitudes</h1>
     <table width="70%" border="1px" align="center">
 
@@ -95,7 +89,7 @@ if (isset($_GET['numero'])) {
     <?php 
         while($datos=$resultado2->fetch_array()){
         ?>
-            <tr>
+            <tr align="center">
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>

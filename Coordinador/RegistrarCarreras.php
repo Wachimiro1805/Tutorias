@@ -28,17 +28,14 @@
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     <main>
+    <form action="guardarCA.php" method="POST" class="formulario">  
     <h2 class ="titulo">REGISTRAR GRUPOS</h2>
-    <form action="guardarCA.php" method="POST">  
     <div class = "IncioSnecio">
-     
-    <label>Nombre del grupo</label>
     <input name = "NombreCarrera" class = "NC" type = "text" placeholder="Nombre de la carrera">  
-    <br>
-    <label>Siglas</label>
+
     <input name = "Siglas" class = "NC" type = "text" placeholder="Siglas">    
        <div class = "rutas">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">REGISTRAR</button></div>
+        <div class = "buton" style="margin-top: 3%"><button type="submit">REGISTRAR</button></div>
         </form>
        </div>
     </main>
