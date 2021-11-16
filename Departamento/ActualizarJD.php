@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutores</title>
+    <title>Departamento</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" href="../css/estiloT.css">
+    <link rel="stylesheet" href="../css/estiloD.css">
   </head>
 
 <body>
@@ -17,27 +17,34 @@
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse end-justify" id="navbar">
+    <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="Tutor.html" class="nav-link">TUTORIAS</a></li>
-            <li class="nav-item"><a href="Tutorados.html" class="nav-link">TUTORADOS</a></li>
-            <li class="nav-item"><a href="Canalizacion.html" class="nav-link">CANALIZACION</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">SOLICITUDES</a></li>
-            <li class="nav-item"><a href="Reporte.html" class="nav-link">GENERAR REPORTE</a></li>
-            <li class="nav-item"><a href="ActualizarPass.html" class="nav-link">ACTUALIZAR CONTRASEÑA</a></li>
-            <li class="nav-item"><a href="loginT.php" class="nav-link">CERRAR SESIÓN</a></li>
+            <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
- 
     <main>
+    <h2 class ="titulo">Actulizar informacion</h2>
+    <form action="actualiza.php" method="POST">  
+    <div class = "IncioSnecio">
+     
+    <input name = "firstname" class = "NC" type = "text" placeholder="Nombre's">
 
+    <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
+
+    <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
+   
+
+       <div class = "rutas">
+        <div class = "buton" style="margin-top: 8%"><button type="submit">ACTUALIZAR</button></div>
+        </form>
+       </div>
     </main>
 
 
 
-    <footer> 
+    <footer>
       <div class = footerDatos>     
       <h4>Instituto Tecnologico de Tepic</h4>
       <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
@@ -48,10 +55,6 @@
 
 
     <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">
-
-
-
-    
 
 
 </body>

@@ -40,7 +40,7 @@ $resultado2 = $conexion->query($sql2);
             <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             
-            <li class="nav-item"><a href="loginC.html" class="nav-link">CERRAR SESIÓN</a></li>
+            <li class="nav-item"><a href="loginC.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
