@@ -1,111 +1,151 @@
 <!DOCTYPE html>
 <html lang="estilo">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generar reporte</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" href="../css/estiloT.css">
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar reporte</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="../css/estiloT.css">
+</head>
 
 <body>
 
   <header class="navbar navbar-dark bg-dark navbar-expand-md">
     <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse end-justify" id="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="Tutor.html" class="nav-link">TUTORIAS</a></li>
-          <li class="nav-item"><a href="Tutorados.html" class="nav-link">TUTORADOS</a></li>
-          <li class="nav-item"><a href="Canalizacion.html" class="nav-link">CANALIZACION</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">SOLICITUDES</a></li>
-          <li class="nav-item"><a href="Reporte.html" class="nav-link">GENERAR REPORTE</a></li>
-          <li class="nav-item"><a href="ActualizarPass.html" class="nav-link">ACTUALIZAR CONTRASEÑA</a></li>
-          <li class="nav-item"><a href="loginT.php" class="nav-link">CERRAR SESIÓN</a></li>
-        </ul>
-      </div>
-      <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
-    </header>
- 
-        <main class="mainLogin">   
-          <body>
-            
-            <div class="InfoArriba" style="display:flex;">
-              <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
-              <div class="InfoIzq" style=" margin: 0 auto;
-                                         padding: 10px;
-                                         border: 1px solid black;">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="Tutor.html" class="nav-link">TUTORIAS</a></li>
+        <li class="nav-item"><a href="Tutorados.html" class="nav-link">TUTORADOS</a></li>
+        <li class="nav-item"><a href="Canalizacion.html" class="nav-link">CANALIZACION</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">SOLICITUDES</a></li>
+        <li class="nav-item"><a href="Reporte.html" class="nav-link">GENERAR REPORTE</a></li>
+        <li class="nav-item"><a href="ActualizarPass.html" class="nav-link">ACTUALIZAR CONTRASEÑA</a></li>
+        <li class="nav-item"><a href="loginT.php" class="nav-link">CERRAR SESIÓN</a></li>
+      </ul>
+    </div>
+    <a href="../index.html"><img src="../Imagenes/Incio/Icono4.png" alt="Icono2" width="250"></a>
+  </header>
+
+  <main class="mainLogin">
+
+    <body style="display: inline;">
+      <div style="display:flex; width:100%; ">
+        <div class="InfoArriba" style="float: left; ">
+          <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
+          <h6 style="text-align: center;">Datos Generales</h6>
+          <div class="InfoIzq" style=" margin: 0 auto;
+                                       padding: 10px;
+                                       border: 1px solid black;">
+            <h6 style="">Tutor:</h6>
+            <input style="" type="text" id="Tutor">
+            <h6 style="">Carrera:</h6>
+            <input style="" type="text" id="Carrera">
+            <h6 style="">Periodo de Atención:</h6>
+            <input style="" type="text" id="PeriodoAtencion">
+          </div>
+  
+  
+          <!-- &&&&&&&&& Encabezado Derecho &&&&&&&&& -->
+          <div class="InfoDer" style="margin: 0 auto;
+                                      padding: 10px;
+                                      border: 1px solid black;">
+            <h6 style="">Grupo:</h6>
+            <input style="display:flex;" type="text" id="Grupo">
+            <h6 style=""">Hora:</h6>
+              <input style="" type=" text" id="Hora">
+          </div>
+        </div>
+
+        <div style="display:flex; width:100%; padding-top: 1.7em;padding-left: 1.7em;">
+          <div  style="float: left; ">
+            <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
+             <div  style=" margin: 0 auto;padding: 10px;border: 1px solid black;">
               <h6 style="">Tutor:</h6>
-              <input type="text" id="Tutor" >
-              <h6>Carrera:</h6>
-              <input type="text" id="Carrera">
-              <h6>Periodo de Atención:</h6>
-              <input type="text" id="PeriodoAtencion">
+              <input style="" type="text" id="Tutor">
+              <h6 style="">Carrera:</h6>
+              <input style="" type="text" id="Carrera">
+              <h6 style="">Periodo de Atención:</h6>
+              <input style="" type="text" id="PeriodoAtencion">
             </div>
+      </div>
+      
+      
+     
 
-            <!-- &&&&&&&&& Encabezado Derecho &&&&&&&&& -->
-            <div class="InfoDer" style="margin: 0 auto;
-                                        padding: 10px;
-                                        border: 1px solid black;">
-              <h6 style="">Grupo:</h6>
-              <input type="text" id="Grupo">
-              <h6 style="">Hora:</h6>
-              <input type="text" id="Hora">
-            </div>
-          </div>
+      <div class="" style="display:inline; padding: 5px; float: ;">
 
-          <div class="" style="padding: 5px;">
-
-            <table style="font-size: 10px;">
-              <tr style="border: 1px solid #000;">
-                <th style="border: 1px solid #000;padding: 5px;">NÚMERO</th>
-                <TH style="border: 1px solid #000;padding: 5px;">NOMBRE DEL ESTUDIANTE</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">NO.CONTROL</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">NÚMERO DE SESIONES CON EL TUTOR</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">PARTICIPACIÓN EN ACTIVIDADESDE APOYO</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">CANALIZACIÓN</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">TOTAL DE HORAS CUMPLIDAS</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">ESTATUS EN EL PROGRAMA</TH>
-                <TH style="border: 1px solid #000;padding: 5px;">EVALUACIÓN DEL TUTORADO</TH>
-                <td></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-
-            </table>
-
-          </div>
+        <table style="font-size: 9px;">
+          <tr style="border: 1px solid #000; text-align: center;">
+            <th rowspan="2" style="border: 1px solid #000;padding: 5px;">NÚMERO</th>
+            <TH rowspan="2" style="border: 1px solid #000;padding: 5px;">NOMBRE DEL ESTUDIANTE</TH>
+            <TH rowspan="2" style="border: 1px solid #000;padding: 5px;">NO.CONTROL</TH>
+            <TH colspan="2" style="border: 1px solid #000;padding: 5px;">NÚMERO DE SESIONES CON EL TUTOR (HORA/SESIÓN)</TH>
+            <TH colspan="3" style="border: 1px solid #000;padding: 5px;">PARTICIPACIÓN EN ACTIVIDADESDE APOYO (NÚMERO DE HORAS DE LA ACTIVIDAD)</TH>
+            <TH colspan="2" style="border: 1px solid #000;padding: 5px;">CANALIZACIÓN (NÚMERO DE HORA/SESIÓN)</TH>
+            <TH rowspan="2" style="border: 1px solid #000;padding: 5px;">TOTAL DE HORAS CUMPLIDAS</TH>
+            <TH colspan="4" style="border: 1px solid #000;padding: 5px;">ESTATUS EN EL PROGRAMA (MARQUE X EN SOLO UNA COLUMNA)</TH>
+            <TH colspan="2" style="border: 1px solid #000;padding: 5px;">EVALUACIÓN DEL TUTORADO</TH>
             
+          </tr>
+          <tr style="border: 1px solid #000; text-align: center;">
+            <td style="border: 1px solid #000;">SESIONES INDIVIDUALES</td>
+            <td style="border: 1px solid #000;">SESIONES GRUPALES</td>
+            <td style="border: 1px solid #000;">ACTIVIDAD<br> INTEGRADORA<br> (Max. 4 horas)</td>
+            <td style="border: 1px solid #000;"">TALLERES</td>
+            <td style="border: 1px solid #000;">PSICOLOGÍA</td>
+            <td style="border: 1px solid #000;">ASESORÍA</td>
+            <td style="border: 1px solid #000;">ACREDITÓ</td>
+            <td style="border: 1px solid #000;">NO<BR> ACREDITÓ</td>
+            <td style="border: 1px solid #000;">DESERTÓ</td>
+            <td style="border: 1px solid #000;">ACREDITADO EN <BR>SEGUIMIENTO</td>
+            <td style="border: 1px solid #000;">VALOR<BR>NUMERICO</td>
+            <td style="border: 1px solid #000;">NIVEL DE <BR>DESEMPEÑO</td>
+          </tr>
 
-          </body>      
-        </main>
+         <!--Datos DE LA TABLA-->
+          <tr  style="border: 1px solid #000; text-align: center;">
+            <td style="border: 1px solid #000;">1</td>
+            <td style="border: 1px solid #000;">Eduardo Hernandez Garcia</td>
+            <td style="border: 1px solid #000;">16400928</td>
+            <td style="border: 1px solid #000;">4</td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+
+    </body>
+  </main>
 
 
 
 
 
-    <footer> 
-      <div class = footerDatos>     
+  <footer>
+    <div class=footerDatos>
       <h4>Instituto Tecnologico de Tepic</h4>
-      <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
+      <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>
       <p>(311) 211 9400</p>
       <p>Tepic, Nayarit. Mexico</p>
-      </div>
-    </footer>
+    </div>
+  </footer>
 
 
-    <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">
+  <img class="logo5" src="../Imagenes/Incio/Icono5.png" alt="Icono5" width="200">
 
 
 
-    
+
 
 
 </body>
+
 </html>
