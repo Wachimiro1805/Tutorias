@@ -37,7 +37,7 @@ $resultado2 = $conexion->query($sql2);
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
-            <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
+            <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             
             <li class="nav-item"><a href="loginC.php" class="nav-link">CERRAR SESIÓN</a></li>

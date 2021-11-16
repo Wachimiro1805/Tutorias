@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="estilo"> 
 <head> 
@@ -33,17 +34,14 @@
     <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
   </header>
 
-
-
   <main class="mainLogin">   
     
     <form class="formulario">
-      <h2 class ="titulo">Información personal</h2> 
+      <h2 class ="titulo">Actualizar contraseña</h2> 
       <div class="contenedor-form">
         <div class="input-contenedor">
-          <input class = "NC" type = "text" placeholder="Nombre(s)">  
-          <input class = "NC" type = "text" placeholder="Apellido materno">
-          <input class = "NC" type = "text" placeholder="Apellido paterno">
+          <input class = "NC" type = "text" placeholder="Contraseña Actual">  
+          <input class = "NC" type = "text" placeholder="Contraseña nueva">
 
         </div>
       </div>      

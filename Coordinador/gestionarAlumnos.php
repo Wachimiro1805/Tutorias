@@ -28,22 +28,13 @@
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     <main>   
+      <form action="guardarA.php" method="POST" class="formulario">  
       <h2 class ="titulo">REGISTRAR ALUMNO</h2>
-      <form action="guardarA.php" method="POST">  
       <div class = "IncioSnecio">
-       
-      <label>Nombre</label>
       <input name = "firstname" class = "NC" type = "text" placeholder="Nombre Completo">
-  
-      <label>Apellido Paterno</label>
       <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
-  
-      <label>Apellido Materno</label>
       <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
-     
-      <label>Numero de control</label>
       <input name = "Ncontrol"  class = "NC" type = "text" placeholder="Numero de Control">
-   
       </div>
   
       <div class = "grupos/carreras">
