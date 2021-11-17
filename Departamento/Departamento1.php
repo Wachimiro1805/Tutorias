@@ -6,7 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT S.pk_solicitudes ,A.nombreA, A.apellido_p, A.numero_control, C.siglas, G.nombre_grupo, AR.nombre, S.fecha, AR.fecha, AR.tipo_de_asesoria, S.status FROM alumnos A  INNER JOIN  carreras C ON(C.id_carreras = A.fk_carreras) INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN solicitudes S ON(S.fk_alumnos= A.id_alumnos) INNER JOIN asesorias AR ON(AR.id_asesorias= S.fk_asesorias);";
+$sql = "SELECT S.pk_solicitudes, D.nombre_docente, D.apellido_p, C.siglas, G.nombre_grupo, AR.nombre, AR.fecha, AR.tipo_de_asesoria, S.fecha, S.status  FROM docentes D INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras) INNER JOIN grupos G ON(G.id_grupo = D.fk_grupo) INNER JOIN solicitudes S ON(S.fk_docentes = D.id_docente) INNER JOIN asesorias AR ON(AR.id_asesorias = S.fk_asesorias);";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $resultado = $conexion->query($sql);
         <ul class="navbar-nav">
             <li class="nav-item"><a href="Departamento.php" class="nav-link">SOLICITUDES</a></li>
             <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">TUTORES/COORDINADORES</a></li>
-            <li class="nav-item"><a href="ExpedienteC.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
             <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
             <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
@@ -47,15 +47,13 @@ $resultado = $conexion->query($sql);
     <div class = "buton"><button onclick="location.href='Departamento1.php'">SOLICITUDES TUTORES</button></div>
     <div class = "buton"><button onclick="location.href='Departamento2.php'">TUTORES A TUTORADOS</button></div>
     </div>
-
-  <br>
-    <h3 align="center">Alumnos</h3>
+    <br>
+    <h3 align="center">Docentes</h3>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">
-        <td>Nombre Alumno</td>
+        <td>Nombre Docente</td>
         <td>Apellido Paterno</td>
-        <td>Numero Control</td>
         <td>Carrera</td>
         <td>Grupo</td>
         <td>Asesoria</td>
@@ -63,32 +61,24 @@ $resultado = $conexion->query($sql);
         <td>Fecha Asesoria</td>
         <td>Tipo de Asesoria</td>
         <td>Status</td>
-
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
         ?>
             <tr align="center">
-                <td><?php echo $datos["nombreA"]?></td>
+                <td><?php echo $datos["nombre_docente"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["numero_control"]?></td>
                 <td><?php echo $datos["siglas"]?></td>
                 <td><?php echo $datos["nombre_grupo"]?></td>
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["fecha"]?></td>
-                <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>
+                <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["status"]?></td>
+                <td> 
                 <?php echo"<td><a href='status.php?id=".$datos["pk_solicitudes"]."'>Aceptar</a></td>";?>
                 <?php echo"<td><a href='status1.php?id=".$datos["pk_solicitudes"]."'>Negar</a></td>";?>
-                <td> 
-                  <?php 
-  
-               // <?php echo"<td><input type='submit' href = 'status.php?id=".$datos["pk_solicitudes"]."' name ='btnAceptar' value='Aceptar'></td>";?>
-                 
-                
                 </td>
-                
             </tr>
             <?php   
         }
@@ -96,7 +86,6 @@ $resultado = $conexion->query($sql);
      ?>
     </table>
 
-    
     </main>
  
 

@@ -1,14 +1,3 @@
-<?php
-require "conexionCT.php";
-$conexion = new mysqli("localhost","root","","bd_tutorias");
-if($conexion->connect_errno)
-{
-    echo "Error de conexion de la base datos".$conexion->connect_error;
-    exit();
-}
-$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m FROM coordinador_de_tutorias;";
-$resultado = $conexion->query($sql);
-?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
@@ -30,7 +19,7 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="ExpedienteC.php" class="nav-link">REPORTE</a></li>
+            <li class="nav-item"><a href="ReporteCordi.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="RegistrarCT.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarCT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarCT.php" class="nav-link">ACTUALIZAR</a></li>
@@ -41,45 +30,15 @@ $resultado = $conexion->query($sql);
     </header>
     
     <main>
-    <form action="actualizact.php" method="POST">  
-    <h2 class ="titulo">Actualizar datos Coordinador</h2>
-    <h3 align="center">Coordinadores</h3>
-    <table width="100%" border="2px" align="center">
-
-    <tr align="center">
-        <td>ID</td>
-        <td>Nombre</td>
-        <td>Apellido Paterno</td>
-        <td>Apellido Materno</td>
-    </tr>
-    <?php 
-        while($datos=$resultado->fetch_array()){
-        ?>
-            <tr align="center">
-                <td><?php echo $datos["id_coordinador_tutorias"]?></td>
-                <td><?php echo $datos["nombre"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["appelido_m"]?></td>
-
-            </tr>
-            <?php   
-        }
-
-     ?>
-    </table>
-
-    <input name = "id" class = "NC" type = "text" placeholder="ID a Actualizar">
-    <input name = "nombre" class = "NC" type = "text" placeholder="Nombre">
-    <input name = "apellido_p" class = "NC" type = "text" placeholder="Apellido paterno">
-    <input name = "apellido_m" class = "NC" type = "text" placeholder="Apellido materno">
-
-       </div>
-       
-       <div class = "rutas">
-    
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Actualizar</button></div>
  
-       </form>
+    <h2 class ="titulo">Reporte Coordinador</h2>
+   
+  
+   
+
+ 
+ 
+   
     </main>
 
 

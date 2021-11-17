@@ -18,6 +18,7 @@
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
+            <li class="nav-item"><a href="ExpedienteC.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="RegistrarCT.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarCT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarCT.php" class="nav-link">ACTUALIZAR</a></li>

@@ -7,7 +7,7 @@ if($conexion->connect_errno)
     exit();
 }
 $sql = "SELECT * FROM asesorias;";
-$sql2 = "SELECT A.nombre, A.fecha, A.tipo_de_asesoria, S.status, S.fecha FROM solicitudes S INNER JOIN asesorias A ON(A.id_asesorias = S.fk_asesorias);";
+$sql2 = "SELECT A.nombreA, A.fecha, A.tipo_de_asesoria, S.status, S.fecha FROM solicitudes S INNER JOIN asesorias A ON(A.id_asesorias = S.fk_asesorias);";
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 ?>
@@ -66,7 +66,7 @@ if (isset($_GET['numero'])) {
         while($datos=$resultado->fetch_array()){
         ?>
             <tr align="center">
-                <td><?php echo $datos["nombre"]?></td>
+                <td><?php echo $datos["nombreA"]?></td>
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>
                 <td><?php echo $datos["descripcion"]?></td>
