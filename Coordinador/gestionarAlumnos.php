@@ -20,9 +20,9 @@
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">AGREGAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ELIMINAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="BorrarAlumnos.php" class="nav-link">ELIMINAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="ActualizarAlumnos.php" class="nav-link">ACTUALIZAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li> 
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -37,7 +37,7 @@
       <input name = "Ncontrol"  class = "NC" type = "text" placeholder="Numero de Control">
       </div>
   
-      <div class = "grupos/carreras">
+      <div class = "grupos-carreras">
           <Label>Grupos</Label>
           <?php
           include 'conexionC.php';
