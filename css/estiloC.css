@@ -221,3 +221,7 @@ footer{
     .row-input{
         flex-direction: row;
     }
+    .grupos-carreras{
+        justify-content: center;
+        align-items: center;
+    }

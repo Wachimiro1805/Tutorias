@@ -31,7 +31,6 @@
  
  
   <main>
-    <div class=logo"">
     <form action="guardarAS.php" method="POST" class="formulario">  
       <h2 class ="titulo">REGISTRAR ASESORIAS</h2>
       <div class = "contenedor-form">
@@ -71,23 +70,9 @@
          <div class = "rutas">
           <div class = "buton"><button type="submit">REGISTRAR</button></div>
           </form>     
-    </div>
   </main>
 
-
-
-    <div class="renglon">
-      <div class="col">
-        <h4>Instituto Tecnologico de Tepic</h4>
-        <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
-        <p>(311) 211 9400</p>
-        <p>Tepic, Nayarit. Mexico</p>
-      </div>
-      <div class="col end-justify">
-        <img  src ="../Imagenes/Incio/Icono5.png" width="200">
-      </div>
-    </div>
-  </div>
+  
 
 
 </body>

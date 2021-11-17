@@ -5,6 +5,8 @@ if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
+}else {
+  
 }
 
 //$consulta="SELECT * FROM coordinador_de_tutorias WHERE ususario = '$user'";
@@ -27,7 +29,7 @@ if($conexion->connect_errno)
 <body>  
  
   <header class="navbar navbar-dark bg-dark navbar-expand-md">
-    <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
+    <a href="Coordinador.php" style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,12 +48,7 @@ if($conexion->connect_errno)
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
-<!--recibe numero de RFC-->
-
-
-
   <main>
-
   <h2 class ="titulo">Seleccione la accion que desea realizar de la barra de navegación</h2>
            
   </main>

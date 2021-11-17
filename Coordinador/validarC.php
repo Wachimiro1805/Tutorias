@@ -2,7 +2,8 @@
 $NumCon=$_POST['rfc'];
 $Pass=$_POST['pass'];
 session_start();
-$_SESSION['control']=$NumCon;
+
+$_SESSION["usuario"] = $NumCon;
 
 
 $conexion=mysqli_connect("localhost","root","","bd_tutorias");
