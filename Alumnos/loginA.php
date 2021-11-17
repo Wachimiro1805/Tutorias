@@ -48,7 +48,7 @@
     </div>
 
        <div class = "rutas">
-        <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Alumno.php'" name="btnIngresar">INGRESAR</button></div>
+        <div class = "buton"><button style="margin-right: 10px" onclick="location.href='#'" name="btnIngresar">INGRESAR</button></div>
         </form>  
       </div>
     </div>

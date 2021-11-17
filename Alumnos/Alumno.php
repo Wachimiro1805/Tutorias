@@ -66,7 +66,7 @@
         <?php 
             while($datos=$resultado->fetch_array()){
         ?>
-            <tr>
+            <tr align="center">
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>
@@ -76,7 +76,7 @@
         }
 
      ?>
-    </table>
+    </table >
     <h1 align="center">Solicitudes</h1>
     <table width="70%" border="1px" align="center">
 
@@ -90,7 +90,7 @@
     <?php 
         while($datos=$resultado2->fetch_array()){
         ?>
-            <tr>
+            <tr align="center">
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>

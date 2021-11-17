@@ -28,20 +28,20 @@
         <form action="validarC.php" method="post" class="formulario">
           <h2 class ="titulo">Iniciar Sesion</h2>
           <div class="contenedor-form">
-          <form action="Coordinador.html" method='post' class="formulario">  
+          <form action="Coordinador.php" method='post' class="formulario">  
             <div class="input-contenedor">
               <span class="material-icons icon"> account_circle </span>
-              <input class = "NC" type = "text" placeholder="RFC">  
+              <input class = "NC" type = "text" placeholder="RFC" name = "rfc">   
               <br> 
               <span class="material-icons"> password </span>
-              <input class = "NC" type = "password" placeholder="Contraseña">
+              <input class = "NC" type = "password" placeholder="Contraseña" name = "pass">
             </div>
             <div class = "rutas" style="margin-top: 10px">
               <div class = "buton"><button style="margin-right: 10px" onclick="location.href='#'" >INGRESAR</button></div>            
               </form>
             </div>
-          </div>      
-        </form>
+          </div>       
+        </form> 
         <?php
 if (isset($_GET['error'])) {
     echo "Error al iniciar sesion";   
@@ -49,7 +49,7 @@ if (isset($_GET['error'])) {
     // Fallback behaviour goes here
 }
 ?>
-        <h4><a class = "rutas" style="margin-top: 10px" href="Coordinador.html">Recuperar Contraseña</a></h4>      
+        <h4><a class = "rutas" style="margin-top: 10px" href="Coordinador.php">Recuperar Contraseña</a></h4>      
          
         </div>
         </main>

@@ -20,33 +20,24 @@
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">AGREGAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ELIMINAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR ALUMNOS</a></li>
-            <li class="nav-item"><a href="Coordinador.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="BorrarAlumnos.php" class="nav-link">ELIMINAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="ActualizarAlumnos.php" class="nav-link">ACTUALIZAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li> 
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     <main>   
+      <form action="guardarA.php" method="POST" class="formulario">  
       <h2 class ="titulo">REGISTRAR ALUMNO</h2>
-      <form action="guardarA.php" method="POST">  
       <div class = "IncioSnecio">
-       
-      <label>Nombre</label>
       <input name = "firstname" class = "NC" type = "text" placeholder="Nombre Completo">
-  
-      <label>Apellido Paterno</label>
       <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
-  
-      <label>Apellido Materno</label>
       <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
-     
-      <label>Numero de control</label>
       <input name = "Ncontrol"  class = "NC" type = "text" placeholder="Numero de Control">
-   
       </div>
   
-      <div class = "grupos/carreras">
+      <div class = "grupos-carreras">
           <Label>Grupos</Label>
           <?php
           include 'conexionC.php';
@@ -88,7 +79,7 @@
          </div>
   
       </main>
-      <div class = "buton"><button  style="margin-left: 52%" onclick="location.href='Coordinador.html'" >CANCELAR</button></div>
+      <div class = "buton"><button  style="margin-left: 52%" onclick="location.href='Coordinador.php'" >CANCELAR</button></div>
   
       <footer>
           <div class = footerDatos>     

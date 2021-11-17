@@ -28,14 +28,13 @@
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     <main>
+    
+    <form action="guardarG.php" method="POST" class="formulario">  
     <h2 class ="titulo">REGISTRAR GRUPOS</h2>
-    <form action="guardarG.php" method="POST">  
     <div class = "IncioSnecio">
-     
-    <label>Nombre del grupo</label>
     <input name = "Nombregrupo" class = "NC" type = "text" placeholder="Nombre del grupo">   
        <div class = "rutas">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">REGISTRAR</button></div>
+        <div class = "buton" style="margin-top: 2%"><button type="submit">REGISTRAR</button></div>
         </form>
        </div>
     </main>

@@ -22,7 +22,7 @@
             <li class="nav-item"><a href="#" class="nav-link">SOLICITUDES</a></li>
             <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">GESTIONAR USUSARIOS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">FORMATO TUTORES</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
+            <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
             <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
@@ -31,14 +31,6 @@
     <main>
 
       
-      <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
       
 
     </main>

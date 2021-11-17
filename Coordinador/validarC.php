@@ -1,8 +1,9 @@
 <?php 
-$NumCon=$_POST['control'];
+$NumCon=$_POST['rfc'];
 $Pass=$_POST['pass'];
 session_start();
-$_SESSION['control']=$NumCon;
+
+$_SESSION["usuario"] = $NumCon;
 
 
 $conexion=mysqli_connect("localhost","root","","bd_tutorias");
@@ -11,7 +12,7 @@ $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){     
-    header("location:Coordinador.html?numero=$NumCon");   
+    header("location:Coordinador.php?numero=$NumCon");    
 }else{
    
    header("location:loginC.php?error=true");
