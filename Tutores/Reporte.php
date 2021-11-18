@@ -44,7 +44,7 @@ session_start();
         <ul class = 'navbar-nav'>
           <li class = 'nav-item'><a href = 'Tutor.html' class = 'nav-link'>TUTORIAS</a></li>
           <li class = 'nav-item'><a href = 'Tutorados.html' class = 'nav-link'>TUTORADOS</a></li>
-          <li class = 'nav-item'><a href = 'Canalizacion.html' class = 'nav-link'>CANALIZACION</a></li>
+          <!--<li class = 'nav-item'><a href = 'Canalizacion.html' class = 'nav-link'>CANALIZACION</a></li>-->
           <li class = 'nav-item'><a href = '#' class = 'nav-link'>SOLICITUDES</a></li>
           <li class = 'nav-item'><a href = 'Reporte.php' class = 'nav-link'>GENERAR REPORTE</a></li>
           <li class = 'nav-item'><a href = 'ActualizarPass.html' class = 'nav-link'>ACTUALIZAR DATOS DE USUARIO</a></li>
@@ -148,11 +148,8 @@ session_start();
                         </div>
                       </div>
                     </div>
+                  </div>
                 </form>
-                 
-
-                </div>
-               
              
 
 
