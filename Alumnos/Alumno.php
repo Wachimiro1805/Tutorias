@@ -2,19 +2,6 @@
     session_start();
 ?>
 <?php
-<<<<<<< HEAD
-require "conexionA.php";
-$conexion = new mysqli("localhost","root","","bd_tutorias");
-if($conexion->connect_errno)
-{
-    echo "Error de conexion de la base datos".$conexion->connect_error;
-    exit();
-}
-$sql = "SELECT * FROM asesorias;";
-$sql2 = "SELECT A.nombreA, A.fecha, A.tipo_de_asesoria, S.status, S.fecha FROM solicitudes S INNER JOIN asesorias A ON(A.id_asesorias = S.fk_asesorias);";
-$resultado = $conexion->query($sql);
-$resultado2 = $conexion->query($sql2);
-=======
     require "conexionA.php";
     $conexionA = new mysqli("localhost","root","","bd_tutorias");
     if($conexionA->connect_errno){
@@ -29,7 +16,6 @@ $resultado2 = $conexion->query($sql2);
                     ON(A.id_asesorias = S.fk_asesorias);";
     $resultado = $conexionA->query($sql);
     $resultado2 = $conexionA->query($sql2);
->>>>>>> 79e6d020c2d4e97217b7a2a1bec47505f3fa9114
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
