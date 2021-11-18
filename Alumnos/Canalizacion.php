@@ -43,7 +43,11 @@
       </h6>
       <h4>Si requieres de una canalización , por favor llena el siguente formulario
          para poder darte seguimiento</h4>
-         <div class = "buton"><button style="margin-right: 10px"  >Solicitar Canalizacion</button></div>
+         <form action="SolicitarCanalizacion.php" method="post">
+         <form action="Canalizacion.php" method="post">
+         <div class = "buton" ><button style="margin-right: 10px"  >Solicitar Canalizacion</button></div>
+         </form>
+         </form>
     </main>
   
 
