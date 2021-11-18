@@ -6,7 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m FROM coordinador_de_tutorias;";
+$sql = "SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(c.id_carreras = A.fk_carreras);";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -30,53 +30,49 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-        <li class="nav-item"><a href="ReporteCordi.php" class="nav-link">REPORTE</a></li>
-            <li class="nav-item"><a href="RegistrarCT.php" class="nav-link">REGISTRAR</a></li>
-            <li class="nav-item"><a href="EliminarCT.php" class="nav-link">ELIMINAR</a></li>
-            <li class="nav-item"><a href="ActualizarCT.php" class="nav-link">ACTUALIZAR</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="ExpedienteC.php" class="nav-link">AGREGAR EXPEDIENTE</a></li>
+            <li class="nav-item"><a href="VerExp.php" class="nav-link">VER EXPEDIENTE</a></li>
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     
     <main>
-    <form action="eliminact.php" method="POST">  
-    <h2 class ="titulo">Eliminar Coordinador de tutorias</h2>
-    <h3 align="center">Coordinadores</h3>
+ 
+
+   
+    <h3 align="center">Expedientes Alumnos</h3>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">
-        <td>ID</td>
-        <td>Nombre</td>
+        <td>ID Documento</td>
+        <td>Nombre Alumno</td>
         <td>Apellido Paterno</td>
-        <td>Apellido Materno</td>
+        <td>Numero de control</td>
+        <td>Carrera</td>
+        <td>Expediente</td>
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
         ?>
             <tr align="center">
-                <td><?php echo $datos["id_coordinador_tutorias"]?></td>
-                <td><?php echo $datos["nombre"]?></td>
+                <td><?php echo $datos["id_documento"]?></td>
+                <td><?php echo $datos["nombreA"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["appelido_m"]?></td>
-
+                <td><?php echo $datos["numero_control"]?></td>
+                <td><?php echo $datos["siglas"]?></td>
+                <td><a href="archivo.php?id=<?php echo $datos['id_documento']?>"><?php echo $datos['documento'];?></a></td>
             </tr>
             <?php   
         }
 
      ?>
     </table>
-
-   
-
-       </div>
        
-       <div class = "rutas">
-        <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Eliminar</button></div>
+          
  
-       </form>
+   
     </main>
 
 

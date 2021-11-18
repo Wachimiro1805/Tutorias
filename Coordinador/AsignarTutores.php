@@ -6,7 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT A.nombre, A.apellido_p, A.apellido_m, A.numero_control, G.nombre_grupo, C.siglas FROM alumnos A INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
+$sql = "SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, G.nombre_grupo, C.siglas FROM alumnos A INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
 $sql2 = "SELECT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras);";
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
@@ -63,7 +63,7 @@ $resultado2 = $conexion->query($sql2);
         while($datos=$resultado->fetch_array()){
         ?>
             <tr>
-                <td><?php echo $datos["nombre"]?></td>
+                <td><?php echo $datos["nombreA"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
                 <td><?php echo $datos["apellido_m"]?></td>
                 <td><?php echo $datos["numero_control"]?></td>

@@ -7,7 +7,11 @@ if($conexion->connect_errno)
     exit();
 }
 $sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
+$sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, A.nombreA, A.apellido_p, A.numero_control, G.nombre_grupo,C.siglas  FROM docentes D INNER JOIN asignar_tutor AST ON(AST.fk_docentes=D.id_docente) INNER JOIN alumnos A ON(A.id_alumnos = AST.fk_alumno) INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras);";
+$sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) WHERE AST.fk_docentes IS NULL;";
 $resultado = $conexion->query($sql);
+$resultado2 = $conexion->query($sql2);
+$resultado3 = $conexion->query($sql3);
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -41,10 +45,10 @@ $resultado = $conexion->query($sql);
     </header>
     
     <main>
-    <form action="eliminat.php" method="POST">  
-    <h2 class ="titulo">Eliminar Tutor</h2>
-    <h3 align="center">Tutores</h3>
-    <table width="100%" border="2px" align="center">
+   
+    <h2 class ="titulo">Tutores</h2>
+    <h3 align="center">Todos los Tutores</h3>
+    <table width="70%" border="2px" align="center">
 
     <tr align="center">
         <td>ID</td>
@@ -64,19 +68,66 @@ $resultado = $conexion->query($sql);
             </tr>
             <?php   
         }
-
      ?>
     </table>
 
-   
+    <h3 align="center">Tutores Asignados</h3>
+    <table width="70%" border="2px" align="center">
 
-       </div>
-       
-       <div class = "rutas">
-        <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Eliminar</button></div>
+    <tr align="center">
+        <td>ID</td>
+        <td>Nombre Docente</td>
+        <td>Apellido Paterno</td>
+        <td>Nombre Alumno</td>
+        <td>Apellido Paterno</td>
+        <td>Numero de control</td>
+        <td>Grupo</td>
+        <td>Carrera</td>
+    </tr>
+    <?php 
+        while($datos=$resultado2->fetch_array()){
+        ?>
+            <tr align="center">
+                <td><?php echo $datos["id_docente"]?></td>
+                <td><?php echo $datos["nombre_docente"]?></td>
+                <td><?php echo $datos["apellido_p"]?></td>
+                <td><?php echo $datos["nombreA"]?></td>
+                <td><?php echo $datos["apellido_p"]?></td>
+                <td><?php echo $datos["numero_control"]?></td>
+                <td><?php echo $datos["nombre_grupo"]?></td>
+                <td><?php echo $datos["siglas"]?></td>
+            </tr>
+            <?php   
+        }
+     ?>
+    </table>
+
+    <h3 align="center">Sin Asignacion</h3>
+    <table width="70%" border="2px" align="center">
+
+    <tr align="center">
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Apellido Paterno</td>
+        <td>Apellido Materno</td>
+    </tr>
+    <?php 
+        while($datos=$resultado3->fetch_array()){
+        ?>
+            <tr align="center">
+                <td><?php echo $datos["id_docente"]?></td>
+                <td><?php echo $datos["nombre_docente"]?></td>
+                <td><?php echo $datos["apellido_p"]?></td>
+                <td><?php echo $datos["apellido_m"]?></td>
+
+            </tr>
+            <?php   
+        }
+     ?>
+    </table>
+
  
-       </form>
+   
     </main>
 
 
