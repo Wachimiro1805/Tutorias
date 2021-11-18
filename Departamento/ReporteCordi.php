@@ -29,16 +29,27 @@
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     
-    <main>
- 
-    <h2 class ="titulo">Reporte Coordinador</h2>
-   
-  
-   
-
- 
- 
-   
+    <main> 
+    <form action="ExpedienteCoordi.php" method="POST">  
+    <Label>Cordinadores</Label>
+          <?php
+          include 'conexionCT.php';
+          $consulta = "SELECT CT.nombre FROM coordinador_de_tutorias CT ;";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select required name = 'coordinadores'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['nombre']."'>";
+              echo $columna['nombre'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );
+          ?>
+      <div class = "rutas">
+          <div class = "buton"><button type="submit">VER REPORTES</button></div>
+          </form>
+         </div>
     </main>
 
 

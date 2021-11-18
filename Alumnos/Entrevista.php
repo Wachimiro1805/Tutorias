@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realizar Encuesta</title>
+    <title>Realizar Entrevista</title>
     
     <link rel="stylesheet" href="../css/Alumno/estiloA.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -40,15 +40,15 @@ session_start();
     </header>
  
     <main>
-      <h2 style="color:#021d75;">Encuesta de nuevo ingreso</h2>
+      <h2 style="color:#021d75;">Entrevista de nuevo ingreso</h2>
       <h6>Para el departamento es de suma importancia saber informacion basica de sus alumnos, por lo cual se realiza una pequeña encuesta con el fin de recabar informacion para el posterior seguimiento del alumno</h6>
       <br>
       <h5>Por favor, llena la siguiente encuesta  y manda tus respuestas para poder conocerte y tener informacion que nos servira en un futuro</h5>
       <div class = "buton">
-        <button onclick="location.href='descargarE.php?file=Encuesta.pdf'" style="margin-right: 10px">Descargar Encuesta</button>
+        <button onclick="location.href='descargarE.php?file=Entrevista.pdf'" style="margin-right: 10px">Descargar Entrevista</button>
       </div>
       <br></br>
-      <h5>¿Ya completaste la encuesta?</h5>
+      <h5>¿Ya completaste la entrevista?</h5>
       <h5>Sube tus respuestas</h5>
       <form method="post" action="" enctype="multipart/form-data">
       <?php
@@ -61,27 +61,27 @@ session_start();
         require "conexionA.php";
   
         $archivo_binario = (file_get_contents($archivo_temp));
-
+   
         $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
         $rowAl = $id_alumno->fetch_array();
         $idal = $rowAl['id_alumnos'];
-        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Encuesta'");
+        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Entrevista'");
         $rowEx = $existe->fetch_array();
         $comproba = $rowEx['id_documento'];
         if (empty($comproba)){
-          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$archivo_binario', 'Encuesta', '$idal')");
+          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$archivo_binario', 'Entrevista', '$idal')");
           if ($insercion) {echo "Se ha subido el archivo";}
               else {
                   echo "No se ha podido subir el archivo";
               }
           } else {
-              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$archivo_binario' where fk_alumno='$idal' and clase = 'Encuesta ' ");
+              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$archivo_binario' where fk_alumno='$idal' and clase = 'Entrevista ' ");
               if ($insercion) {echo "Se ha actualizado el archivo";}
               else {
                   echo "No se ha podido actualizar el archivo";
               }
           }
-      }
+        }
  ?>
         <input type="file" name="archivo" ></input><br/><br/>
         <input type="submit" name="btnGuardar" value="Guardar" />

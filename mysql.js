@@ -9,7 +9,7 @@ const { compileFunction } = require('vm')
 const conexion = mysql.createConnection(
    {
     host:'localhost',
-    user:'bd_tutorias',
+    user:'root',
     password:'123',
     database:'bd_tutorias'
    } 

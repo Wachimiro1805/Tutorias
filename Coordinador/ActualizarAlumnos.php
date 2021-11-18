@@ -1,12 +1,12 @@
 <?php
-require "conexionCT.php";
+require "conexionC.php";
 $conexion = new mysqli("localhost","root","","bd_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m FROM coordinador_de_tutorias;";
+$sql = "SELECT * FROM alumnos;";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -30,20 +30,18 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-        <li class="nav-item"><a href="ReporteCordi.php" class="nav-link">REPORTE</a></li>
-            <li class="nav-item"><a href="RegistrarCT.php" class="nav-link">REGISTRAR</a></li>
-            <li class="nav-item"><a href="EliminarCT.php" class="nav-link">ELIMINAR</a></li>
-            <li class="nav-item"><a href="ActualizarCT.php" class="nav-link">ACTUALIZAR</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+        <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">AGREGAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="BorrarAlumnos.php" class="nav-link">ELIMINAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="ActualizarAlumnos.php" class="nav-link">ACTUALIZAR ALUMNOS</a></li>
+            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     
     <main>
-    <form action="eliminact.php" method="POST">  
-    <h2 class ="titulo">Eliminar Coordinador de tutorias</h2>
-    <h3 align="center">Coordinadores</h3>
+    <form method="POST" class="formulario">  
+    <h2 class ="titulo">Actualizar datos</h2>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">
@@ -51,15 +49,17 @@ $resultado = $conexion->query($sql);
         <td>Nombre</td>
         <td>Apellido Paterno</td>
         <td>Apellido Materno</td>
+        <td>No de control</td>
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
         ?>
             <tr align="center">
-                <td><?php echo $datos["id_coordinador_tutorias"]?></td>
+                <td><?php echo $datos["id_alumnos"]?></td>
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["appelido_m"]?></td>
+                <td><?php echo $datos["apellido_m"]?></td>
+                <td><?php echo $datos["numero_control"]?></td>
 
             </tr>
             <?php   
@@ -68,13 +68,16 @@ $resultado = $conexion->query($sql);
      ?>
     </table>
 
-   
+    <input name = "id" class = "NC" type = "text" placeholder="ID a Actualizar">
+    <input name = "nombre" class = "NC" type = "text" placeholder="Nombre">
+    <input name = "apellido_p" class = "NC" type = "text" placeholder="Apellido paterno">
+    <input name = "apellido_m" class = "NC" type = "text" placeholder="Apellido materno">
 
        </div>
        
        <div class = "rutas">
-        <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Eliminar</button></div>
+    
+        <div class = "buton" style="margin-top: 8%"><button type="submit">Actualizar</button></div>
  
        </form>
     </main>

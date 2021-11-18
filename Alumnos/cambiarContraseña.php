@@ -1,9 +1,13 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="estilo"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambiar tus datos</title>
+    <title>Cambiar contraseña</title>
     
     <link rel="stylesheet" href="../css/Alumno/estiloA.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -36,22 +40,93 @@
     <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
   </header>
 
+  <?php
+if (isset($_GET['numero'])) {
+    echo $_GET['numero']; 
+/*
+    if (isset($_GET['tipo'])) {
+       echo $_GET['tipo'];
+       echo $_POST['alumnos'];
+*/
+
+  
+} else {
+    // Fallback behaviour goes here
+}
+?>
+
+
   <main class="mainLogin">   
-    
-    <form class="formulario">
-      <h2 class ="titulo">Información personal</h2>
-      <div class="contenedor-form">
-        <div class="input-contenedor">
-          <input class = "NC" type = "text" placeholder="Nombre(s)">  
-          <input class = "NC" type = "text" placeholder="Apellidos">
-          <input class = "NC" type = "phone" placeholder="Telefono">
-          <input class = "NC" disabled type = "text" placeholder="Correo">
+  
+
+    <h2 class ="titulo">Cambiar contraseña</h2>
+    <div class = "contenedor-form">
+    <form action="" method='post' class="formulario">   
+
+    <?php
+
+  if (isset($_POST['btnIngresar'])){
+      require "conexionA.php";
+      $passActual = $conexion->real_escape_string($_POST['contraseñaV']);
+      $pass1 = $conexion->real_escape_string($_POST['contraseña']);
+      $pass2 = $conexion->real_escape_string($_POST['Rcontraseña']);
+
+      /*$passActual = md5($passActual)
+      $pass1 = md5($pass1)
+      $pass2 = md5($pass2)*/
+
+      $sqlA = $conexion->query("SELECT contraseña from Alumnos where numero_control = '".$_SESSION['control']."'");
+      $rowA = $sqlA->fetch_array();
+
+      if ($rowA['contraseña']==$passActual){
+
+        if ($pass1 == $pass2){
+            $update = $conexion->query("UPDATE Alumnos set contraseña = '$pass1' where numero_control = '".$_SESSION['control']."'");
+            if ($update) {echo "Se ha actualizado la contraseña";}
+        }
+        else {
+          echo "Las contraseñas no coinciden";
+        }
+      }
+      else {
+        echo "Contraseña actual no coincide";
+      }
+  }
+
+  ?>
+
+        <div class="row-input">
+        
+        
+        <input name = "contraseñaV"  
+        class = "NC" type = "text" 
+        placeholder="Contraseña anterior" 
+        require>
         </div>
-      </div>      
-      <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button style="margin-right: 10px"  >ACTUALIZAR INFORMACIÓN</button></div>
+
+        <input name = "contraseña"  
+        class = "NC" type = "text" 
+        placeholder="Nueva contraseña" 
+        require>
+        </div>
+
+        <input name = "Rcontraseña"  
+        class = "NC" type = "text" 
+        placeholder="Repetir contraseña" 
+        require>
+        </div> 
+        
+        <br>
+        
+   
+    <br>
+    </div>
+
+       <div class = "rutas">
+        <div class = "buton"><button style="margin-right: 10px" onclick="location.href='Alumno.php'" name="btnIngresar">Realizar cambio</button></div>
+        </form>  
       </div>
-    </form>
+    </div>
     
     </div>
     </main>

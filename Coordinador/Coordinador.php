@@ -1,3 +1,19 @@
+<?php
+require "conexionC.php";
+$conexion = new mysqli("localhost","root","","bd_tutorias");
+if($conexion->connect_errno)
+{
+    echo "Error de conexion de la base datos".$conexion->connect_error;
+    exit();
+}else {
+  
+}
+
+//$consulta="SELECT * FROM coordinador_de_tutorias WHERE ususario = '$user'";
+//$resultado = $conexion->query($consulta);
+
+//console.log($resultado);
+?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
@@ -10,10 +26,10 @@
   <link rel="stylesheet" href="../css/estiloC.css">
   </head>
 
-<body> 
-
+<body>  
+ 
   <header class="navbar navbar-dark bg-dark navbar-expand-md">
-    <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
+    <a href="Coordinador.php" style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,7 +40,7 @@
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
             <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
-            <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
+            <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             
             <li class="nav-item"><a href="loginC.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -32,10 +48,7 @@
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
- 
-
   <main>
-
   <h2 class ="titulo">Seleccione la accion que desea realizar de la barra de navegación</h2>
            
   </main>
