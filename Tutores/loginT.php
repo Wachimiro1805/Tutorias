@@ -51,7 +51,6 @@ if (isset($_GET['error'])) {
     // Fallback behaviour goes here
 }
 ?>
-    <h4><a class = "rutas" style="margin-top: 10px" href="Tutor.html">Recuperar Contraseña</a></h4>      
     
     </div>
     </main>

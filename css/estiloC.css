@@ -213,6 +213,8 @@ footer{
         width: 60%;
         padding: 3px;
         border-radius:10px;
+        justify-content: center;
+        align-items: center;
     }
     .contenedor-form{
         width: 100%;
@@ -224,4 +226,10 @@ footer{
     .grupos-carreras{
         justify-content: center;
         align-items: center;
+    }
+    .asignar{
+        flex-direction: row;
+        width: 200px;
+        height: 80px;
+        background-color: chartreuse;
     }

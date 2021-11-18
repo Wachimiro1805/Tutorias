@@ -8,8 +8,10 @@ if($conexion->connect_errno)
 }
 $sql = "SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, G.nombre_grupo, C.siglas FROM alumnos A INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
 $sql2 = "SELECT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras);";
+$sql3= "SELECT AL.nombreA,CA.siglas as 'CarreraAlumno',D.nombre_docente,C.siglas FROM asignar_tutor A INNER JOIN docentes D ON D.id_docente = A.fk_docentes INNER JOIN carreras C ON D.fk_carreras = C.id_carreras INNER JOIN alumnos AL ON AL.id_alumnos = A.fk_alumno INNER JOIN carreras CA ON AL.fk_carreras = CA.id_carreras";
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
+$resultado3 = $conexion->query($sql3);
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -48,57 +50,69 @@ $resultado2 = $conexion->query($sql2);
  
 
   <main>
-  <h1 align="center">Alumnos</h1>
-    <table width="70%" border="1px" align="center">
+    <h1 align="center">Relacion de tutorados</h1>
+    <table width="70%" border="2px" align="center">
 
     <tr align="center">
-        <td>Nombre</td>
-        <td>Apellido Paterno</td>
-        <td>Apellido Materno</td>
-        <td>Numero de control</td>
-        <td>Grupo</td>
-        <td>Carrera</td>
+        <td>Nombre_Alumno</td>
+        <td>Carrera_Alumno</td> 
+        <td>Nombre_Tutor</td>
+        <td>Carrera_Tutor</td>
     </tr>
     <?php 
-        while($datos=$resultado->fetch_array()){
+        while($datos=$resultado3->fetch_array()){
         ?>
-            <tr>
+            <tr align="center">
                 <td><?php echo $datos["nombreA"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["apellido_m"]?></td>
-                <td><?php echo $datos["numero_control"]?></td>
-                <td><?php echo $datos["nombre_grupo"]?></td>
-                <td><?php echo $datos["siglas"]?></td>
-            </tr>
-            <?php   
-        }
-
-     ?>
-    </table>
-
-    <h1 align="center">Docentes</h1>
-    <table width="70%" border="1px" align="center">
-
-    <tr align="center">
-        <td>Nombre</td>
-        <td>Apellido Paterno</td>
-        <td>Apellido Materno</td>
-        <td>Carrera</td>
-    </tr>
-    <?php 
-        while($datos=$resultado2->fetch_array()){
-        ?>
-            <tr>
+                <td><?php echo $datos["CarreraAlumno"]?></td>
                 <td><?php echo $datos["nombre_docente"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["apellido_m"]?></td>
                 <td><?php echo $datos["siglas"]?></td>
             </tr>
             <?php   
         }
 
      ?>
-    </table>
+    </table> 
+    <form action="asignarTutor.php" method="POST" class="formulario"  style="margin-top:2%">  
+        <h2 align="center">Asignar tutor a un alumno</h2>
+        <br>
+        <div style="margin-left: 40%;">
+        <h4>Docente</h4>
+        <?php
+          include 'conexionC.php';
+          $consulta = "SELECT * FROM docentes";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select  required name = 'docente'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['nombre_docente']."'>";
+              echo $columna['nombre_docente'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion ); 
+          ?>
+          <h4>Asignar a:</h4>
+          <?php
+          include 'conexionC.php';
+          $consulta = "SELECT * FROM alumnos";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select required name = 'alumno'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['nombreA']."'>";
+              echo $columna['nombreA'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );
+          ?>
+          </div>
+        <div class = "rutas"style="margin-top:5%">
+          <div class = "buton"><button type="submit"><a style="margin:20px">Asignar</a> </button></div>
+        </div>
+     
+          </form>
              
   </main>
 
