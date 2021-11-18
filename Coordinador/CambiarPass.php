@@ -36,17 +36,18 @@
 
   <main class="mainLogin">   
     
-    <form class="formulario">
+    <form class="formulario" action="actualizarPass.php" method="POST">
       <h2 class ="titulo">Actualizar contraseña</h2> 
       <div class="contenedor-form">
         <div class="input-contenedor">
-          <input class = "NC" type = "text" placeholder="Contraseña Actual">  
-          <input class = "NC" type = "text" placeholder="Contraseña nueva">
+          <input name = "contra1" class = "NC" type = "password" placeholder="Contraseña Actual">  
+          <input name = "contra2" class = "NC" type = "password" placeholder="Contraseña nueva">
+          <input name = "contra3" class = "NC" type = "password" placeholder="Confirma tu nueva contraseña">
 
         </div>
       </div>      
       <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button style="margin-right: 10px"  >ACTUALIZAR INFORMACIÓN</button></div>
+        <div class = "buton"><button style="margin-right: 10px" type="submit" >ACTUALIZAR INFORMACIÓN</button></div>
       </div>
     </form>
     
