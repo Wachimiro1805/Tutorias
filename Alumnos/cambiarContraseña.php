@@ -60,8 +60,8 @@ if (isset($_GET['numero'])) {
   
 
     <h2 class ="titulo">Cambiar contraseña</h2>
-    <div class = "contenedor-form">
-    <form action="" method='post' class="formulario">   
+    <div class = >
+    <form action="" method='post' >   
 
     <?php
 
@@ -95,7 +95,7 @@ if (isset($_GET['numero'])) {
 
   ?>
 
-        <div class="row-input">
+        <div >
         
         
         <input name = "contraseñaV"  
@@ -108,18 +108,14 @@ if (isset($_GET['numero'])) {
         class = "NC" type = "text" 
         placeholder="Nueva contraseña" 
         require>
-        </div>
+       
 
         <input name = "Rcontraseña"  
         class = "NC" type = "text" 
         placeholder="Repetir contraseña" 
         require>
-        </div> 
+         
         
-        <br>
-        
-   
-    <br>
     </div>
 
        <div class = "rutas">

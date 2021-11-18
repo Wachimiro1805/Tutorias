@@ -46,41 +46,15 @@ session_start();
       <h5>¡Asegurate de subir lor correctos!</h5>
       <form method="post" action="">
       <?php
-        if (isset($_POST['btnEntrevista'])){
-            include 'conexionA.php';
-            
-            $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
-            $rowAl = $id_alumno->fetch_array();
-            $idal = $rowAl['id_alumnos'];
- 
-  
-            $sql="SELECT ARCHIVO, TIPO, NOMBRE FROM documentos WHERE fk_alumno = '$id_alumno' and clase = 'Entrevista'";
-  
- 
-            $resultado = mysqli_query($conexion, $sql) or die("Error: no se pudo hacer la consulta.");
-  
-            while($row = mysqli_fetch_array($resultado)){
-                $archivo= $row[0]; //obtener el archivo
-                $tipo=$row[1]; //obtener el tipo de archivo
-                $nombre=$row[2]; //obtener el nombre del archivo
-            }
-  
- mysqli_close($conexion);
-  
- //header para tranformar la salida en el tipo de archivo que hemos guardado
- header("Content-type: $tipo"); 
- header('Content-Disposition: attachment; filename="'.$nombre.'"');
-  
- //imprimir el archivo
- echo $archivo;
-}
+        
  ?>
       <div class = "">
-        <a href='#' style="margin-right: 10px" name ='btnEntrevista'>Ver Entrevista</a>
+        <a href='#' onclick="location.href='descargaEntre.php'" style="margin-right: 10px" name ='btnEntrevista'>Ver Entrevista</a>
       </div>
+      </form>
       <br></br>
       <div class = "">
-        <a href='#' style="margin-right: 10px" name ='btnEntrevista'>Ver Encuesta</a>
+        <a href='#' onclick="location.href='descargaEnc.php'" style="margin-right: 10px" name ='btnEntrevista'>Ver Encuesta</a>
       </div>
         
     </main>
