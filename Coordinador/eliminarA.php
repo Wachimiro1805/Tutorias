@@ -5,12 +5,13 @@
 
     $sql="DELETE  FROM alumnos WHERE id_alumnos = $id;";
     $ejecutar=mysqli_query($conexion, $sql);
+    $error=mysqli_error($conexion);
 
     if(!$ejecutar){
-        echo"ID no encontrada <br> <br> <a href='BorrarAlumnos.php'>Regresar</a> <br> <br>";
-        echo"Consulta Realizada: $sql ";
+        echo"No se puede eliminar este Alumno ya que tiene un tutor asignado<br> <br> <a href='BorrarAlumnos.php'>Regresar</a> <br> <br>";
+        
     }else{
-        echo"Datos guardado correctamente <br> <br> <a href='BorrarAlumnos'>Eliminar otro coordinador</a>";
+        echo"Datos guardados correctamente <br> <br> <a href='BorrarAlumnos.php'>Eliminar otro coordinador</a>";
     }
   
 ?>﻿

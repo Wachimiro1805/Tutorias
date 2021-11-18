@@ -1,12 +1,24 @@
+<?php
+require "conexionC.php";
+$conexion = new mysqli("localhost","root","","bd_tutorias");
+if($conexion->connect_errno)
+{
+    echo "Error de conexion de la base datos".$conexion->connect_error;
+    exit();
+}
+$sql = "SELECT * FROM carreras;";
+$resultado = $conexion->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Coordinador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/jquery-3.6.0.js"></script> 
     <link rel="stylesheet" href="../css/estiloD.css">
   </head>
 
@@ -16,7 +28,7 @@
     <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
         <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> 
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="RegistrarCarreras.php" class="nav-link">REGISTRAR</a></li>
@@ -27,17 +39,37 @@
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
+    
     <main>
-    <form action="guardarCA.php" method="POST" class="formulario">  
-    <h2 class ="titulo">REGISTRAR GRUPOS</h2>
-    <div class = "IncioSnecio">
-    <input name = "NombreCarrera" class = "NC" type = "text" placeholder="Nombre de la carrera">  
 
-    <input name = "Siglas" class = "NC" type = "text" placeholder="Siglas">    
-       <div class = "rutas">
-        <div class = "buton" style="margin-top: 3%"><button type="submit">REGISTRAR</button></div>
-        </form>
+    <form class="formulario"   method="POST">   
+    <h3 align="center">Carreras</h3>
+    <table width="100%" border="2px" align="center">
+
+    <tr align="center">
+        <td>ID</td> 
+        <td>Nombre</td>
+        <td>Siglas</td>
+    </tr>
+    <?php 
+        while($datos=$resultado->fetch_array()){
+        ?>
+            <tr align="center"> 
+                <td ><?php echo $datos["id_carreras"]?></td> 
+                <td><?php echo $datos["nombre_carrera"]?></td> 
+                <td><?php echo $datos["siglas"]?></td> 
+                <td> <a style="margin-top: 5%" class="btn btn-primary" href="eliminarC.php?id=<?php echo $datos['id_carreras']?>"> <span class="material-icons"> delete </span></a></td>
+
+            </tr>
+            <?php   
+        }
+
+     ?>
+    </table>
+
        </div>
+ 
+       </form>
     </main>
 
 

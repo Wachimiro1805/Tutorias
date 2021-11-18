@@ -1,12 +1,24 @@
+<?php
+require "conexionC.php";
+$conexion = new mysqli("localhost","root","","bd_tutorias");
+if($conexion->connect_errno)
+{
+    echo "Error de conexion de la base datos".$conexion->connect_error;
+    exit();
+}
+$sql = "SELECT * FROM grupos;";
+$resultado = $conexion->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Coordinador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/jquery-3.6.0.js"></script> 
     <link rel="stylesheet" href="../css/estiloD.css">
   </head>
 
@@ -27,16 +39,35 @@
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
-    <main>
     
-    <form action="guardarG.php" method="POST" class="formulario">  
-    <h2 class ="titulo">REGISTRAR GRUPOS</h2>
-    <div class = "IncioSnecio">
-    <input name = "Nombregrupo" class = "NC" type = "text" placeholder="Nombre del grupo">   
-       <div class = "rutas">
-        <div class = "buton" style="margin-top: 2%"><button type="submit">REGISTRAR</button></div>
-        </form>
+    <main>
+
+    <form class="formulario"   method="POST">   
+    <h3 align="center">Grupos</h3>
+    <table width="100%" border="2px" align="center">
+
+    <tr align="center">
+        <td>ID</td> 
+        <td>Nombre</td>
+    </tr>
+    <?php 
+        while($datos=$resultado->fetch_array()){
+        ?>
+            <tr align="center"> 
+                <td ><?php echo $datos["id_grupo"]?></td> 
+                <td><?php echo $datos["nombre_grupo"]?></td> 
+                <td> <a style="margin-top: 5%" class="btn btn-primary" href="eliminarG.php?id=<?php echo $datos['id_grupo']?>"> <span class="material-icons"> delete </span></a></td>
+
+            </tr>
+            <?php   
+        }
+
+     ?>
+    </table>
+
        </div>
+ 
+       </form>
     </main>
 
 

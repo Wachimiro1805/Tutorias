@@ -18,10 +18,7 @@ if($conexion->connect_errno)
       $nombre = $rows[1];
       $apellidoM = $rows[2];
       $apellidoP = $rows[3];      
-      echo "id: .$rows[0] <br>" ;
-      echo "Nombre: $rows[1] <br>";
-      echo "Apellido1: $rows[2] <br>";
-      echo "Apellido2: $rows[3] <br>";
+
       
       }
     //echo '<h4 style="text-align:center">'. $resultado .' </h4>' ; 
