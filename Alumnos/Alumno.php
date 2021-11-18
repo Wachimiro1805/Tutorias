@@ -10,7 +10,10 @@
     }
 
     $sql = "SELECT * FROM asesorias;";
-    $sql2 = "SELECT A.nombre, A.fecha, A.tipo_de_asesoria, S.status, S.fecha FROM solicitudes S INNER JOIN asesorias A ON(A.id_asesorias = S.fk_asesorias);";
+    $sql2 = "SELECT A.nombre, A.fecha, A.tipo_de_asesoria, S.status, S.fecha 
+             FROM solicitudes S 
+                INNER JOIN asesorias A 
+                    ON(A.id_asesorias = S.fk_asesorias);";
     $resultado = $conexionA->query($sql);
     $resultado2 = $conexionA->query($sql2);
 ?>
