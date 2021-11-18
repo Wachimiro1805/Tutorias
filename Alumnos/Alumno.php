@@ -9,11 +9,15 @@
         exit();
     }
 
+    $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
+        $rowAl = $id_alumno->fetch_array();
+        $idal = $rowAl['id_alumnos'];
+
     $sql = "SELECT * FROM asesorias;";
     $sql2 = "SELECT A.nombre, A.fecha, A.tipo_de_asesoria, S.status, S.fecha 
              FROM solicitudes S 
                 INNER JOIN asesorias A 
-                    ON(A.id_asesorias = S.fk_asesorias);";
+                    ON(A.id_asesorias = S.fk_asesorias) WHERE fk_alumnos = '$idal';";
     $resultado = $conexionA->query($sql);
     $resultado2 = $conexionA->query($sql2);
 ?>
@@ -88,17 +92,17 @@
         <td>Fecha de inicio</td>
         <td>Tipo de asesoria</td>
         <td>Estatus</td>
-        <td>Fecha</td>
+        <td>Fecha solicitud</td>
     </tr>
     <?php 
         while($datos=$resultado2->fetch_array()){
         ?>
             <tr align="center">
-                <td><?php echo $datos["nombre"]?></td>
-                <td><?php echo $datos["fecha"]?></td>
-                <td><?php echo $datos["tipo_de_asesoria"]?></td>
-                <td><?php echo $datos["status"]?></td>
-                <td><?php echo $datos["fecha"]?></td>
+                <td><?php echo $datos[0]?></td>
+                <td><?php echo $datos[1]?></td>
+                <td><?php echo $datos[2]?></td>
+                <td><?php echo $datos[3]?></td>
+                <td><?php echo $datos[4]?></td>
             </tr>
             <?php   
         }
