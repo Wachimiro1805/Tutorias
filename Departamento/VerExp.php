@@ -8,7 +8,7 @@ if($conexion->connect_errno)
     exit();
 }
 
-$sql = "SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(c.id_carreras = A.fk_carreras);";
+$sql = "SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -32,8 +32,6 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="ExpedienteC.php" class="nav-link">AGREGAR EXPEDIENTE</a></li>
-            <li class="nav-item"><a href="VerExp.php" class="nav-link">VER EXPEDIENTE</a></li>
             <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>

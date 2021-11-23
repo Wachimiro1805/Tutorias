@@ -12,7 +12,7 @@ if($conexion->connect_errno)
      
   }else{
     $usuario = $_SESSION["control"];
-    $consulta="SELECT * FROM jefe_departamento WHERE ususario = '$usuario'";
+    $consulta="SELECT * FROM jefe_departamento WHERE usuario = '$usuario'";
     $resultado = $conexion->query($consulta);
     while($rows=$resultado->fetch_array()){
       $nombre = $rows[1];

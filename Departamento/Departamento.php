@@ -30,9 +30,9 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="Departamento.php" class="nav-link">SOLICITUDES</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">TUTORES/COORDINADORES</a></li>
-            <li class="nav-item"><a href="ExpedienteC.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
+   
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">TUTORES/COORDINADORES</a></li>
+            <li class="nav-item"><a href="VerExp.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
             <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
             <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
@@ -40,63 +40,22 @@ $resultado = $conexion->query($sql);
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
     <main>
-    <h2 class ="titulo">Solicitudes</h2>
-      
-    <div class = "botones_consulta">
-    <div class = "buton"><button onclick="location.href='Departamento.php'">SOLICITUDES ALUMNOS</button></div>
-    <div class = "buton"><button onclick="location.href='Departamento1.php'">SOLICITUDES TUTORES</button></div>
-    <div class = "buton"><button onclick="location.href='Departamento2.php'">TUTORES A TUTORADOS</button></div>
+    <div class ="TituloIncio">
+    <h2>Departamento de Tutorias</h2>
+    </div> 
+
+    <div class="contenido_Inicio">
+
+
+    <div class = "rutasInicio">
+
+    <div class = "buton"><button onclick="location.href='ReporteCordi.php'" >COORDINADORES DE TUTORIAS</button></div>
+    <br>
+    <div class = "buton"><button onclick="location.href='AsignadoT.php'" >TUTORES</button></div>
+    <br>
+ 
     </div>
-
-  <br>
-    <h3 align="center">Alumnos</h3>
-    <table width="100%" border="2px" align="center">
-
-    <tr align="center">
-        <td>Nombre Alumno</td>
-        <td>Apellido Paterno</td>
-        <td>Numero Control</td>
-        <td>Carrera</td>
-        <td>Grupo</td>
-        <td>Asesoria</td>
-        <td>Fecha Solicitada</td>
-        <td>Fecha Asesoria</td>
-        <td>Tipo de Asesoria</td>
-        <td>Status</td>
-
-    </tr>
-    <?php 
-        while($datos=$resultado->fetch_array()){
-        ?>
-            <tr align="center">
-                <td><?php echo $datos["nombreA"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["numero_control"]?></td>
-                <td><?php echo $datos["siglas"]?></td>
-                <td><?php echo $datos["nombre_grupo"]?></td>
-                <td><?php echo $datos["nombre"]?></td>
-                <td><?php echo $datos["fecha"]?></td>
-                <td><?php echo $datos["fecha"]?></td>
-                <td><?php echo $datos["tipo_de_asesoria"]?></td>
-                <td><?php echo $datos["status"]?></td>
-                <?php echo"<td><a href='status.php?id=".$datos["pk_solicitudes"]."'>Aceptar</a></td>";?>
-                <?php echo"<td><a href='status1.php?id=".$datos["pk_solicitudes"]."'>Negar</a></td>";?>
-                <td> 
-                  <?php 
-  
-               // <?php echo"<td><input type='submit' href = 'status.php?id=".$datos["pk_solicitudes"]."' name ='btnAceptar' value='Aceptar'></td>";?>
-                 
-                
-                </td>
-                
-            </tr>
-            <?php   
-        }
-
-     ?>
-    </table>
-
-    
+    </div>
     </main>
  
 

@@ -20,15 +20,10 @@
   <div class="navbar-collapse collapse" id="navbar">
       <ul class="navbar-nav">
          <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-         <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENCUESTA</a>
-              <ul>
-                <li class="nav-item"><a href="Entrevista.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
-               </ul>
-            </li>
+         <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
           <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
           <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
           <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
-          <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
           <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
       </ul>
     </div>
@@ -43,7 +38,11 @@
       </h6>
       <h4>Si requieres de una canalización , por favor llena el siguente formulario
          para poder darte seguimiento</h4>
-         <div class = "buton"><button style="margin-right: 10px"  >Solicitar Canalizacion</button></div>
+         <form action="SolicitarCanalizacion.php" method="post">
+         <form action="Canalizacion.php" method="post">
+         <div class = "buton" ><button style="margin-right: 10px"  >Solicitar Canalizacion</button></div>
+         </form>
+         </form>
     </main>
   
 

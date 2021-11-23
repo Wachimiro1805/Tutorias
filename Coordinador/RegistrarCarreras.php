@@ -20,8 +20,8 @@
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="RegistrarCarreras.php" class="nav-link">REGISTRAR</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ELIMINAR</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR</a></li>
+            <li class="nav-item"><a href="EliminarCarrera.php" class="nav-link">ELIMINAR</a></li>
+            <li class="nav-item"><a href="ActualizarCarrera.php" class="nav-link">ACTUALIZAR</a></li>
             <li class="nav-item"><a href="GestionarGruposCarreras.html" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>

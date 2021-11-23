@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="estilo"> 
 <head>
@@ -21,15 +24,10 @@
   <div class="navbar-collapse collapse" id="navbar">
       <ul class="navbar-nav">
          <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-         <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENCUESTA</a>
-              <ul>
-                <li class="nav-item"><a href="Entrevista.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
-               </ul>
-            </li>
+         <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
           <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
           <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
           <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
-          <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
           <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
       </ul>
     </div>
@@ -38,18 +36,31 @@
 
   <main class="mainLogin">   
     
-    <form class="formulario">
+    <form class="formulario" action="" method='post'>
+    <?php
+
+if (isset($_POST['btnIngresar'])){
+  require "conexionA.php";
+  $numero = $conexion ->real_escape_string($_POST['guardar']);
+
+
+  $update = $conexion->query("UPDATE Alumnos set telefono = '$numero' where numero_control = '".$_SESSION['control']."'");
+  if ($update) {echo "Se ha actualizado el número telefonico";}
+  else {
+    echo "No se pudo actualizar el número telefonico";
+  }
+
+}
+?>
       <h2 class ="titulo">Información personal</h2>
       <div class="contenedor-form">
         <div class="input-contenedor">
-          <input class = "NC" type = "text" placeholder="Nombre(s)">  
-          <input class = "NC" type = "text" placeholder="Apellidos">
-          <input class = "NC" type = "phone" placeholder="Telefono">
+          <input class = "NC" type = "tel" pattern="[0-9]{10}" placeholder="Telefono" required>
           <input class = "NC" disabled type = "text" placeholder="Correo">
         </div>
       </div>      
       <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button style="margin-right: 10px"  >ACTUALIZAR INFORMACIÓN</button></div>
+        <div class = "buton"><button style="margin-right: 10px" name="guardar" >ACTUALIZAR INFORMACIÓN</button></div>
       </div>
     </form>
     

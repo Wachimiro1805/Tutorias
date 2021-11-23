@@ -6,12 +6,12 @@
         $contra2=$_POST['contra2'];
         $contra3=$_POST['contra3'];
 
-        $consulta = "SELECT contraseña FROM jefe_departamento";
+        $consulta = "SELECT contrasena FROM jefe_departamento";
         $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
         if (mysqli_num_rows($resultado) > 0) {
             while($row = mysqli_fetch_assoc($resultado)) {
-             $contra = $row["contraseña"];
+             $contra = $row["contrasena"];
               }    
         }
         else {
@@ -20,7 +20,7 @@
 if($contra == $contra1){
 
 if($contra2 == $contra3 ){
-    $sql = "UPDATE jefe_departamento SET ususario = '$usuario', contraseña = '$contra2' WHERE jefe_departamento.id_jefe_departamento = 1;";
+    $sql = "UPDATE jefe_departamento SET usuario = '$usuario', contrasena = '$contra2' WHERE jefe_departamento.id_jefe_departamento = 1;";
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){

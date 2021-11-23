@@ -25,15 +25,10 @@ session_start();
   <div class="navbar-collapse collapse" id="navbar">
       <ul class="navbar-nav">
          <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-         <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENCUESTA</a>
-              <ul>
-                <li class="nav-item"><a href="Entrevista.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
-               </ul>
-            </li>
+         <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
           <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
           <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
           <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
-          <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
           <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
       </ul>
     </div>
@@ -60,8 +55,8 @@ if (isset($_GET['numero'])) {
   
 
     <h2 class ="titulo">Cambiar contraseña</h2>
-    <div class = "contenedor-form">
-    <form action="" method='post' class="formulario">   
+    <div class = >
+    <form action="" method='post' >   
 
     <?php
 
@@ -95,7 +90,7 @@ if (isset($_GET['numero'])) {
 
   ?>
 
-        <div class="row-input">
+        <div >
         
         
         <input name = "contraseñaV"  
@@ -108,18 +103,14 @@ if (isset($_GET['numero'])) {
         class = "NC" type = "text" 
         placeholder="Nueva contraseña" 
         require>
-        </div>
+       
 
         <input name = "Rcontraseña"  
         class = "NC" type = "text" 
         placeholder="Repetir contraseña" 
         require>
-        </div> 
+         
         
-        <br>
-        
-   
-    <br>
     </div>
 
        <div class = "rutas">

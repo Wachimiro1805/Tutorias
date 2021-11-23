@@ -12,16 +12,13 @@ if($conexion->connect_errno)
      
   }else{
     $usuario = $_SESSION["usuario"];
-    $consulta="SELECT * FROM coordinador_de_tutorias WHERE ususario = '$usuario'";
+    $consulta="SELECT * FROM coordinador_de_tutorias WHERE usuario = '$usuario'";
     $resultado = $conexion->query($consulta);
     while($rows=$resultado->fetch_array()){
       $nombre = $rows[1];
       $apellidoM = $rows[2];
       $apellidoP = $rows[3];      
-      echo "id: .$rows[0] <br>" ;
-      echo "Nombre: $rows[1] <br>";
-      echo "Apellido1: $rows[2] <br>";
-      echo "Apellido2: $rows[3] <br>";
+
       
       }
     //echo '<h4 style="text-align:center">'. $resultado .' </h4>' ; 

@@ -45,7 +45,7 @@ session_start();
       <br>
       <h5>Por favor, llena la siguiente encuesta  y manda tus respuestas para poder conocerte y tener informacion que nos servira en un futuro</h5>
       <div class = "buton">
-        <button onclick="location.href='descargarE.php?file=Encuesta.pdf'" style="margin-right: 10px">Descargar Encuesta</button>
+        <button onclick="location.href='descargarE.php?file=Ficha.pdf'" style="margin-right: 10px">Descargar Ficha</button>
       </div>
       <br></br>
       <h5>¿Ya completaste la encuesta?</h5>
@@ -68,14 +68,17 @@ session_start();
         $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Encuesta'");
         $rowEx = $existe->fetch_array();
         $comproba = $rowEx['id_documento'];
+        $direccion = "Alumnos/files/Encuestas/{$idal}-{$archivo_nombre}";
         if (empty($comproba)){
-          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$archivo_binario', 'Encuesta', '$idal')");
+          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', $direccion, 'Encuesta', '$idal')");
+          file_put_contents("files/Encuestas/{$idal}-{$archivo_nombre}", $archivo_binario);
           if ($insercion) {echo "Se ha subido el archivo";}
               else {
                   echo "No se ha podido subir el archivo";
               }
           } else {
-              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$archivo_binario' where fk_alumno='$idal' and clase = 'Encuesta ' ");
+              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Encuesta ' ");
+              file_put_contents("files/Encuestas/{$idal}-{$archivo_nombre}", $archivo_binario);
               if ($insercion) {echo "Se ha actualizado el archivo";}
               else {
                   echo "No se ha podido actualizar el archivo";

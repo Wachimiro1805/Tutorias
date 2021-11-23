@@ -35,11 +35,12 @@ if($conexion->connect_errno)
     </button>
     <div class="navbar-collapse collapse end-justify" id="navbar">
         <ul class="navbar-nav">
+        <li class="nav-item"><a href="Solicitudes.php" class="nav-link">SOLICITUDES</a></li>
             <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">GESTIONAR TUTORADOS</a></li>
             <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR TUTORES</a></li>
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
+            <li class="nav-item"><a href="ReporteC.php" class="nav-link">REPORTE TUTORES</a></li>
             <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             

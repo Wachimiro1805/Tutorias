@@ -14,7 +14,7 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Coordinador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
@@ -40,7 +40,7 @@ $resultado = $conexion->query($sql);
     </header>
     
     <main>
-    <form method="POST" class="formulario">  
+    <form action="actualizarA.php" method="POST" class="formulario">  
     <h2 class ="titulo">Actualizar datos</h2>
     <table width="100%" border="2px" align="center">
 
@@ -67,8 +67,8 @@ $resultado = $conexion->query($sql);
 
      ?>
     </table>
-
-    <input name = "id" class = "NC" type = "text" placeholder="ID a Actualizar">
+    
+    <input style="margin-top:5%" name = "id" class = "NC" type = "text" placeholder="ID a Actualizar">
     <input name = "nombre" class = "NC" type = "text" placeholder="Nombre">
     <input name = "apellido_p" class = "NC" type = "text" placeholder="Apellido paterno">
     <input name = "apellido_m" class = "NC" type = "text" placeholder="Apellido materno">

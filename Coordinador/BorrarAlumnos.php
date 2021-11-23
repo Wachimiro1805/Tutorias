@@ -14,7 +14,7 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Coordinador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script> 
@@ -40,7 +40,8 @@ $resultado = $conexion->query($sql);
     </header>
     
     <main>
-    <form method="POST" class="formulario">  
+
+    <form class="formulario" action="eliminarA.php"  method="POST">   
     <h3 align="center">Alumnos</h3>
     <table width="100%" border="2px" align="center">
 
@@ -49,18 +50,17 @@ $resultado = $conexion->query($sql);
         <td>Nombre</td>
         <td>Apellido Paterno</td>
         <td>Apellido Materno</td>
-        <td>No de control</td>
+        <td>No de control</td> 
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
         ?>
-            <tr align="center">
+            <tr align="center"> 
                 <td><?php echo $datos["id_alumnos"]?></td>
                 <td><?php echo $datos["nombreA"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
                 <td><?php echo $datos["apellido_m"]?></td>
                 <td><?php echo $datos["numero_control"]?></td>
-
             </tr>
             <?php   
         }
@@ -72,9 +72,9 @@ $resultado = $conexion->query($sql);
 
        </div>
        
-       <div class = "rutas">
-        <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Eliminar</button></div>
+       <div class = "rutas" style="margin-top: 5%;">
+       <input name = "id" class = "NC" type = "text" placeholder="ID a eliminar">
+        <div class = "buton"><button type="submit">Eliminar</button></div>
  
        </form>
     </main>

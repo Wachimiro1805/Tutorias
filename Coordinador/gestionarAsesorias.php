@@ -20,8 +20,8 @@
     <div class="navbar-collapse collapse end-justify" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">REGISTRAR</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ELIMINAR</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">ACTUALIZAR</a></li>
+            <li class="nav-item"><a href="EliminarAsesoria.php" class="nav-link">ELIMINAR</a></li>
+            <li class="nav-item"><a href="ActualizarAsesoria.php" class="nav-link">ACTUALIZAR</a></li>
             <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li>
                     
         </ul>
@@ -35,6 +35,7 @@
       <h2 class ="titulo">REGISTRAR ASESORIAS</h2>
       <div class = "contenedor-form">
       <input name = "nombre" class = "NC" type = "text" placeholder="Nombre de la asesoria">
+      <input name = "impartidor" class = "NC" type = "text" placeholder="¿Quien la impartirá?">
       <div class="row-input">
       <input class="NC" name = "fecha" type="date" placeholder="Fecha de inicio">
       </div>

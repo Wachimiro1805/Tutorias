@@ -37,8 +37,8 @@
       <input name = "Ncontrol"  class = "NC" type = "text" placeholder="Numero de Control">
       </div>
   
-      <div class = "grupos-carreras">
-          <Label>Grupos</Label>
+      <div class = "grupos-carreras" >
+          <Label style="margin-left: 30%;">Grupos</Label>
           <?php
           include 'conexionC.php';
           $consulta = "SELECT * FROM grupos";
@@ -79,7 +79,7 @@
          </div>
   
       </main>
-      <div class = "buton"><button  style="margin-left: 52%" onclick="location.href='Coordinador.php'" >CANCELAR</button></div>
+      <div class = "buton"><button  style="margin-left: 46%; margin-top: 2%" onclick="location.href='Coordinador.php'" >CANCELAR</button></div>
   
       <footer>
           <div class = footerDatos>     
