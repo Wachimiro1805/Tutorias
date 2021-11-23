@@ -10,7 +10,7 @@
       if (empty($_SESSION["usuario"])) {
       }else{
         $usuario = $_SESSION["usuario"];
-        $consulta="SELECT * FROM coordinador_de_tutorias WHERE ususario = '$usuario'";
+        $consulta="SELECT * FROM coordinador_de_tutorias WHERE usuario = '$usuario'";
         $resultadoID = $conexion->query($consulta);
       }
     }    

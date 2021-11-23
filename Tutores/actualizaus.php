@@ -9,7 +9,7 @@
 
        
 
-        $consulta = "SELECT contraseña FROM docentes";
+        $consulta = "SELECT contrasena FROM docentes";
         $resultado = mysqli_query( $conexion, $consulta )
                          or die ( "Algo ha ido mal en la consulta a la base de datos");
 
@@ -18,7 +18,7 @@ if($contra1 == $contra1){
 
     if($contra2 == $contra3 ){
         $sql = "UPDATE docentes 
-                    SET ususario = '$usuario', contraseña = '$contra2' 
+                    SET usuario = '$usuario', contrasena = '$contra2' 
                         WHERE id_docente = $id";
         $ejecutar=mysqli_query($conexion, $sql);
 

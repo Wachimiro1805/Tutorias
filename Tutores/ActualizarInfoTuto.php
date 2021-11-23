@@ -12,7 +12,7 @@ if($conexion->connect_errno)
      
   }else{
     $usuario = $_SESSION["usuario"];
-    $consulta="SELECT * FROM docentes WHERE ususario = '$usuario'";
+    $consulta="SELECT * FROM docentes WHERE usuario = '$usuario'";
     $resultado = $conexion->query($consulta);
     while($rows=$resultado->fetch_array()){
       $id = $rows[0];

@@ -9,7 +9,7 @@ if($conexion->connect_errno)
   
 }
 
-//$consulta="SELECT * FROM coordinador_de_tutorias WHERE ususario = '$user'";
+//$consulta="SELECT * FROM coordinador_de_tutorias WHERE usuario = '$user'";
 //$resultado = $conexion->query($consulta);
 
 //console.log($resultado);
