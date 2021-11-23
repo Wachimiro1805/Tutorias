@@ -70,13 +70,13 @@ if (isset($_GET['numero'])) {
       $pass1 = md5($pass1)
       $pass2 = md5($pass2)*/
 
-      $sqlA = $conexion->query("SELECT contraseña from Alumnos where numero_control = '".$_SESSION['control']."'");
+      $sqlA = $conexion->query("SELECT contrasena from alumnos where numero_control = '".$_SESSION['control']."'");
       $rowA = $sqlA->fetch_array();
 
-      if ($rowA['contraseña']==$passActual){
+      if ($rowA['contrasena']==$passActual){
 
         if ($pass1 == $pass2){
-            $update = $conexion->query("UPDATE Alumnos set contraseña = '$pass1' where numero_control = '".$_SESSION['control']."'");
+            $update = $conexion->query("UPDATE alumnos set contrasena = '$pass1' where numero_control = '".$_SESSION['control']."'");
             if ($update) {echo "Se ha actualizado la contraseña";}
         }
         else {
