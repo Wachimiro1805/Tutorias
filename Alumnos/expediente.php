@@ -24,15 +24,10 @@ session_start();
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
            <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-            <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENCUESTA</a>
-              <ul>
-                <li class="nav-item"><a href="Entrevista.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
-               </ul>
-            </li>
+           <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
             <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
             <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
             <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
-            <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
             <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
@@ -40,22 +35,116 @@ session_start();
     </header>
  
     <main>
-      <h2 style="color:#021d75;">Expediente</h2>
-      <h6>Verifica tus archivos subidos a la plataforma</h6>
+      <h2 style="color:#021d75;">Completa tu información</h2>
+      <h6>Descarga los archivos y subelos con todos tus datos</h6>
       <br>
-      <h5>¡Asegurate de subir lor correctos!</h5>
       <form method="post" action="">
       <?php
         
  ?>
       <div class = "">
-        <a href='#' onclick="location.href='descargaEntre.php'" style="margin-right: 10px" name ='btnEntrevista'>Ver Entrevista</a>
+        <a href='#' onclick="location.href='descargarE.php?file=Ficha.pdf'" style="margin-right: 10px" name ='btnFicha'>Descargar ficha de identificación</a>
       </div>
       </form>
-      <br></br>
+      
       <div class = "">
-        <a href='#' onclick="location.href='descargaEnc.php'" style="margin-right: 10px" name ='btnEntrevista'>Ver Encuesta</a>
+        <a href='#' onclick="location.href='descargarE.php?file=Entrevista.pdf'" style="margin-right: 10px" name ='btnEntrevista'>Descargar entrevista</a>
       </div>
+      <br>
+
+      <h2 style="color:#021d75;">Sube tus archivos</h2>
+      <form method="post" action="" enctype="multipart/form-data">
+      <?php
+        if(filter_input(INPUT_POST, 'btnGuardar')){
+
+        $archivo_nombre=$_FILES['archivoF']['name'];
+        $archivo_tipo = $_FILES['archivoF']['type'];
+        $archivo_temp = $_FILES['archivoF']['tmp_name'];
+   
+        require "conexionA.php";
+  
+        $archivo_binario = (file_get_contents($archivo_temp));
+
+        $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
+        $rowAl = $id_alumno->fetch_array();
+        $idal = $rowAl['id_alumnos'];
+        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Ficha'");
+        $rowEx = $existe->fetch_array();
+        if(isset($rowEx['id_documento'])){
+        $comproba = $rowEx['id_documento'];
+        }
+        $direccion = "Alumnos/files/{$archivo_nombre}";
+        if (empty($comproba)){
+          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', $direccion, 'Ficha', '$idal')");
+          file_put_contents("files/{$archivo_nombre}", $archivo_binario);
+          if ($insercion) {echo "Se ha subido el archivo";}
+              else {
+                  echo "No se ha podido subir el archivo";
+              }
+          } else {
+              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Ficha ' ");
+              file_put_contents("files/{$archivo_nombre}", $archivo_binario);
+              if ($insercion) {echo "Se ha actualizado el archivo";}
+              else {
+                  echo "No se ha podido actualizar el archivo";
+              }
+          }
+      }
+    
+ ?>
+      <div>
+      <label for="archivoF">Subir ficha</label>
+        <input type="file" name="archivoF" require></input>
+        <input class="button" type="submit" name="btnGuardar" value="Guardar" />
+        </div>
+    </form>
+
+    <form method="post" action="" enctype="multipart/form-data">
+      <?php
+        if(filter_input(INPUT_POST, 'btnGuardarE')){
+
+        $archivo_nombre=$_FILES['archivoE']['name'];
+        $archivo_tipo = $_FILES['archivoE']['type'];
+        $archivo_temp = $_FILES['archivoE']['tmp_name'];
+   
+        require "conexionA.php";
+  
+        $archivo_binario = (file_get_contents($archivo_temp));
+   
+        $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
+        $rowAl = $id_alumno->fetch_array();
+        $idal = $rowAl['id_alumnos'];
+        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Entrevista'");
+        $rowEx = $existe->fetch_array();
+        if(isset($rowEx['id_documento'])){
+        $comproba = $rowEx['id_documento'];
+        }
+        $direccion = "Alumnos/files/{$archivo_nombre}";
+        if (empty($comproba)){
+          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$direccion', 'Entrevista', '$idal')");
+          file_put_contents("files/{$archivo_nombre}", $archivo_binario);
+          if ($insercion) {echo "Se ha subido el archivo";}
+              else {
+                  echo "No se ha podido subir el archivo";
+              }
+          } else {
+              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Entrevista ' ");
+              file_put_contents("files/{$archivo_nombre}", $archivo_binario);
+              if ($insercion) {echo "Se ha actualizado el archivo";}
+              else {
+                  echo "No se ha podido actualizar el archivo";
+              }
+          }
+        }
+ ?>
+ <label for="archivoF">Subir Entrevista</label>
+        <input type="file" name="archivoE" require></input>
+        <input class="button" type="submit" name="btnGuardarE" value="Guardar" />
+    </form>
+
+    <a href='#' onclick="location.href='verArchivos.php'" style="margin-right: 10px">Verificar tus archivos</a>
+
+    
         
     </main>
 

@@ -45,7 +45,7 @@ session_start();
       <br>
       <h5>Por favor, llena la siguiente encuesta  y manda tus respuestas para poder conocerte y tener informacion que nos servira en un futuro</h5>
       <div class = "buton">
-        <button onclick="location.href='descargarE.php?file=Encuesta.pdf'" style="margin-right: 10px">Descargar Encuesta</button>
+        <button onclick="location.href='descargarE.php?file=Ficha.pdf'" style="margin-right: 10px">Descargar Ficha</button>
       </div>
       <br></br>
       <h5>¿Ya completaste la encuesta?</h5>

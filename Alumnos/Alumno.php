@@ -43,15 +43,10 @@
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-                    <li class="nav-item"><a href="Encuesta.php" class="nav-link">REALIZAR ENCUESTA</a>
-              <ul>
-                <li class="nav-item"><a href="Entrevista.php" class="nav-link">REALIZAR ENTREVISTA</a></li>
-               </ul>
-            </li>
+                    <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
                     <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
                     <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
                     <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
-                    <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
                     <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
                 </ul>
             </div>
@@ -115,7 +110,7 @@
     if (isset($_POST['btnSolicitar'])){
         include 'conexionA.php';
         $fecha_actual = date('Y-m-d');
-       
+        $motivo = $conexion->real_escape_string($_POST['motivo']);
         $asesoriaE =  $conexion->real_escape_string($_POST['alumnos']);
         $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
         $rowAl = $id_alumno->fetch_array();
@@ -127,7 +122,7 @@
         $rowEx = $existe->fetch_array();
         $comproba = $rowEx['pk_solicitudes'];
         if (empty($comproba)){
-            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual','$idal','$idas')");
+            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual', '$motivo', '$idal','$idas')");
                 if ($insercion) {echo "Se ha hecho la solicitud";}
                     else {
                         echo "No se ha podido realizar la solicitud";
@@ -152,6 +147,9 @@
           echo "<select>";
           mysqli_close( $conexion );
           ?>
+<br></br>
+
+        <textarea name="motivo" rows="2" cols="50" placeholder="Detalla tus motivos de tu solicitud" require></textarea>
     
 
 <br></br>
