@@ -6,10 +6,10 @@ $sql = "UPDATE solicitudes SET status = 'Aceptada' WHERE solicitudes.pk_solicitu
 $ejecutar=mysqli_query($conexion, $sql);
 
 if(!$ejecutar){
-    header ("Location: Departamento.php");
+    header ("Location: Departamento1.php");
    
 }else{
-    header ("Location: Departamento.php");
+    header ("Location: Departamento1.php");
  
 }
 

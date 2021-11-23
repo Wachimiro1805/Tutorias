@@ -842,7 +842,7 @@ function Sizzle( selector, context, results, seed ) {
 				newSelector = selector;
 				newContext = context;
 
-				// qSA considers elements outside a scoping root when evaluating child or
+				// qSA considers elements outside a scoping id17992064_txrlfgbv_tutorias when evaluating child or
 				// descendant combinators, which is not what we want.
 				// In such cases, we work around the behavior by prefixing every selector in the
 				// list with an ID selector referencing the scope context.
@@ -1167,7 +1167,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Safari 4 - 5 only, Opera <=11.6 - 12.x only
 	// IE/Edge & older browsers don't support the :scope pseudo-class.
 	// Support: Safari 6.0 only
-	// Safari 6.0 supports :scope but it's an alias of :root there.
+	// Safari 6.0 supports :scope but it's an alias of :id17992064_txrlfgbv_tutorias there.
 	support.scope = assert( function( el ) {
 		docElem.appendChild( el ).appendChild( document.createElement( "div" ) );
 		return typeof el.querySelectorAll !== "undefined" &&
@@ -2169,7 +2169,7 @@ Expr = Sizzle.selectors = {
 			return hash && hash.slice( 1 ) === elem.id;
 		},
 
-		"root": function( elem ) {
+		"id17992064_txrlfgbv_tutorias": function( elem ) {
 			return elem === docElem;
 		},
 
@@ -3125,8 +3125,8 @@ jQuery.fn.extend( {
 // Initialize a jQuery object
 
 
-// A central reference to the root jQuery(document)
-var rootjQuery,
+// A central reference to the id17992064_txrlfgbv_tutorias jQuery(document)
+var id17992064_txrlfgbv_tutoriasjQuery,
 
 	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
@@ -3134,7 +3134,7 @@ var rootjQuery,
 	// Shortcut simple #id case for speed
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
-	init = jQuery.fn.init = function( selector, context, root ) {
+	init = jQuery.fn.init = function( selector, context, id17992064_txrlfgbv_tutorias ) {
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
@@ -3142,9 +3142,9 @@ var rootjQuery,
 			return this;
 		}
 
-		// Method init() accepts an alternate rootjQuery
+		// Method init() accepts an alternate id17992064_txrlfgbv_tutoriasjQuery
 		// so migrate can support jQuery.sub (gh-2101)
-		root = root || rootjQuery;
+		id17992064_txrlfgbv_tutorias = id17992064_txrlfgbv_tutorias || id17992064_txrlfgbv_tutoriasjQuery;
 
 		// Handle HTML strings
 		if ( typeof selector === "string" ) {
@@ -3206,7 +3206,7 @@ var rootjQuery,
 
 			// HANDLE: $(expr, $(...))
 			} else if ( !context || context.jquery ) {
-				return ( context || root ).find( selector );
+				return ( context || id17992064_txrlfgbv_tutorias ).find( selector );
 
 			// HANDLE: $(expr, context)
 			// (which is just equivalent to: $(context).find(expr)
@@ -3223,8 +3223,8 @@ var rootjQuery,
 		// HANDLE: $(function)
 		// Shortcut for document ready
 		} else if ( isFunction( selector ) ) {
-			return root.ready !== undefined ?
-				root.ready( selector ) :
+			return id17992064_txrlfgbv_tutorias.ready !== undefined ?
+				id17992064_txrlfgbv_tutorias.ready( selector ) :
 
 				// Execute immediately if ready is not present
 				selector( jQuery );
@@ -3237,7 +3237,7 @@ var rootjQuery,
 init.prototype = jQuery.fn;
 
 // Initialize central reference
-rootjQuery = jQuery( document );
+id17992064_txrlfgbv_tutoriasjQuery = jQuery( document );
 
 
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
@@ -4710,12 +4710,12 @@ var documentElement = document.documentElement;
 	// Support: IE 9 - 11+, Edge 12 - 18+, iOS 10.0 - 10.2 only
 	// Check attachment across shadow DOM boundaries when possible (gh-3504)
 	// Support: iOS 10.0-10.2 only
-	// Early iOS 10 versions support `attachShadow` but not `getRootNode`,
-	// leading to errors. We need to check for `getRootNode`.
-	if ( documentElement.getRootNode ) {
+	// Early iOS 10 versions support `attachShadow` but not `getid17992064_txrlfgbv_tutoriasNode`,
+	// leading to errors. We need to check for `getid17992064_txrlfgbv_tutoriasNode`.
+	if ( documentElement.getid17992064_txrlfgbv_tutoriasNode ) {
 		isAttached = function( elem ) {
 			return jQuery.contains( elem.ownerDocument, elem ) ||
-				elem.getRootNode( composed ) === elem.ownerDocument;
+				elem.getid17992064_txrlfgbv_tutoriasNode( composed ) === elem.ownerDocument;
 		};
 	}
 var isHiddenWithinTree = function( elem, el ) {
@@ -10539,7 +10539,7 @@ jQuery.fn.extend( {
 		} else {
 			offset = this.offset();
 
-			// Account for the *real* offset parent, which can be the document or its root element
+			// Account for the *real* offset parent, which can be the document or its id17992064_txrlfgbv_tutorias element
 			// when a statically positioned element is identified
 			doc = elem.ownerDocument;
 			offsetParent = elem.offsetParent || doc.documentElement;

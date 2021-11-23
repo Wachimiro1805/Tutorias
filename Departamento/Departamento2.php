@@ -1,6 +1,6 @@
 <?php
 require "conexionCT.php";
-$conexion = new mysqli("localhost","root","","bd_tutorias");
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
@@ -72,8 +72,8 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["status"]?></td>
                 <td> 
-                <?php echo"<td><a href='status.php?id=".$datos["pk_solicitudes"]."'>Aceptar</a></td>";?>
-                <?php echo"<td><a href='status1.php?id=".$datos["pk_solicitudes"]."'>Negar</a></td>";?>
+                <?php echo"<td><a href='status4.php?id=".$datos["pk_solicitudes"]."'>Aceptar</a></td>";?>
+                <?php echo"<td><a href='status5.php?id=".$datos["pk_solicitudes"]."'>Negar</a></td>";?>
                 </td>
             </tr>
             <?php   

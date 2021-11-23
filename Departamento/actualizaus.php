@@ -24,16 +24,17 @@ if($contra2 == $contra3 ){
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        echo"huvo algun error <br> <br> <a href='ActualizarUS.php'>volver a actualizar</a>";
+        header ("Location: ActualizarUS.php");
+      
     }else{
-        echo"datos guardado correctamente <br> <br> <a href='ActualizarUS.php'>volver hacer otro cambio</a>";
+        header ("Location: ActualizarUS.php");
     }
     //CONFIRMAR CONTRASEÑA
 }else{
-    echo"contraseñas no coinciden <br> <br> <a href='ActualizarUS.php'>volver a actualizar</a>";
+    header ("Location: ActualizarUS.php");
 }
  //CONFIRMA CONTRASEÑA ANTIGUA   
 }else{
-    echo"contraseña antigua no encontrada <br> <br> <a href='ActualizarUS.php'>volver a actualizar</a>";
+    header ("Location: ActualizarUS.php");
 }
 ?>﻿

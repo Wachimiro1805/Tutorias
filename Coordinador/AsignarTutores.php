@@ -1,6 +1,6 @@
 <?php
 require "conexionC.php";
-$conexion = new mysqli("localhost","root","","bd_tutorias");
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;

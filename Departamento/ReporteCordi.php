@@ -31,7 +31,7 @@
     
     <main> 
     <form action="ExpedienteCoordi.php" method="POST">  
-    <Label>Cordinadores</Label>
+    <Label>Cordinador: </Label>
           <?php
           include 'conexionCT.php';
           $consulta = "SELECT CT.nombre FROM coordinador_de_tutorias CT ;";
@@ -45,9 +45,20 @@
           }
           echo "<select>";
           mysqli_close( $conexion );
+     
+                    
           ?>
+         <?php
+          if (isset($_GET['error'])) {
+          echo "no tienene Reporte";   
+          } else {
+          // 
+        }
+?>
       <div class = "rutas">
           <div class = "buton"><button type="submit">VER REPORTES</button></div>
+      
+
           </form>
          </div>
     </main>

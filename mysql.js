@@ -8,10 +8,10 @@ const mysql = require('mysql')
 const { compileFunction } = require('vm')
 const conexion = mysql.createConnection(
    {
-    host:'localhost',
-    user:'root',
+    host:'94.242.61.132',
+    user:'id17992064_txrlfgbv_tutorias',
     password:'123',
-    database:'bd_tutorias'
+    database:'id17992064_txrlfgbv_tutorias	'
    } 
 )
 

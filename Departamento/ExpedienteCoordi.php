@@ -1,13 +1,14 @@
 <?php
 require "conexionCT.php";
 $coordi=$_POST['coordinadores'];
-$conexion = new mysqli("localhost","root","","bd_tutorias");
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-
+//para ver el expediente
+//id cordi
 $sql = "SELECT CT.id_coordinador_tutorias FROM coordinador_de_tutorias CT WHERE CT.nombre='$coordi';";
 $result = $conexion->query($sql);
 if (mysqli_num_rows($result) > 0) {
@@ -15,17 +16,21 @@ if (mysqli_num_rows($result) > 0) {
       $id_coordi = $row["id_coordinador_tutorias"];}}else {
     echo "0 results";
   }
+//id reporte
 $sql2 = "SELECT GRC.pk_reporte_coord FROM genera_reporte_coordi GRC INNER JOIN coordinador_de_tutorias CT ON (CT.id_coordinador_tutorias = GRC.fk_coordi) WHERE CT.id_coordinador_tutorias = $id_coordi ; ";
 $result2 = $conexion->query($sql2);
 if (mysqli_num_rows($result2) > 0) {
     while($row = mysqli_fetch_assoc($result2)) {
       $id_reporte = $row["pk_reporte_coord"];}}else {
-    echo "no se encontraron reportes para este coordinador <a href='ReporteCordi.php'>volver a Reportes</a> ";
+        header ("Location: ReporteCordi.php?error=true");
+   
   }
 
+//reporte
   $sql3 = "SELECT D.nombre_docente, D.apellido_p,G.nombre_grupo,C.siglas, RC.desertaron, RC.acreditaron, RC.no_acreditaron, RC.total_de_estudiantes_atendidos, RC.tutorias_individuales, RC.tutoria_grupal, RC.numero_estudiantes_canalizados, PAA.conferencias, PAA.talleres FROM docentes D INNER JOIN grupos G ON(G.id_grupo=D.fk_grupo) INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras) INNER JOIN reporte_coordinador RC ON(RC.fk_docentes = D.id_docente) INNER JOIN participacion_de_actividades_de_apoyo PAA ON(PAA.fk_id_reporte_coordinador = RC.pk_reporteC) INNER JOIN genera_reporte_coordi GRC ON (GRC.pk_reporte_coord = RC.fk_reporte) WHERE GRC.pk_reporte_coord = $id_reporte;";
   $resultado = $conexion->query($sql3);
   
+  //semestre atendido y observaciones
   $sql4 = "SELECT GRC.semestre_atendido FROM genera_reporte_coordi GRC INNER JOIN coordinador_de_tutorias CT ON (CT.id_coordinador_tutorias = GRC.fk_coordi) WHERE CT.nombre = '$coordi'; ";
   $result3 = $conexion->query($sql4);
   if (mysqli_num_rows($result3) > 0) {
@@ -119,7 +124,7 @@ if (mysqli_num_rows($result2) > 0) {
      ?>
  </table>
 <br>
-<br>
+<br>  
  <h4>observaciones: </h4>
  <h4><?php echo "$observaciones"?></h4>  
     </main>

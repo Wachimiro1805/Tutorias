@@ -9,9 +9,10 @@
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        echo"huvo algun error <br> <br> <a href='RegistrarCT.php'>volver a Registrar</a>";
+        header ("Location: RegistrarCT.php");
+        
     }else{
-        echo"datos guardado correctamente <br> <br> <a href='RegistrarCT.php'>volver a agregar otro coordinador</a>";
+        header ("Location: RegistrarCT.php");
     }
   
 ?>﻿

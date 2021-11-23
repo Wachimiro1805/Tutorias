@@ -1,6 +1,6 @@
 <?php
 require "conexionC.php";
-$conexion = new mysqli("localhost","root","","bd_tutorias");
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
@@ -73,9 +73,9 @@ if($conexion->connect_errno)
       <div class="contenedor-form">
         <div class="input-contenedor">
           
-          <input class = "NC" type = "text" placeholder="Nombre(s)"  value="<?php  echo $nombre;?>" name = "nombre" >  
-          <input class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo $apellidoM;?>" name = "apellidom">
-          <input class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo $apellidoP;?>" name = "apellidop">
+          <input class = "NC" type = "text" placeholder="Nombre(s)"  value="<?php  echo "$nombre";?>" name = "nombre" >  
+          <input class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo "$apellidoM";?>" name = "apellidom">
+          <input class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo "$apellidoP";?>" name = "apellidop">
 
         </div>
       </div>      

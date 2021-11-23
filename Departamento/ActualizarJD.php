@@ -1,3 +1,29 @@
+<?php
+require "conexionCT.php";
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
+if($conexion->connect_errno)
+{
+    echo "Error de conexion de la base datos".$conexion->connect_error;
+    exit();
+}else {
+  session_start();
+
+  if (empty($_SESSION["control"])) {
+     
+  }else{
+    $usuario = $_SESSION["control"];
+    $consulta="SELECT * FROM jefe_departamento WHERE ususario = '$usuario'";
+    $resultado = $conexion->query($consulta);
+    while($rows=$resultado->fetch_array()){
+      $nombre = $rows[1];
+      $apellidoM = $rows[2];
+      $apellidoP = $rows[3];      
+      
+      }
+    //echo '<h4 style="text-align:center">'. $resultado .' </h4>' ; 
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
@@ -28,12 +54,12 @@
     <h2 class ="titulo">Actulizar informacion</h2>
     <form action="actualiza.php" method="POST">  
     <div class = "IncioSnecio">
-     
-    <input name = "firstname" class = "NC" type = "text" placeholder="Nombre's">
 
-    <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
+    <input name = "firstname" class = "NC" type = "text" placeholder="<?php  echo "$nombre";?>">
 
-    <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
+    <input name = "lasttname" class = "NC" type = "text" placeholder="<?php  echo "$apellidoM";?>">
+
+    <input name = "lastname2" class = "NC" type = "text" placeholder="<?php  echo "$apellidoP";?>">
    
 
        <div class = "rutas">

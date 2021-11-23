@@ -8,9 +8,10 @@
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        echo"ID no encontrada <a href='EliminarCT.php'>volver a</a>";
+        header ("Location: EliminarCT.php");
+       
     }else{
-        echo"datos guardado correctamente <br> <br> <a href='EliminarCT.php'>Eliminar otro coordinador</a>";
+        header ("Location: EliminarCT.php");
     }
   
 ?>﻿

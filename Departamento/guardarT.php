@@ -38,9 +38,10 @@
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        echo"huvo algun error <br> <br> <a href='gestionarTutores.php'>volver a Registrar</a>";
+  
+      header ("Location: gestionarTutores.php");
     }else{
-        echo"datos guardado correctamente <br> <br> <a href='gestionarTutores.php'>volver a agregar otro docente</a>";
+      header ("Location: gestionarTutores.php");
     }
 
 

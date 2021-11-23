@@ -9,9 +9,9 @@
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        echo"huvo algun error <br> <br> <a href='ActualizarJD.php'>volver a Registrar</a>";
+    header ("Location: ActualizarJD.php");
     }else{
-        echo"datos guardado correctamente <br> <br> <a href='ActualizarJD.php'>volver hacer otro cambio</a>";
+        header ("Location: ActualizarJD.php");
     }
   
 ?>﻿

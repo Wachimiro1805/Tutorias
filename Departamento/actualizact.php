@@ -22,12 +22,15 @@ if($idConf == $id){
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        echo"huvo algun error <br> <br> <a href='ActualizarCT.php'>volver a actualizar</a>";
+        header ("Location: ActualizarCT.php");
+
     }else{
-        echo"datos guardado actualizados <br> <br> <a href='ActualizarCT.php'>volver hacer otro cambio</a>";
+        header ("Location: ActualizarCT.php");
+        
     }
     
 }else{
-    echo"ID no encontrado <br> <br> <a href='ActualizarCT.php'>volver</a>";
+    header ("Location: ActualizarCT.php");
+    
 }
 ?>﻿

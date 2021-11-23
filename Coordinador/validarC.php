@@ -6,7 +6,7 @@ session_start();
 $_SESSION["usuario"] = $NumCon;
 
 
-$conexion=mysqli_connect("localhost","root","","bd_tutorias");
+$conexion=mysqli_connect("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 $consulta="SELECT * FROM coordinador_de_tutorias WHERE ususario = '$NumCon' and contraseña = '$Pass'";
 $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
