@@ -6,9 +6,19 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, G.nombre_grupo, C.siglas FROM alumnos A INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
-$sql2 = "SELECT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras);";
-$sql3= "SELECT AL.nombreA,CA.siglas as 'CarreraAlumno',D.nombre_docente,C.siglas FROM asignar_tutor A INNER JOIN docentes D ON D.id_docente = A.fk_docentes INNER JOIN carreras C ON D.fk_carreras = C.id_carreras INNER JOIN alumnos AL ON AL.id_alumnos = A.fk_alumno INNER JOIN carreras CA ON AL.fk_carreras = CA.id_carreras";
+$sql = "SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, G.nombre_grupo, C.siglas 
+          FROM alumnos A 
+            INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) 
+              INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
+$sql2 = "SELECT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas 
+          FROM docentes D 
+            INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras);";
+$sql3= "SELECT AL.nombreA,CA.siglas as 'CarreraAlumno',D.nombre_docente,C.siglas 
+          FROM asignar_tutor A 
+            INNER JOIN docentes D ON D.id_docente = A.fk_docentes 
+              INNER JOIN carreras C ON D.fk_carreras = C.id_carreras 
+                INNER JOIN alumnos AL ON AL.id_alumnos = A.fk_alumno 
+                  INNER JOIN carreras CA ON AL.fk_carreras = CA.id_carreras";
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado3 = $conexion->query($sql3);

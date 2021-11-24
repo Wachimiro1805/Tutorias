@@ -35,6 +35,8 @@
       <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
       <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
       <input name = "Ncontrol"  class = "NC" type = "text" placeholder="Numero de Control">
+      <input name = "telefono" class = "NC" type = "text" placeholder="Telefono">
+      <input name = "correo" class = "NC" type = "text" placeholder="Correo">
       </div>
   
       <div class = "grupos-carreras" >
