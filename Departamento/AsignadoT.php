@@ -38,7 +38,7 @@ $resultado3 = $conexion->query($sql3);
             <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">AGREGAR TUTORES</a></li>
             <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR TUTORES</a></li>
             <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR TUTORES</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>

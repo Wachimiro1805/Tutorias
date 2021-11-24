@@ -22,7 +22,7 @@
             <li class="nav-item"><a href="RegistrarCT.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarCT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarCT.php" class="nav-link">ACTUALIZAR</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
