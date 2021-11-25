@@ -37,9 +37,9 @@
 
     <div class = "rutasInicio">
 
-    <div class = "buton"><button onclick="location.href='GestionarReportes.php'" >VER REPORTES</button></div>
+    <div class = "buton"><button style="padding-left: 10px; padding-right: 10px;" onclick="location.href='VerReporteT.php'"  >VER REPORTES</button></div>
     <br>
-    <div class = "buton"><button onclick="location.href='ReporteC.php'" >GENERAR REPORTE</button></div>
+    <div class = "buton"><button style="padding-left: 10px; padding-right: 10px;" onclick="location.href='ReporteC.php'" >GENERAR REPORTE</button></div>
     <br>
  
     </div>

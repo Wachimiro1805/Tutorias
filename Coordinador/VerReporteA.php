@@ -9,10 +9,6 @@ if($conexion->connect_errno)
   
 }
 
-//$consulta="SELECT * FROM coordinador_de_tutorias WHERE usuario = '$user'";
-//$resultado = $conexion->query($consulta);
-
-//console.log($resultado);
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -41,7 +37,7 @@ if($conexion->connect_errno)
             <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR TUTORES</a></li>
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
-            <li class="nav-item"><a href="GestionarReportes.php" class="nav-link">REPORTES</a></li>
+            <li class="nav-item"><a href="GestionarReportes.php" class="nav-link">REPORTE TUTORES</a></li>
             <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
         
             
