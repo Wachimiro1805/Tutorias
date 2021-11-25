@@ -32,7 +32,7 @@ $resultado = $conexion->query($sql);
         <ul class="navbar-nav">
    
             <li class="nav-item"><a href="Departamento.php" class="nav-link">TUTORES/COORDINADORES</a></li>
-            <li class="nav-item"><a href="Exp.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
+            <li class="nav-item"><a href="verExp2.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
             <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
             <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>

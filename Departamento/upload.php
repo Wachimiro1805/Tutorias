@@ -1,6 +1,6 @@
 <?php
 
-include('conexionCT.php');
+include('conexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $con->real_escape_string(htmlentities($_POST['title']));
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $file_type = $_FILES['file']['type'];
         list($type, $extension) = explode('/', $file_type);
         if ($extension == 'pdf') {
-            $dir = 'archivos/';
+            $dir = 'files/';
             if (!file_exists($dir)) {
                 mkdir($dir, 0777, true);
             }
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    $ins = $con->query("INSERT INTO documentos(fk_alumno,documento) VALUES ('$new_name_file')");
+    $ins = $con->query("INSERT INTO files(title,description,url) VALUES ('$title','$description','$new_name_file')");
 
     if ($ins) {
         echo 'success';
