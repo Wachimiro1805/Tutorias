@@ -44,7 +44,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
                     <li class="nav-item"><a href="tieneTutor.php" class="nav-link">VER EXPEDIENTE</a></li>
-                    <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+
                     <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
                     <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
                     <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -57,6 +57,7 @@
 
     <main>
         <h1 align="center">Asesorias</h1>
+        <div align="center">
         <table width="70%" border="1px" align="center">
 
             <tr align="center">
@@ -79,7 +80,9 @@
 
      ?>
     </table >
+    </div>
     <h1 align="center">Solicitudes</h1>
+    <div align="center">
     <table width="70%" border="1px" align="center">
 
     <tr align="center">
@@ -104,8 +107,9 @@
 
      ?>
     </table>
+    </div>
     <h1 align="center">Realizar Solicitud</h1>
-    <form action="" method='post'>
+    <form action="" method='post' align="center">
     <?php
     if (isset($_POST['btnSolicitar'])){
         include 'conexionA.php';
@@ -123,7 +127,7 @@
         if (isset($rowAx['fk_docentes'])){
         $idax = $rowAx['fk_docentes'];
         } else { return 'No se te ha asignado un tutor';}
-        $existe = $conexion->query("SELECT pk_solicitudes from solicitudes where fk_alumnos = '$idal' and fk_asesorias = '$idas' and status = 'Solicitada' ");
+        $existe = $conexion->query("SELECT pk_solicitudes from solicitudes where fk_alumnos = '$idal' and fk_asesorias = '4' and status = 'Solicitada' ");
         $rowEx = $existe->fetch_array();
         if(isset($rowEx['pk_solicitudes'])){
         $comproba = $rowEx['pk_solicitudes'];
@@ -156,12 +160,12 @@
           ?>
 <br></br>
 
-        <textarea name="motivo" rows="2" cols="50" placeholder="Detalla tus motivos de tu solicitud" require></textarea>
+        <textarea name="motivo" rows="2" cols="50" placeholder="Detalla tus motivos de tu solicitud (Materia que solicitas o razón para ver al psicologo)" require></textarea>
     
 
 <br></br>
 <div class = "buton">
-    <button style="margin-right: 10px" onclick="location.href='Alumno.php?numero=16401013&tipo=asesoria'" name="btnSolicitar">SOLICITAR</button>
+    <button  onclick="location.href='Alumno.php?numero=16401013&tipo=asesoria'" name="btnSolicitar" >SOLICITAR</button>
     
 </div>
 </form>
