@@ -1,4 +1,4 @@
-<!DOCTYPE html>x
+<!DOCTYPE html>
 <?php
 include('conexion.php');
 
@@ -9,6 +9,7 @@ $sel = $con->query("SELECT * FROM files");
 while ($row = $sel->fetch_assoc()) {
     $tmp = $row;
     array_push($res, $tmp);
+
 }
 ?>
 
