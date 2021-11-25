@@ -5,6 +5,8 @@
     $lasttname=$_POST['lasttname'];
     $lastname2=$_POST['lastname2'];
     $Ncontrol=$_POST['Ncontrol'];
+    $telefono=$_POST['telefono'];
+    $correo=$_POST['correo'];
     $grupos=$_POST['grupos'];
     $carreras=$_POST['carreras'];
 
@@ -34,15 +36,20 @@ if (mysqli_num_rows($result) > 0) {
   echo "0 results";
 }
 
-  $sql="INSERT INTO alumnos VALUES (DEFAULT,'$firstname','$lasttname','$lastname2','$Ncontrol',DEFAULT,$id_grupo,$id_carrera)";
-$ejecutar=mysqli_query($conexion, $sql);
+  $sql="INSERT INTO alumnos VALUES (DEFAULT,
+                                    '$firstname',
+                                    '$lasttname',
+                                    '$lastname2',
+                                    '$telefono',
+                                    '$correo',
+                                    '$Ncontrol',
+                                    DEFAULT,
+                                    $id_grupo,
+                                    $id_carrera)";
+  $ejecutar=mysqli_query($conexion, $sql);
 
 if(!$ejecutar){
-    echo"huvo algun error <br> <br> <a href='gestionarAlumnos.php'>volver a Registrar</a>";
+  echo"huvo algun error <br> <br> <a href='gestionarAlumnos.php'>volver a Registrar</a>";
 }else{
-    echo"datos guardado correctamente <br> <br> <a href='gestionarAlumnos.php'>volver a agregar otro alumno</a>";
-}
-
-
- 
-?>﻿
+  echo"datos guardado correctamente <br> <br> <a href='gestionarAlumnos.php'>volver a agregar otro alumno</a>";}
+?>

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
-    <link rel="stylesheet" href="../css/estiloD.css">
+    <link rel="stylesheet" href="../css/estiloC.css">
   </head>
 
 <body>
@@ -19,7 +19,7 @@
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="Tutorados.php" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="Coordinador.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -37,9 +37,9 @@
 
     <div class = "rutasInicio">
 
-    <div class = "buton"><button onclick="location.href='ActualizarInfoTuto.php'" >DATOS DEL TUTOR</button></div>
+    <div class = "buton"><button onclick="location.href='GestionarReportes.php'" >VER REPORTES</button></div>
     <br>
-    <div class = "buton"><button onclick="location.href='ActualizarUsuConTuto.php'" >CAMBIAR USUARIO Y CONTRASEÑA</button></div>
+    <div class = "buton"><button onclick="location.href='ReporteC.php'" >GENERAR REPORTE</button></div>
     <br>
  
     </div>

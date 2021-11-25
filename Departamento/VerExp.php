@@ -57,8 +57,9 @@ $resultado = $conexion->query($sql);
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
+            
         ?>
-        
+
             <tr align="center">
                 <td><?php echo $datos["id_documento"]?></td>
                 <td><?php echo $datos["nombreA"]?></td>

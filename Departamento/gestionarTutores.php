@@ -21,9 +21,15 @@
         <ul class="navbar-nav">
         <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
+<<<<<<< HEAD
             <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>
+=======
+            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">AGREGAR TUTORES</a></li>
+            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR TUTORES</a></li>
+            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR TUTORES</a></li>
+>>>>>>> 59916494e9b168dd1b9ecc02286f4cd61319a0cb
             <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
