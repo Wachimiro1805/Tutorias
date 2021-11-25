@@ -98,7 +98,9 @@ $control = $_SESSION['control'];
       <div>
       <label for="archivoF">Subir ficha</label>
         <input type="file" name="archivoF" require></input>
-        <input class="button" type="submit" name="btnGuardar" value="Guardar" />
+        
+        <input class="buton" type="submit" name="btnGuardar" value="Guardar" />
+        
         </div>
     </form>
 
