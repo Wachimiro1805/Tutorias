@@ -21,14 +21,7 @@
   </button>
   <div class="navbar-collapse collapse" id="navbar">
       <ul class="navbar-nav">
-            <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">GESTIONAR TUTORADOS</a></li>
-            <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR TUTORES</a></li>
-            <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
-            <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
-            <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
-
-            <li class="nav-item"><a href="loginC.php" class="nav-link">CERRAR SESIÓN</a></li>
+      <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">REGRESAR</a></li>
       </ul>
     </div>
     <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>

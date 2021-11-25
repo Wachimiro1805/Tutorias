@@ -9,11 +9,11 @@ session_start();
         exit();
     }
 
-    $sql1 = "SELECT * FROM reporte_coordinador;";
-    $sql= "SELECT A.id_alumnos ,A.nombreA,A.numero_control,RA.sesiones_individuales,RA.sesiones_grupales,RA.actividad_integradora as 'Integradora',RA.conferencias,RA.tallares,
-    RA.psicologia,RA.asesorias,RA.horas_cumplidas,E.acredito,E.no_acredito,E.deserto,E.acreditado_en_seguimiento,RA.valor_numerico,RA.nivel_dedesempeno FROM alumnos A 
-            INNER JOIN reporte_tutorado RA ON RA.fk_alumnos = A.id_alumnos
-            INNER JOIN estatus_en_el_programa E ON E.fk_alumno = A.id_alumnos";
+    //$sql1 = "SELECT * FROM reporte_coordinador;";
+    $sql= "SELECT D.id_docente,D.nombre_docente,G.nombre_grupo,C.siglas  FROM docentes D 
+            INNER JOIN reporte_coordinador RC ON RC.fk_docentes = D.id_docente
+            INNER JOIN grupos G ON G.id_grupo = D.fk_grupo
+            INNER JOIN carreras C ON C.id_carreras = D.fk_carreras";
             
     $resultado = $conexion->query($sql);
     $error=mysqli_error($conexion); 
@@ -30,14 +30,14 @@ session_start();
       <meta charset = 'UTF-8'>
       <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
       <title>Reporte Coordinador</title>
-      <link rel = 'stylesheet' href = '../css/bootstrap.min.css'>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-      <script src = '../js/jquery-3.6.0.js'></script>
-      <link rel = 'stylesheet' href = '../css/estiloC.css'>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="../css/estiloC.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
-    <header class = 'navbar navbar-dark  navbar-expand-md'>
+    <header class="navbar navbar-dark bg-dark navbar-expand-md">
       <a style = 'margin-left: 10px' class = 'navbar-brand'>INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
       <button class = 'navbar-toggler' data-bs-toggle = 'collapse' data-bs-target = '#navbar'>
         <span class = 'navbar-toggler-icon'></span>
@@ -57,59 +57,57 @@ session_start();
                 <table id="tblStocks" style="font-size: 9px;" >
                   <tr style="border: 1px solid #000;text-align: center;">
                     <th rowspan='2' style="border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;">NÚMERO</th>
-                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NOMBRE DEL ESTUDIANTE</TH>
-                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NO.CONTROL</TH>
-                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NÚMERO DE SESIONES CON EL TUTOR (HORA/SESIÓN)</TH>
-                    <TH colspan='3' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>PARTICIPACIÓN EN ACTIVIDADESDE APOYO (NÚMERO DE HORAS DE LA ACTIVIDAD)</TH>
-                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>CANALIZACIÓN (NÚMERO DE HORA/SESIÓN)</TH>
-                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>TOTAL DE HORAS CUMPLIDAS</TH>
-                    <TH colspan='4' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>ESTATUS EN EL PROGRAMA (MARQUE X EN SOLO UNA COLUMNA)</TH>
-                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>EVALUACIÓN DEL TUTORADO</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NOMBRE DEL DOCENTE</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>GRUPO</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>CARRERA </TH>
+                    <TH colspan='3' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NÚMERO DE ESTUDIANTES ATENDIDOS</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>TOTAL DE ESTUDIANTES ATENDIDOS</TH>
+
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>N° DE SESIONES EN EL SEMESTRE</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NÚMERO DE ESTUDIANTES CANALIZADOS</TH>
+                    <TH colspan='5' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>PARTICIPACION EN ACTIVIDADES DE APOYO (NÚMERO DE TUTORADOS)</TH>
 
                   </tr>
                   <tr style='border: 1px solid #000;text-align: center;'>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>SESIONES INDIVIDUALES</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>SESIONES GRUPALES</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACTIVIDAD<br> INTEGRADORA<br> (Max. 4 horas)</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>DESERTARON</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITARON</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NO ACREDITARON</td>
+                    <td style='padding: 2px; background-color: #294c67; color:white;'>TUTORIA INDIVIDUAL</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>TUTORIA GRUPAL</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>        </td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>        </td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>        </td>
                     <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>CONFERENCIAS</td>
                     <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>TALLERES</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>PSICOLOGÍA</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ASESORÍA</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITÓ</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NO<BR> ACREDITÓ</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>DESERTÓ</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITADO EN <BR>SEGUIMIENTO</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>VALOR<BR>NUMERICO</td>
-                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NIVEL DE <BR>DESEMPEÑO</td>
                   </tr>          
 
                 <form method="POST">  
                   <!--Datos DE LA TABLA-->
                   <?php while($datos=$resultado->fetch_array()){?>
                     <tr align="center">
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["id_alumnos"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombreA"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["numero_control"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["sesiones_individuales"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["sesiones_grupales"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["Integradora"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["conferencias"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["tallares"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["psicologia"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["asesorias"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["horas_cumplidas"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["acredito"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["no_acredito"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["deserto"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["acreditado_en_seguimiento"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["valor_numerico"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nivel_dedesempeno"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["id_docente"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_docente"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_grupo"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["siglas"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input onchange="sumar(this.value); name = "desertaron" id="desertaron"  class = "NC monto" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input onchange="sumar(this.value); name = "acreditaron" id="na"  class = "NC monto" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input onchange="sumar(this.value); name = "na" id="na" class = "NC monto" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA" value="0" disabled readonly  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_in" id="tutoria_in"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_gr" id="tutoria_gr"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalC" id="totalC"   class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "conferencia" id="conferencia"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "taller" id="taller"  class = "NC" type = "text">  </td>
+
                     </tr>
                   <?php } ?>
 
 
                 </table>
-                <div style="margin-top: 5%" class = "buton"><button id="boton_descarga"style="padding-left: 10px; padding-right: 10px;" ><span class="material-icons"> arrow_circle_down </span> Descargar Excel</button></div>
+                <div style="margin-top: 5%" class = "buton"><button style="padding-left: 10px; padding-right: 10px;" ><span class="material-icons"> check_circle </span> Enviar Reporte</button></div>
                       </div>
                     </div>
                 </form>
@@ -136,10 +134,20 @@ session_start();
 </html>
 
 <script>
-  document.getElementById("boton_descarga").addEventListener('click',()=>{
-    var table2excel = new Table2Excel();
-    table2excel.export(document.querySelectorAll("#tblStocks"),"Reporte_tutorados");
-  });
-
+function sumar(valor)
+{
+  var total = 0;	
+        valor = parseInt(valor); // Convertir el valor a un entero (número).
+    	
+        total = document.getElementById('totalA').value;
+    	
+        // Aquí valido si hay un valor previo, si no hay datos, le pongo un cero "0".
+        total = (total == null || total == undefined || total == "") ? 0 : total;
+    	
+        /* Esta es la suma. */
+        total = (parseInt(total) + parseInt(valor));
+    	
+        // Colocar el resultado de la suma en el control "span".
+        document.getElementById('totalA').value = total;
+}
 </script>
-

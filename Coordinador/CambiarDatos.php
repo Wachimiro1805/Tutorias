@@ -8,7 +8,7 @@ if($conexion->connect_errno)
 }else {
   session_start();
 
-  if (empty($_SESSION["usuario"])) {
+  if (empty($_SESSION["usuario"])) { 
      
   }else{
     $usuario = $_SESSION["usuario"];
@@ -32,35 +32,23 @@ if($conexion->connect_errno)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualiza tus datos</title>
     
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../css/Alumno/estiloA.css">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-=======
     <link rel="stylesheet" href="../css/estiloC.css">
->>>>>>> 2ad5a511a816ba166699edcdc7669060c664fa0c
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 
 </head>
 <body> 
  
-<header class="navbar navbar-dark bg-dark  navbar-expand-md">
+<header class="navbar navbar-dark bg-dark navbar-expand-md">
   <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
       <span class="navbar-toggler-icon"></span> 
   </button>
   <div class="navbar-collapse collapse" id="navbar">
       <ul class="navbar-nav">
-            <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">GESTIONAR TUTORADOS</a></li>
-            <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR TUTORES</a></li>
-            <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
-            <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">REPORTE TUTORES</a></li>
-            <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
-
-            <li class="nav-item"><a href="loginC.php" class="nav-link">CERRAR SESIÓN</a></li>
+      <li class="nav-item"><a href="GestionarDatosC.html" class="nav-link">REGRESAR</a></li>
       </ul>
     </div>
     <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
