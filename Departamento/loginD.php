@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>loginD</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../css/estiloD.css">
@@ -27,33 +27,31 @@
 
     <main class="mainLogin">   
     <form action="validarD.php" method="post" class="formulario">
-        <h3 class ="titulo">Iniciar Sesion</h3>
-        <div class="contenedor-form">
-        <form action="Departamento.php" method='post' class="formulario"> 
-          <div class="input-contenedor">
-            <span class="material-icons icon"> account_circle </span>
-            <input name = "control" class = "NC" type = "text" placeholder="Usuario">
-            <br> 
-            <span class="material-icons"> password </span>
-            <input class = "NC" type = "password" placeholder="Contraseña" name = "pass"  require>
-          </div>
-    
-          <div class = "rutas" style="margin-top: 10px">
-            <div class = "buton"><button style="margin-right: 10px" onclick="location.href='validarD.php'" >INGRESAR</button></div>
-             </form>  
-          </div>
-        </div>      
-      </form>
-      
-      <?php
+          <h2 class ="titulo">Iniciar Sesion</h2>
+          <div class="contenedor-form">
+          <form action="Departamento.php" method='post' class="formulario">  
+            <div class="input-contenedor">
+              <span class="material-icons icon"> account_circle </span>
+              <input class = "NC" type = "text" placeholder="RFC" name = "rfc">   
+              <br> 
+              <span class="material-icons"> password </span>
+              <input class = "NC" type = "password" placeholder="Contraseña" name = "pass">
+            </div>
+            <div class = "rutas" style="margin-top: 10px">
+              <div class = "buton"><button style="margin-right: 10px" onclick="location.href='#'" >INGRESAR</button></div>            
+              </form>
+            </div>
+          </div>       
+        </form> 
+        <?php
 if (isset($_GET['error'])) {
     echo "Error al iniciar sesion";   
 } else {
     // Fallback behaviour goes here
 }
-?>
-       
-      </div>
+?>    
+         
+        </div>
       </main>
 
 

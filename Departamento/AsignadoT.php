@@ -6,26 +6,9 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-<<<<<<< HEAD
 $sql = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D;";
 $sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, A.nombreA, A.apellido_p, A.numero_control, G.nombre_grupo,C.siglas  FROM docentes D INNER JOIN asignar_tutor AST ON(AST.fk_docentes=D.id_docente) INNER JOIN alumnos A ON(A.id_alumnos = AST.fk_alumno) INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras)";
 $sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) WHERE AST.fk_docentes IS NULL;";
-=======
-$sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
-$sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, 
-                A.nombreA, A.apellido_p, A.numero_control, 
-                G.nombre_grupo,
-                C.siglas  
-                FROM docentes D 
-                INNER JOIN asignar_tutor AST ON(AST.fk_docentes=D.id_docente) 
-                INNER JOIN alumnos A ON(A.id_alumnos = AST.fk_alumno) 
-                INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) 
-                INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras);";
-$sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m 
-            FROM docentes D 
-            LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) 
-            WHERE AST.fk_docentes IS NULL;";
->>>>>>> 59916494e9b168dd1b9ecc02286f4cd61319a0cb
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado3 = $conexion->query($sql3);
@@ -36,7 +19,7 @@ $resultado3 = $conexion->query($sql3);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departamento</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../css/estiloD.css">
@@ -53,15 +36,9 @@ $resultado3 = $conexion->query($sql3);
         <ul class="navbar-nav">
         <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
-<<<<<<< HEAD
             <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>
-=======
-            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">AGREGAR TUTORES</a></li>
-            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR TUTORES</a></li>
-            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR TUTORES</a></li>
->>>>>>> 59916494e9b168dd1b9ecc02286f4cd61319a0cb
             <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>

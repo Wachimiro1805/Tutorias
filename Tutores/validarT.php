@@ -11,7 +11,7 @@ $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){     
-    header("location:Tutor.html?numero=$NumCon");   
+    header("location:Tutorados.php?numero=$NumCon");   
 }else{
    
    header("location:loginT.php?error=true");

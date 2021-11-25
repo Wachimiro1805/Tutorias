@@ -8,21 +8,22 @@ if($conexion->connect_errno)
 }else {
   session_start();
 
-  if (empty($_SESSION["control"])) {
+  if (empty($_SESSION["usuario"])) {
      
   }else{
-    $usuario = $_SESSION["control"];
+    $usuario = $_SESSION["usuario"];
     $consulta="SELECT * FROM jefe_departamento WHERE usuario = '$usuario'";
     $resultado = $conexion->query($consulta);
     while($rows=$resultado->fetch_array()){
       $nombre = $rows[1];
       $apellidoM = $rows[2];
       $apellidoP = $rows[3];      
+
       
       }
-    //echo '<h4 style="text-align:center">'. $resultado .' </h4>' ; 
   }
 }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -30,7 +31,7 @@ if($conexion->connect_errno)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departamento</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../css/estiloD.css">
@@ -55,11 +56,9 @@ if($conexion->connect_errno)
     <form action="actualiza.php" method="POST">  
     <div class = "IncioSnecio">
 
-    <input name = "firstname" class = "NC" type = "text" placeholder="<?php  echo "$nombre";?>">
-
-    <input name = "lasttname" class = "NC" type = "text" placeholder="<?php  echo "$apellidoM";?>">
-
-    <input name = "lastname2" class = "NC" type = "text" placeholder="<?php  echo "$apellidoP";?>">
+    <input class = "NC" type = "text" placeholder="Nombre(s)"  value="<?php  echo "$nombre";?>" name = "nombre" >  
+          <input class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo "$apellidoM";?>" name = "apellidom">
+          <input class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo "$apellidoP";?>" name = "apellidop">
    
 
        <div class = "rutas">
