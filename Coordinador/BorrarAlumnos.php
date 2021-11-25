@@ -51,6 +51,7 @@ $resultado = $conexion->query($sql);
         <td>Apellido Paterno</td>
         <td>Apellido Materno</td>
         <td>No de control</td> 
+        <td>Semestre</td> 
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
@@ -61,6 +62,7 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["apellido_p"]?></td>
                 <td><?php echo $datos["apellido_m"]?></td>
                 <td><?php echo $datos["numero_control"]?></td>
+                <td><?php echo $datos["semestre"]?></td>
             </tr>
             <?php   
         }

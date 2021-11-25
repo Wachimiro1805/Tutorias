@@ -5,8 +5,8 @@
         $name=$_POST['nombre'];   
         $lasttname=$_POST['apellido_p'];
         $lastname2=$_POST['apellido_m']; 
-
-    $sql = "UPDATE alumnos SET 	nombreA='$name', apellido_p = '$lasttname', apellido_m = '$lastname2' WHERE alumnos.id_alumnos = $id;";
+        $semestre=$_POST['semestre']; 
+    $sql = "UPDATE alumnos SET 	nombreA='$name', apellido_p = '$lasttname', apellido_m = '$lastname2', semestre= $semestre WHERE alumnos.id_alumnos = $id;";
     $ejecutar=mysqli_query($conexion, $sql);
     $error=mysqli_error($conexion);
 

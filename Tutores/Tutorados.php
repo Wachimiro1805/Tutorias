@@ -1,11 +1,11 @@
 <?php 
-    session_start();
+session_start();
 ?>
 <?php
 require "conexionT.php";
 
-$tutor = $_GET['numero'];
 
+//$tutores=$_POST['control'];
 
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
@@ -13,6 +13,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
+$sql1 = "SELECT id_docente FROM docentes WHERE usuario = 'U4'";
 $sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
 $sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, 
                 A.nombreA, A.apellido_p, A.numero_control, 
@@ -30,6 +31,15 @@ $sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado3 = $conexion->query($sql3);
+$resultado4 =  $conexion->query($sql1);
+
+$result = $conexion->query($sql);
+if (mysqli_num_rows($resultado4) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $id_docente = $row["id_docente"];}}else {
+    echo "0 results";
+  }
+echo " $id_docente ";
 ?>
 
 
@@ -66,7 +76,7 @@ $resultado3 = $conexion->query($sql3);
     </div>
     <a href="../index.html"><img src="../Imagenes/Incio/Icono4.png" alt="Icono2" width="250"></a>
   </header>
-
+ 
   <main class="mainLogin">
     <h2 class="titulo">Listado de tutorados</h2>
 
@@ -84,7 +94,7 @@ $resultado3 = $conexion->query($sql3);
       <tr>
 
       </tr>
-
+   
     </table>
 
   </main>

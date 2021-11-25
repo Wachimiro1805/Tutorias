@@ -19,7 +19,7 @@
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="GestionarDatosJD.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>

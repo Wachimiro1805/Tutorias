@@ -9,6 +9,7 @@
     $correo=$_POST['correo'];
     $grupos=$_POST['grupos'];
     $carreras=$_POST['carreras'];
+    $semestre=$_POST['semestre'];
 
 
 
@@ -44,6 +45,7 @@ if (mysqli_num_rows($result) > 0) {
                                     '$correo',
                                     '$Ncontrol',
                                     DEFAULT,
+                                    $semestre,
                                     $id_grupo,
                                     $id_carrera)";
   $ejecutar=mysqli_query($conexion, $sql);

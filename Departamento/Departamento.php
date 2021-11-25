@@ -1,3 +1,4 @@
+
 <?php
 require "conexionCT.php";
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
@@ -8,6 +9,7 @@ if($conexion->connect_errno)
 }
 $sql = "SELECT S.pk_solicitudes ,A.nombreA, A.apellido_p, A.numero_control, C.siglas, G.nombre_grupo, AR.nombre, S.fecha, AR.fecha, AR.tipo_de_asesoria, S.status FROM alumnos A  INNER JOIN  carreras C ON(C.id_carreras = A.fk_carreras) INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN solicitudes S ON(S.fk_alumnos= A.id_alumnos) INNER JOIN asesorias AR ON(AR.id_asesorias= S.fk_asesorias);";
 $resultado = $conexion->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +34,7 @@ $resultado = $conexion->query($sql);
         <ul class="navbar-nav">
         <li class="nav-item"><a href="Departamento.php" class="nav-link">TUTORES/COORDINADORES</a></li>
             <li class="nav-item"><a href="verExp2.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
-            <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
+            <li class="nav-item"><a href="GestionarDatosJD.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
             <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
@@ -49,8 +51,9 @@ $resultado = $conexion->query($sql);
 
 
     <div class = "rutasInicio">
-
+    
     <div class = "buton"><button onclick="location.href='ReporteCordi.php'" >COORDINADORES DE TUTORIAS</button></div>
+    
     <br>
     <div class = "buton"><button onclick="location.href='reporteTutor.php'" >TUTORES</button></div>
     <br>

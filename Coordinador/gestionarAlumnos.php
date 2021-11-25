@@ -37,6 +37,7 @@
       <input name = "Ncontrol"  class = "NC" type = "text" placeholder="Numero de Control">
       <input name = "telefono" class = "NC" type = "text" placeholder="Telefono">
       <input name = "correo" class = "NC" type = "text" placeholder="Correo">
+      <input name = "semestre" class = "NC" type = "number" placeholder="Semestre">
       </div>
   
       <div class = "grupos-carreras" >
