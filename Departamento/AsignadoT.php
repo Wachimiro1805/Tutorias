@@ -6,11 +6,6 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-<<<<<<< HEAD
-$sql = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D;";
-$sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, A.nombreA, A.apellido_p, A.numero_control, G.nombre_grupo,C.siglas  FROM docentes D INNER JOIN asignar_tutor AST ON(AST.fk_docentes=D.id_docente) INNER JOIN alumnos A ON(A.id_alumnos = AST.fk_alumno) INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras)";
-$sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) WHERE AST.fk_docentes IS NULL;";
-=======
 $sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
 $sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, 
                 A.nombreA, A.apellido_p, A.numero_control, 
@@ -25,7 +20,6 @@ $sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m
             FROM docentes D 
             LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) 
             WHERE AST.fk_docentes IS NULL;";
->>>>>>> 59916494e9b168dd1b9ecc02286f4cd61319a0cb
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado3 = $conexion->query($sql3);

@@ -17,9 +17,9 @@ if($conexion->connect_errno)
     while($rows=$resultado->fetch_array()){
       $nombre = $rows[1];
       $apellidoM = $rows[2];
-      $apellidoP = $rows[3];      
-
-      
+      $apellidoP = $rows[3]; 
+      $correo = $rows[4]; 
+      $id = $rows[0];   
       }
     //echo '<h4 style="text-align:center">'. $resultado .' </h4>' ; 
   }
@@ -33,15 +33,16 @@ if($conexion->connect_errno)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualiza tus datos</title>
     
-    <link rel="stylesheet" href="../css/Alumno/estiloA.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estiloC.css">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 
-<header class="navbar navbar-dark bg-dark navbar-expand-md">
+</head>
+<body> 
+ 
+<header class="navbar navbar-dark bg-dark  navbar-expand-md">
   <a style="margin-left: 10px" class="navbar-brand">INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
       <span class="navbar-toggler-icon"></span> 
@@ -63,23 +64,22 @@ if($conexion->connect_errno)
 
 
 
-  <main class="mainLogin">   
-    
-    <form class="formulario">
-      <h2 class ="titulo">Información personal</h2> 
-      <div class="contenedor-form">
-        <div class="input-contenedor">
-          
-          <input class = "NC" type = "text" placeholder="Nombre(s)"  value="<?php  echo "$nombre";?>" name = "nombre" >  
-          <input class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo "$apellidoM";?>" name = "apellidom">
-          <input class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo "$apellidoP";?>" name = "apellidop">
+  <main class="mainLogin" style="justify-content: center; align-items:center;">   
+    <div style="justify-content: center; align-items:center;">
+      <form class="formulario" action="actualizaCT.php" method="POST">
+        <h2 class ="titulo">Información personal</h2> 
+        <div class="contenedor-form">
+          <div class="input-contenedor">
+            <input name = "name" id="name"  class = "NC" type = "text" placeholder="Nombre(s)"  value="<?php  echo "$nombre";?>">  
+            <input name = "lastname" id="lastname" class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo "$apellidoM";?>" >
+            <input name = "lastname2" id="lastname2" class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo "$apellidoP";?>">
 
+          </div>
+        </div>      
+        <div class = "rutas" style="margin-top: 10px">
+          <div class = "buton"><button style="margin-right: 10px" type="submit" >ACTUALIZAR INFORMACIÓN</button></div>
         </div>
-      </div>      
-      <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button style="margin-right: 10px"  >ACTUALIZAR INFORMACIÓN</button></div>
-      </div>
-    </form>
+      </form>
     
     </div>
     </main>

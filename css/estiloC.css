@@ -84,7 +84,7 @@ main{
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-left: 2%;
+    
     justify-content: center;
     background: #f1e8e8;
     } 
@@ -215,6 +215,7 @@ footer{
         border-radius:10px;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
     }
     .contenedor-form{
         width: 100%;

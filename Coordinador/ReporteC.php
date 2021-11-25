@@ -9,14 +9,15 @@ session_start();
         exit();
     }
 
-    $sql = "SELECT * FROM reporte_tutorado;";
-    $sql2 = "SELECT rt.id_reporte_tutorado,rt.nombre,rt.no_control,rt.sesione_individuales,
-                    rt.sesiones_grupales,rt.actividad_integradora,rt.conferencias,rt.tallares,
-                    rt.psicologia,rt.asesorías,rt.horas_cumplidas,rt.valor_numerico,
-                    rt.nivel_dedesempeño   
-                    FROM reporte_tutorado rt;";
+    $sql1 = "SELECT * FROM reporte_coordinador;";
+    $sql= "SELECT A.id_alumnos ,A.nombreA,A.numero_control,RA.sesiones_individuales,RA.sesiones_grupales,RA.actividad_integradora as 'Integradora',RA.conferencias,RA.tallares,
+    RA.psicologia,RA.asesorias,RA.horas_cumplidas,E.acredito,E.no_acredito,E.deserto,E.acreditado_en_seguimiento,RA.valor_numerico,RA.nivel_dedesempeno FROM alumnos A 
+            INNER JOIN reporte_tutorado RA ON RA.fk_alumnos = A.id_alumnos
+            INNER JOIN estatus_en_el_programa E ON E.fk_alumno = A.id_alumnos";
+            
     $resultado = $conexion->query($sql);
-    $resultado2 = $conexion->query($sql2);
+    $error=mysqli_error($conexion); 
+    //echo"Error: $error ";
 
 ?>
 
@@ -28,14 +29,15 @@ session_start();
     <head>
       <meta charset = 'UTF-8'>
       <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
-      <title>Reportes</title>
+      <title>Reporte Coordinador</title>
       <link rel = 'stylesheet' href = '../css/bootstrap.min.css'>
       <script src = '../js/bootstrap.bundle.min.js'></script>
       <script src = '../js/jquery-3.6.0.js'></script>
-      <link rel = 'stylesheet' href = '../css/estiloT.css'>
+      <link rel = 'stylesheet' href = '../css/estiloC.css'>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
-    <header class = 'navbar navbar-dark bg-dark navbar-expand-md'>
+    <header class = 'navbar navbar-dark  navbar-expand-md'>
       <a style = 'margin-left: 10px' class = 'navbar-brand'>INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
       <button class = 'navbar-toggler' data-bs-toggle = 'collapse' data-bs-target = '#navbar'>
         <span class = 'navbar-toggler-icon'></span>
@@ -50,227 +52,71 @@ session_start();
 
     <main class = 'mainLogin' style = 'display: inline;padding-right: 40px;padding-top: 10px;'>
       <body style = 'display: flex; padding-right: 40px;'>
-        <div style = ' display: flex ;flex-direction:column;'>
-          <div style = 'display:flex; width:100%;flex-direction: row; background-color: peachpuff; '>
-            <div class = 'InfoArriba' style = 'float: left; '>
-              <!-- &&  &&  &&  && & Encabezado Izquierdo &&  &&  &&  && & -->
-              <h6 style = 'text-align: center;'>Datos Generales</h6>
-                <div class = 'InfoIzq' style = " margin: 0 auto;padding: 10px;  border: 1px solid black;">
-                  <h6 style = ''>Tutor:</h6>
-                  <input style = '' type = 'text' id = 'Tutor'>
-                  <h6 style = ''>Carrera:</h6>
-                  <input style = '' type = 'text' id = 'Carrera'>
-                  <h6 style = ''>Periodo de Atención:</h6>
-                  <input style = '' type = 'text' id = 'PeriodoAtencion'>
-                </div>
-              <!-- &&  &&  &&  && & Encabezado Derecho &&  &&  &&  && & -->
-              <div class = 'InfoDer' style = "margin: 0 auto;padding: 10px;border: 1px solid black;">
-                <h6 style = ''>Grupo:</h6>
-                <input style = 'display:flex;' type = 'text' id = 'Grupo'>
-                <h6 style = ''">Hora:</h6>
-                <input style="' type=' text' id='Hora">
-              </div>
-            </div>
-
-             
-              <div style=" display:flex;width:100%;padding-top: 1.7em;padding-left: 6em;flex-direction: row;">
-                <div style="float: left;">
-                  <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
-                    <div style=" margin: 0 auto;padding: 10px;border: 1px solid black;">
-                    
-                    <form action="guardar.php" method="POST">  
-                    <h6 style="">Nombre del Estudiante:</h6>
-                      <input name='nombre'type='text' >
-                      <h6 style="">No.Control:</h6>
-                      <input name='nomcontrol'type='text' >
-                      <h6 style="">Sesiones Individuales:</h6>
-                      <input name='sesionIn'type='text' >
-                      <h6 style="">Sesiones Grupales:</h6>
-                      <input name='sesionGr'type='text' >
-                      <h6 style="">Actividad Integradora:</h6>
-                      <input name='actividadIn'type='text' >
-                    
-                    </div>
-                </div>
-              </div>
-
-                <div style="display:flex;width:100%;padding-top: 1.7em;padding-left: 1rem;flex-direction: row;">
-                  <div style="float: left;">
-                    <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
-                    <div style=" margin: 0 ;      padding: 10px;      border: 1px solid black;      ">
-                      <h6 style="">Conferencias:</h6>
-                      <input name='conferencias'type='text' >  
-                      <h6 style="">Talleres:</h6>
-                      <input name='talleres'type='text' >
-                      <h6 style="">Psicoología</h6>
-                      <input name='psicologia'type='text' >
-                      <h6 style="">Asesoría:</h6>
-                      <input name='asesoria'type='text' >
-                      <h6 style="">Total de Horas:</h6>
-                      <input name='totalHoras'type='text' >
-                    </div>
-                  </div>
-                </div>
-
-                  <div style="display:flex;width:70%;padding-top: 1.7em;padding-left: 1rem;padding-right: 20%;flex-direction: row;">
-                    <div style="float: left;">
-                      <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
-                      <div style=" margin: 0 ;padding: 10px;border: 1px solid black;">
-                      <h6 style="">Acreditó:</h6>
-                      <input name='acredito'type='text' >
-                        <h6 style="">No acreditó:</h6>
-                        <input name='noacredito'type='text' >
-                        <h6 style="">Desertó:</h6>
-                        <input name='deserto'type='text' >
-                        <h6 style="font-size: .9em;">Acreditado en Seguimiento:</h6>
-                        <input name='AcreditadoSe'type='text' >
-                        <h6 style="">Valor Numerico:</h6>
-                        <input name='ValorNu'type='text' >
-                        <h6 style="">Nivel de Desempeño:</h6>
-                        <input name='Desempeño'type='text' >
-                      </div>
-                    </div>
-                  </div>
-                
-                
-                  <div style="display:flex;flex-direction:column">
-                    <div style="position: relative;right:265px;top: 150px;">
-                      <div style="float: left;">
-                        <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
-                        <div style=" margin: 0 auto;padding: 10px;">
-                          <div class='buton'><button type="submit">GUARDAR INFORMACIÓN</button></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-             
-
-
-
-                <div style="padding-right: 150px;position: relative;right:250px;top: 100px; ">
-                  <div style="float: left;padding-right: 40px;">
-                    <div style=" margin: 0 ;padding: 10px;border: 1px solid black;background-color: lightsalmon;">
-                      
-                    <table style="font-size: 11px;background-color: navajowhite;">
-                        <tr style="border: 1px solid #000;text-align: center;">
-                          <th colspan="2' style='border: 1px solid #000;padding: 5px;">Evaluación del tutorado</th>
-                        </tr>
-                        <tr style="border: 1px solid #000;text-align: center;">
-                          <th style="border: 1px solid #000;">Valor numerico</th>
-                          <th style="border: 1px solid #000;">Nivel de desempeño</th>
-                        </tr>
-                        <tr style="border: 1px solid #000;text-align: center;">
-                          <td style="border: 1px solid #000;">4</td>
-                          <td style="border: 1px solid #000;">Excelente</td>
-                        </tr>
-                        <tr style="border: 1px solid #000;text-align: center;">
-                          <td style="border: 1px solid #000;">3</td>
-                          <td style="border: 1px solid #000;">Notable</td>
-                        </tr>
-                        <tr style="border: 1px solid #000;text-align: center;">
-                          <td style="border: 1px solid #000;">2</td>
-                          <td style="border: 1px solid #000;">Bueno</td>
-                        </tr>
-                        <tr style="border: 1px solid #000;text-align: center;">
-                          <td style="border: 1px solid #000;">1</td>
-                          <td style="border: 1px solid #000;">Suficiente</td>
-                        </tr>
-                        <tr style="border: 1px solid #000;text-align: center;">                          
-                          <td style="border: 1px solid #000;">0</td>
-                          <td style="border: 1px solid #000;">Insuficiente</td>
-                        </tr>
-                      </table>
-
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </div>
-
               <div class="' style='display:flex;flex-direction: column;padding: 5px;">
-
-             
                                
-                <table style="font-size: 9px;background-color: sandybrown;">
+                <table id="tblStocks" style="font-size: 9px;" >
                   <tr style="border: 1px solid #000;text-align: center;">
-                    <th rowspan='2' style='border: 1px solid #000;padding: 5px;'>NÚMERO</th>
-                    <TH rowspan='2' style='border: 1px solid #000;padding: 5px;'>NOMBRE DEL ESTUDIANTE</TH>
-                    <TH rowspan='2' style='border: 1px solid #000;padding: 5px;'>NO.CONTROL</TH>
-                    <TH colspan='2' style='border: 1px solid #000;padding: 5px;'>NÚMERO DE SESIONES CON EL TUTOR (HORA/SESIÓN)</TH>
-                    <TH colspan='3' style='border: 1px solid #000;padding: 5px;'>PARTICIPACIÓN EN ACTIVIDADESDE APOYO (NÚMERO DE HORAS DE LA ACTIVIDAD)</TH>
-                    <TH colspan='2' style='border: 1px solid #000;padding: 5px;'>CANALIZACIÓN (NÚMERO DE HORA/SESIÓN)</TH>
-                    <TH rowspan='2' style='border: 1px solid #000;padding: 5px;'>TOTAL DE HORAS CUMPLIDAS</TH>
-                    <TH colspan='4' style='border: 1px solid #000;padding: 5px;'>ESTATUS EN EL PROGRAMA (MARQUE X EN SOLO UNA COLUMNA)</TH>
-                    <TH colspan='2' style='border: 1px solid #000;padding: 5px;'>EVALUACIÓN DEL TUTORADO</TH>
+                    <th rowspan='2' style="border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;">NÚMERO</th>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NOMBRE DEL ESTUDIANTE</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NO.CONTROL</TH>
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NÚMERO DE SESIONES CON EL TUTOR (HORA/SESIÓN)</TH>
+                    <TH colspan='3' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>PARTICIPACIÓN EN ACTIVIDADESDE APOYO (NÚMERO DE HORAS DE LA ACTIVIDAD)</TH>
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>CANALIZACIÓN (NÚMERO DE HORA/SESIÓN)</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>TOTAL DE HORAS CUMPLIDAS</TH>
+                    <TH colspan='4' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>ESTATUS EN EL PROGRAMA (MARQUE X EN SOLO UNA COLUMNA)</TH>
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>EVALUACIÓN DEL TUTORADO</TH>
 
                   </tr>
                   <tr style='border: 1px solid #000;text-align: center;'>
-                    <td style='border: 1px solid #000;'>SESIONES INDIVIDUALES</td>
-                    <td style='border: 1px solid #000;'>SESIONES GRUPALES</td>
-                    <td style='border: 1px solid #000;'>ACTIVIDAD<br> INTEGRADORA<br> (Max. 4 horas)</td>
-                    <td style='border: 1px solid #000;'>CONFERENCIAS</td>
-                    <td style='border: 1px solid #000;'>TALLERES</td>
-                    <td style='border: 1px solid #000;'>PSICOLOGÍA</td>
-                    <td style='border: 1px solid #000;'>ASESORÍA</td>
-                    <td style='border: 1px solid #000;'>ACREDITÓ</td>
-                    <td style='border: 1px solid #000;'>NO<BR> ACREDITÓ</td>
-                    <td style='border: 1px solid #000;'>DESERTÓ</td>
-                    <td style='border: 1px solid #000;'>ACREDITADO EN <BR>SEGUIMIENTO</td>
-                    <td style='border: 1px solid #000;'>VALOR<BR>NUMERICO</td>
-                    <td style='border: 1px solid #000;'>NIVEL DE <BR>DESEMPEÑO</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>SESIONES INDIVIDUALES</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>SESIONES GRUPALES</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACTIVIDAD<br> INTEGRADORA<br> (Max. 4 horas)</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>CONFERENCIAS</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>TALLERES</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>PSICOLOGÍA</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ASESORÍA</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITÓ</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NO<BR> ACREDITÓ</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>DESERTÓ</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITADO EN <BR>SEGUIMIENTO</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>VALOR<BR>NUMERICO</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NIVEL DE <BR>DESEMPEÑO</td>
                   </tr>          
 
-                <form action="eliminact.php" method="POST">  
+                <form method="POST">  
                   <!--Datos DE LA TABLA-->
                   <?php while($datos=$resultado->fetch_array()){?>
                     <tr align="center">
-                      <td style='border: 1px solid #000;'><?php echo $datos["id_reporte_tutorado"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["nombre"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["no_control"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["sesiones _individuales"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["sesiones _grupales"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["actividad_integradora"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["conferencias"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["tallares"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["psicologia"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["asesorías"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["horas_cumplidas"]?></td>
-
-                      <td style='border: 1px solid #000;'><?php echo $datos["acredito"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["no_acredito"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["deserto"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["acreditado_en_seguimiento"]?></td>
-                      
-
-                      <td style='border: 1px solid #000;'><?php echo $datos["valor_numerico"]?></td>
-                      <td style='border: 1px solid #000;'><?php echo $datos["nivel_dedesempeño"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["id_alumnos"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombreA"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["numero_control"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["sesiones_individuales"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["sesiones_grupales"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["Integradora"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["conferencias"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["tallares"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["psicologia"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["asesorias"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["horas_cumplidas"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["acredito"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["no_acredito"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["deserto"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["acreditado_en_seguimiento"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["valor_numerico"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nivel_dedesempeno"]?></td>
                     </tr>
                   <?php } ?>
 
 
                 </table>
-
-                    <div style="position: relative;right:250px;top: 50px;">
-                      <div style="float: right;">
-                        <!-- &&&&&&&&& Encabezado Izquierdo &&&&&&&&& -->
-                        <div style=" margin: 0 auto;padding: 10px;">
-                          <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-                          <div class='buton'><button type="submit">BORRAR INFORMACIÓN</button>
-                          </div>
-                        </div>
+                <div style="margin-top: 5%" class = "buton"><button id="boton_descarga"style="padding-left: 10px; padding-right: 10px;" ><span class="material-icons"> arrow_circle_down </span> Descargar Excel</button></div>
                       </div>
                     </div>
                 </form>
 
               </div>
 
-                <div>
-                  <label for='nombre' style='font-size: 1.5rem;'>Observaciones: </label>
-                  <input type='text' >
-                </div>
+
       </div>
     </body>
   </main>
@@ -288,3 +134,12 @@ session_start();
   </body>
 
 </html>
+
+<script>
+  document.getElementById("boton_descarga").addEventListener('click',()=>{
+    var table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll("#tblStocks"),"Reporte_tutorados");
+  });
+
+</script>
+
