@@ -1,14 +1,3 @@
-<?php
-require "conexionCT.php";
-$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
-if($conexion->connect_errno)
-{
-    echo "Error de conexion de la base datos".$conexion->connect_error;
-    exit();
-}
-$sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
-$resultado = $conexion->query($sql);
-?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
@@ -30,7 +19,7 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-        <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
+            <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
             <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
@@ -40,44 +29,40 @@ $resultado = $conexion->query($sql);
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
-    
-    <main>
-    <form action="eliminat.php" method="POST">  
-    <h2 class ="titulo">Eliminar Tutor</h2>
-    <h3 align="center">Tutores</h3>
-    <table width="100%" border="2px" align="center">
-
-    <tr align="center">
-        <td>ID</td>
-        <td>Nombre</td>
-        <td>Apellido Paterno</td>
-        <td>Apellido Materno</td>
-    </tr>
-    <?php 
-        while($datos=$resultado->fetch_array()){
-        ?>
-            <tr align="center">
-                <td><?php echo $datos["id_docente"]?></td>
-                <td><?php echo $datos["nombre_docente"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["apellido_m"]?></td>
-
-            </tr>
-            <?php   
+    <h1>Reporte Docentes</h1>
+    <main> 
+        
+    <form action="ExpedienteTutor.php" method="POST">  
+    <Label>Docente: </Label>
+          <?php
+          include 'conexionCT.php';
+          $consulta = "SELECT D.nombre_docente FROM docentes D ;";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select required name = 'docentes'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['nombre_docente']."'>";
+              echo $columna['nombre_docente'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );
+     
+                    
+          ?>
+         <?php
+          if (isset($_GET['error'])) {
+          echo "no tienene Reporte";   
+          } else {
+      
         }
+?>
+      <div class = "rutas">
+          <div class = "buton"><button type="submit">VER REPORTES</button></div>
+      
 
-     ?>
-    </table>
-
-   
-
-       </div>
-       
-       <div class = "rutas">
-        <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Eliminar</button></div>
- 
-       </form>
+          </form>
+         </div>
     </main>
 
 

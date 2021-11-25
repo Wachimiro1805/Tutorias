@@ -5,6 +5,7 @@
         $lasttname=$_POST['lasttname'];
         $lastname2=$_POST['lastname2'];
         $grupos=$_POST['grupos'];
+        $correo=$_POST['correo'];
         $carreras=$_POST['carreras'];
     
 
@@ -34,7 +35,7 @@
       echo "0 results";
     }
 
-      $sql="INSERT INTO docentes VALUES (DEFAULT,'$firstname','$lasttname','$lastname2',DEFAULT,DEFAULT,$id_grupo,$id_carrera)";
+      $sql="INSERT INTO docentes VALUES (DEFAULT,'$firstname','$lasttname','$lastname2','$correo' ,DEFAULT,DEFAULT,$id_grupo,$id_carrera)";
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){

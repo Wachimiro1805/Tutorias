@@ -6,7 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
+$sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m , correo FROM docentes;";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -30,11 +30,12 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
+        <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
-            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">AGREGAR TUTORES</a></li>
-            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR TUTORES</a></li>
-            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR TUTORES</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
+            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
+            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -51,6 +52,7 @@ $resultado = $conexion->query($sql);
         <td>Nombre</td>
         <td>Apellido Paterno</td>
         <td>Apellido Materno</td>
+        <td>Correo Electronico</td>
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
@@ -60,38 +62,32 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["nombre_docente"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
                 <td><?php echo $datos["apellido_m"]?></td>
+                <td><?php echo $datos["correo"]?></td>
 
             </tr>
             <?php   
         }
 
      ?>
-    </table>
+    </table style="margin-bottom: 2%">
 
     <input name = "id" class = "NC" type = "text" placeholder="ID a Actualizar">
     <input name = "nombre" class = "NC" type = "text" placeholder="Nombre">
     <input name = "apellido_p" class = "NC" type = "text" placeholder="Apellido paterno">
     <input name = "apellido_m" class = "NC" type = "text" placeholder="Apellido materno">
+    <input name = "correo" class = "NC" type = "mail" placeholder="Correo Electronico">
 
        </div>
        
        <div class = "rutas">
     
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Actualizar</button></div>
+        <div class = "buton" style="margin-top: 0.1%"><button type="submit">Actualizar</button></div>
  
        </form>
     </main>
 
 
 
-    <footer>
-      <div class = footerDatos>     
-      <h4>Instituto Tecnologico de Tepic</h4>
-      <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
-      <p>(311) 211 9400</p>
-      <p>Tepic, Nayarit. Mexico</p>
-      </div>
-    </footer>
 
 
     <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">

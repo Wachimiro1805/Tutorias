@@ -1,6 +1,8 @@
 <?php
 require "conexionCT.php";
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
+$carrera = $_POST['carreras'];
+
 
 if($conexion->connect_errno)
 {
@@ -8,7 +10,7 @@ if($conexion->connect_errno)
     exit();
 }
 
-$sql = "SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);";
+$sql = "SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras) WHERE C.nombre_carrera = '$carrera' ;";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -63,7 +65,11 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["numero_control"]?></td>
                 <td><?php echo $datos["siglas"]?></td>
                 <td><a href="archivo.php?id=<?php echo $datos['id_documento']?>" target="_blank"><?php echo $datos['documento'];?></a></td>
-            </tr>
+                <td>
+               <button onclick="openModelPDF('<?php echo $val['url'] ?>')" class="btn btn-primary" type="button">Ver Archivo Modal</button>
+               <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['url']; ?>" >Ver Archivo pagina</a>
+               </td>
+              </tr>
             <?php   
         }
 
@@ -85,23 +91,93 @@ $resultado = $conexion->query($sql);
           echo "<select>";
           mysqli_close( $conexion );
           ?>
+                  <div class = "buton" style="margin-top: 0.1%"><button type="submit">Filtrar</button></div>
       </form>
     </main>
 
 
 
-    <footer>
-      <div class = footerDatos>     
-      <h4>Instituto Tecnologico de Tepic</h4>
-      <p>"Sabiduria Tecnologica #2595, Lagos del contry."</p>  
-      <p>(311) 211 9400</p>
-      <p>Tepic, Nayarit. Mexico</p>
-      </div>
-    </footer>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo archivo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form enctype="multipart/form-data" id="form1">
+                            <div class="form-group">
+                                <label for="title">Titulo</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Descripcion</label>
+                                <input type="text" class="form-control" id="description" name="description">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">archivo</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="onSubmitForm()">Cuardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalPdf" tabindex="-1" aria-labelledby="modalPdf" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ver archivo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="iframePDF" frameborder="0" scrolling="no" width="100%" height="500px"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script>
+                            function onSubmitForm() {
+                                var frm = document.getElementById('form1');
+                                var data = new FormData(frm);
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4) {
+                                        var msg = xhttp.responseText;
+                                        if (msg == 'success') {
+                                            alert(msg);
+                                            $('#exampleModal').modal('hide')
+                                        } else {
+                                            alert(msg);
+                                        }
 
-    <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">
-
+                                    }
+                                };
+                                xhttp.open("POST", "upload.php", true);
+                                xhttp.send(data);
+                                $('#form1').trigger('reset');
+                            }
+                            function openModelPDF(url) {
+                                $('#modalPdf').modal('show');
+                                $('#iframePDF').attr('src','<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/'; ?>'+url);
+                            }
+        </script>
 
 </body>
 </html>

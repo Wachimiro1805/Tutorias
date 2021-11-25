@@ -32,7 +32,7 @@ $resultado = $conexion->query($sql);
         <ul class="navbar-nav">
    
             <li class="nav-item"><a href="Departamento.php" class="nav-link">TUTORES/COORDINADORES</a></li>
-            <li class="nav-item"><a href="VerExp.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
+            <li class="nav-item"><a href="Exp.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
             <li class="nav-item"><a href="GestionarDatosJD.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
             <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
@@ -51,7 +51,7 @@ $resultado = $conexion->query($sql);
 
     <div class = "buton"><button onclick="location.href='ReporteCordi.php'" >COORDINADORES DE TUTORIAS</button></div>
     <br>
-    <div class = "buton"><button onclick="location.href='AsignadoT.php'" >TUTORES</button></div>
+    <div class = "buton"><button onclick="location.href='reporteTutor.php'" >TUTORES</button></div>
     <br>
  
     </div>

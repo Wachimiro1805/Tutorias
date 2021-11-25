@@ -19,11 +19,12 @@
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
+        <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
-            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">AGREGAR TUTORES</a></li>
-            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR TUTORES</a></li>
-            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR TUTORES</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
+            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
+            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -33,14 +34,14 @@
       <form action="guardarT.php" method="POST">  
       <div class = "IncioSnecio">
        
-      <label>Nombre</label>
+
       <input name = "firstname" class = "NC" type = "text" placeholder="Nombre Completo">
-  
-      <label>Apellido Paterno</label>
+
       <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
   
-      <label>Apellido Materno</label>
       <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
+
+      <input name = "correo" class = "NC" type = "mail" placeholder="Correo Electronico">
       
       </div>
   

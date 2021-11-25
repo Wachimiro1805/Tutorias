@@ -6,8 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
-$resultado = $conexion->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -30,54 +29,32 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-        <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
-            <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
-            <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
-            <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
-            <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>
             <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
-    
+
     <main>
-    <form action="eliminat.php" method="POST">  
-    <h2 class ="titulo">Eliminar Tutor</h2>
-    <h3 align="center">Tutores</h3>
-    <table width="100%" border="2px" align="center">
-
-    <tr align="center">
-        <td>ID</td>
-        <td>Nombre</td>
-        <td>Apellido Paterno</td>
-        <td>Apellido Materno</td>
-    </tr>
-    <?php 
-        while($datos=$resultado->fetch_array()){
-        ?>
-            <tr align="center">
-                <td><?php echo $datos["id_docente"]?></td>
-                <td><?php echo $datos["nombre_docente"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["apellido_m"]?></td>
-
-            </tr>
-            <?php   
-        }
-
-     ?>
-    </table>
-
-   
-
-       </div>
-       
-       <div class = "rutas">
-        <input name = "id" class = "NC" type = "text" placeholder="ID para eliminar">
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Eliminar</button></div>
  
-       </form>
+    <h3 align="center">Expedientes Alumnos</h3>
+                 
+    <form action="VerExp.php" method="POST">  
+    <?php   
+          $consulta = "SELECT * FROM carreras";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select required name = 'carreras'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['nombre_carrera']."'>";
+              echo $columna['nombre_carrera'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );
+          ?>
+                  <div class = "buton" style="margin-top: 0.1%"><button type="submit">Filtrar</button></div>
+      </form>
     </main>
 
 

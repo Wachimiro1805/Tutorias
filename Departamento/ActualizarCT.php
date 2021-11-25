@@ -6,7 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m FROM coordinador_de_tutorias;";
+$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m, correo FROM coordinador_de_tutorias;";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ $resultado = $conexion->query($sql);
     <main>
     <form action="actualizact.php" method="POST">  
     <h2 class ="titulo">Actualizar datos Coordinador</h2>
-    <h3 align="center">Coordinadores</h3>
+    <h3 align="center">Coordinador</h3>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">
@@ -51,6 +51,7 @@ $resultado = $conexion->query($sql);
         <td>Nombre</td>
         <td>Apellido Paterno</td>
         <td>Apellido Materno</td>
+        <td>Correo</td>
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
@@ -60,6 +61,7 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
                 <td><?php echo $datos["appelido_m"]?></td>
+                <td><?php echo $datos["correo"]?></td>
 
             </tr>
             <?php   
@@ -72,12 +74,12 @@ $resultado = $conexion->query($sql);
     <input name = "nombre" class = "NC" type = "text" placeholder="Nombre">
     <input name = "apellido_p" class = "NC" type = "text" placeholder="Apellido paterno">
     <input name = "apellido_m" class = "NC" type = "text" placeholder="Apellido materno">
-
+    <input name = "correo" class = "NC" type = "text" placeholder="Correo Electronico">
        </div>
        
        <div class = "rutas">
     
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Actualizar</button></div>
+        <div class = "buton" style="margin-top: 0.1%"><button type="submit">Actualizar</button></div>
  
        </form>
     </main>

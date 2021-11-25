@@ -6,7 +6,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m FROM coordinador_de_tutorias;";
+$sql = "SELECT id_coordinador_tutorias, nombre, apellido_p, appelido_m, correo FROM coordinador_de_tutorias;";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ $resultado = $conexion->query($sql);
             <li class="nav-item"><a href="RegistrarCT.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarCT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarCT.php" class="nav-link">ACTUALIZAR</a></li>
-            <li class="nav-item"><a href="GestionarUsuarios.html" class="nav-link">REGRESAR</a></li>
+            <li class="nav-item"><a href="Departamento.php" class="nav-link">REGRESAR</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -51,6 +51,7 @@ $resultado = $conexion->query($sql);
         <td>Nombre</td>
         <td>Apellido Paterno</td>
         <td>Apellido Materno</td>
+        <td>Correo</td>
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
@@ -60,6 +61,7 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["nombre"]?></td>
                 <td><?php echo $datos["apellido_p"]?></td>
                 <td><?php echo $datos["appelido_m"]?></td>
+                <td><?php echo $datos["correo"]?></td>
 
             </tr>
             <?php   

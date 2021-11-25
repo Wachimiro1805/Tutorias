@@ -37,6 +37,8 @@
     <input name = "lasttname" class = "NC" type = "text" placeholder="Apellido Paterno">
 
     <input name = "lastname2" class = "NC" type = "text" placeholder="Apellido Materno">
+
+    <input name = "correo" class = "NC" type = "mail" placeholder="Correo">
    
 
        <div class = "rutas">
