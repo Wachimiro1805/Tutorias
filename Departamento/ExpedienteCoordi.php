@@ -1,7 +1,7 @@
 <?php
 require "conexionCT.php";
 $coordi=$_POST['coordinadores'];
-$conexion = new mysqli("localhost","root","","bd_tutorias");
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
@@ -14,8 +14,8 @@ $result = $conexion->query($sql);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       $id_coordi = $row["id_coordinador_tutorias"];}}else {
-    echo "0 results";
-  }
+      echo "0 results";
+    }
 //id reporte
 $sql2 = "SELECT GRC.pk_reporte_coord FROM genera_reporte_coordi GRC INNER JOIN coordinador_de_tutorias CT ON (CT.id_coordinador_tutorias = GRC.fk_coordi) WHERE CT.id_coordinador_tutorias = $id_coordi ; ";
 $result2 = $conexion->query($sql2);
@@ -54,7 +54,7 @@ if (mysqli_num_rows($result2) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departamento</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../css/estiloD.css">

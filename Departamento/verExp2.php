@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php
-include('conexion.php');
+include('conexionCT.php');
 
 $tmp = array();
 $res = array();
 
-$sel = $con->query("SELECT * FROM files");
+$sel = $conexion->query("SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);");
 while ($row = $sel->fetch_assoc()) {
     $tmp = $row;
     array_push($res, $tmp);
@@ -42,9 +42,7 @@ while ($row = $sel->fetch_assoc()) {
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-8">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Nuevo
-                    </button>
+ 
 
             
 
@@ -52,20 +50,26 @@ while ($row = $sel->fetch_assoc()) {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">titulo</th>
-                                <th scope="col">descripcion</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col">Alumno</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Numero de control</th>
+                                <th scope="col">siglas</th>
+                                <th scope="col">documento</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($res as $val) { ?>
                                 <tr>
-                                    <td><?php echo $val['id'] ?> </td>
-                                    <td><?php echo $val['title'] ?></td>
-                                    <td><?php echo $val['description'] ?></td>
+                                    <td><?php echo $val['id_documento'] ?> </td>
+                                    <td><?php echo $val['nombreA'] ?></td>
+                                    <td><?php echo $val['apellido_p'] ?></td>
+                                    <td><?php echo $val['numero_control'] ?></td>
+                                    <td><?php echo $val['siglas'] ?></td>
+                                    <td><a href="archivo.php?id=<?php echo $val['id_documento']?>" target="_blank"><?php echo $val['documento'];?></a></td>
                                     <td>
-                                        <button onclick="openModelPDF('<?php echo $val['url'] ?>')" class="btn btn-primary" type="button">Ver Archivo Modal</button>
-                                        <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['url']; ?>" >Ver Archivo pagina</a>
+                                        <button onclick="openModelPDF('<?php echo $val['documento'] ?>')" class="btn btn-primary" type="button">Ver Archivo Modal</button>
+                                        <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['documento']; ?>" >Ver Archivo pagina</a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -75,38 +79,8 @@ while ($row = $sel->fetch_assoc()) {
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nuevo archivo</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form enctype="multipart/form-data" id="form1">
-                            <div class="form-group">
-                                <label for="title">Titulo</label>
-                                <input type="text" class="form-control" id="title" name="title">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Descripcion</label>
-                                <input type="text" class="form-control" id="description" name="description">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">archivo</label>
-                                <input type="file" class="form-control" id="file" name="file">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" onclick="onSubmitForm()">Cuardar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
+
         <div class="modal fade" id="modalPdf" tabindex="-1" aria-labelledby="modalPdf" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
