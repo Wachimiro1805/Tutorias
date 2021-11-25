@@ -1,6 +1,13 @@
 <?php 
 session_start();
 ?>
+<?php 
+require "conexionA.php";
+$sqlA = "SELECT * from alumnos where numero_control = '".$_SESSION['control']."'";
+      
+$resultado = $conexion->query($sqlA);
+?>
+
 <!DOCTYPE html>
 <html lang="estilo"> 
 <head>
@@ -25,7 +32,7 @@ session_start();
       <ul class="navbar-nav">
          <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
          <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
-          <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+
           <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
           <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
           <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -35,8 +42,8 @@ session_start();
   </header>
 
   <main class="mainLogin">   
-    
-    <form class="formulario" action="" method='post'>
+    <div div align="center">
+    <form class="formulario" action="" method='post' align="center">
     <?php
 
 if (isset($_POST['guardar'])){
@@ -52,19 +59,38 @@ if (isset($_POST['guardar'])){
 
 }
 ?>
+
       <h2 class ="titulo">Información personal</h2>
       <div class="contenedor-form">
+      <?php 
+            while($datos=$resultado->fetch_array()){
+                
+        ?>
         <div class="input-contenedor">
-          <input class = "NC" type = "tel" placeholder="Telefono" required name="numeroT">
-          <input class = "NC" disabled type = "text" placeholder="Correo">
+          <p>Nombre: <?php echo $datos["nombreA"].' '.$datos["apellido_p"].' '.$datos["apellido_m"]?></p>
+          <p>Correo: <?php echo $datos["correo"]?></p>
+          <p>Semestre: <?php echo $datos["semestre"]?></p>
+          <p>Numero de control: <?php echo $datos["numero_control"]?></p>
+          <p>Telefono: <?php if(isset($datos["telefono"])){
+            echo $datos["telefono"];
+          } else {
+            echo "No se ha registrado numero telefonico";
+          }?></p>
+          <br></br>
+        <p>Registra o actualiza tu número telefonico</p>
+        <input class = "NC" type = "tel" placeholder="Telefono" required name="numeroT">
+          <?php   
+        }
+     ?>
         </div>
       </div>      
       <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button style="margin-right: 10px" name="guardar" >ACTUALIZAR INFORMACIÓN</button></div>
+        <div class = "buton"><button  name="guardar" >ACTUALIZAR INFORMACIÓN</button></div>
       </div>
     </form>
     
     </div>
+      </div>
     </main>
 
 

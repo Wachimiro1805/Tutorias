@@ -26,7 +26,7 @@ session_start();
       <ul class="navbar-nav">
          <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
          <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
-          <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+
           <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
           <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
           <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -55,8 +55,8 @@ if (isset($_GET['numero'])) {
   
 
     <h2 class ="titulo">Cambiar contraseña</h2>
-    <div class = >
-    <form action="" method='post' >   
+    <div class = "" align="center">
+    <form action="" method='post' class="formulario">   
 
     <?php
 

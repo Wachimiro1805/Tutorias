@@ -15,7 +15,7 @@
         $idal = $rowAl['id_alumnos'];
         }
 
-    $sql = "SELECT id_documento, documento, tipo from documentos where fk_alumno = $idal;";
+    $sql = "SELECT id_documento, documento, tipo, semestre from documentos where fk_alumno = $idal;";
 
     $resultado = $conexionA->query($sql);
 
@@ -43,7 +43,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
                     <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
-                    <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+
                     <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
                     <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
                     <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -56,11 +56,13 @@
 
     <main>
         <h1 align="center">Documentos</h1>
+        <div align="center">
         <table width="70%" border="1px" align="center">
 
             <tr align="center">
                 <td>Nombre del documento</td>
                 <td>Tipo</td>
+                <td>Semestre</td>
                 <td>Expediente</td>
             </tr>
         <?php 
@@ -70,6 +72,7 @@
             <tr align="center">
                 <td><?php echo $datos["documento"]?></td>
                <td><?php echo $datos["tipo"]?></td>
+               <td><?php  echo $datos["semestre"]?></td>
                 <td><a href="archivo.php?id=<?php echo $datos['id_documento']?>"><?php echo $datos['documento'];?></a></td>
             </tr>
             <?php   
@@ -77,6 +80,7 @@
 
      ?>
     </table >
+    </div>
     
     </main>
 
