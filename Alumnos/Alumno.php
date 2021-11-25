@@ -30,6 +30,7 @@
     
         <link rel="stylesheet" href="../css/Alumno/estiloA.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src="../js/bootstrap.bundle.min.js"></script>
         <script src="../js/jquery-3.6.0.js"></script>
     </head>
@@ -43,7 +44,7 @@
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-                    <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
+                    <li class="nav-item"><a href="tieneTutor.php" class="nav-link">VER EXPEDIENTE</a></li>
                     <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
                     <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
                     <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
@@ -118,13 +119,18 @@
         $rowAs = $id_asesoria->fetch_array();
         $idal = $rowAl['id_alumnos'];
         $idas = $rowAs['id_asesorias'];
-        $existe = $conexion->query("SELECT pk_solicitudes from solicitudes where fk_alumnos = '$idal' and fk_asesorias = '$idas'");
+        $fk_docent = $conexion->query("SELECT fk_docentes from asignar_tutor where fk_alumno = '$idal'");
+        $rowAx = $fk_docent->fetch_array();
+        if (isset($rowAx['fk_docentes'])){
+        $idax = $rowAx['fk_docentes'];
+        } else { return 'No se te ha asignado un tutor';}
+        $existe = $conexion->query("SELECT pk_solicitudes from solicitudes where fk_alumnos = '$idal' and fk_asesorias = '$idas' and status = 'Solicitada' ");
         $rowEx = $existe->fetch_array();
         if(isset($rowEx['pk_solicitudes'])){
         $comproba = $rowEx['pk_solicitudes'];
         }
         if (empty($comproba)){
-            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual', '$motivo', '$idal', null,'$idas')");
+            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual', '$motivo', '$idal', $idax,'$idas')");
                 if ($insercion) {echo "Se ha hecho la solicitud";}
                     else {
                         echo "No se ha podido realizar la solicitud";

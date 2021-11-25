@@ -37,5 +37,5 @@ $archivo_binario = (file_get_contents($ruta));
             $ejecutar=mysqli_query($conexion, $sql);
             file_put_contents("//XANNAX/files/$destino", $archivo_binario);
       }
-
+      header('Location: expediente.php');
 ?>
