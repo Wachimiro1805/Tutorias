@@ -39,12 +39,12 @@ session_start();
     <form class="formulario" action="" method='post'>
     <?php
 
-if (isset($_POST['btnIngresar'])){
+if (isset($_POST['guardar'])){
   require "conexionA.php";
   $numero = $conexion ->real_escape_string($_POST['guardar']);
 
 
-  $update = $conexion->query("UPDATE Alumnos set telefono = '$numero' where numero_control = '".$_SESSION['control']."'");
+  $update = $conexion->query("UPDATE alumnos set telefono = '$numero' where numero_control = '".$_SESSION['control']."'");
   if ($update) {echo "Se ha actualizado el número telefonico";}
   else {
     echo "No se pudo actualizar el número telefonico";
@@ -55,7 +55,7 @@ if (isset($_POST['btnIngresar'])){
       <h2 class ="titulo">Información personal</h2>
       <div class="contenedor-form">
         <div class="input-contenedor">
-          <input class = "NC" type = "tel" pattern="[0-9]{10}" placeholder="Telefono" required>
+          <input class = "NC" type = "tel" placeholder="Telefono" required>
           <input class = "NC" disabled type = "text" placeholder="Correo">
         </div>
       </div>      

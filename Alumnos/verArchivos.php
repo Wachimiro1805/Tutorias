@@ -9,11 +9,13 @@
         exit();
     }
 
-    $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
+    $id_alumno = $conexion->query("SELECT id_alumnos from alumnos where numero_control = '".$_SESSION['control']."'");
         $rowAl = $id_alumno->fetch_array();
+        if(isset($rowAl['id_alumnos'])){
         $idal = $rowAl['id_alumnos'];
+        }
 
-    $sql = "SELECT id_documento, nombre, clase, archivo from documentos where fk_alumno = $idal";
+    $sql = "SELECT id_documento, documento from documentos where fk_alumno = $idal;";
 
     $resultado = $conexionA->query($sql);
 
@@ -63,11 +65,12 @@
             </tr>
         <?php 
             while($datos=$resultado->fetch_array()){
+                
         ?>
             <tr align="center">
-                <td><?php echo $datos["nombre"]?></td>
-                <td><?php echo $datos["clase"]?></td>
-                <td><a href="archivo.php?id=<?php echo $datos['id_documento']?>"><?php echo $datos['nombre'];?></a></td>
+                <td><?php echo $datos["documento"]?></td>
+               <!-- <td><?php echo $datos["clase"]?></td> -->
+                <td><a href="archivo.php?id=<?php echo $datos['id_documento']?>"><?php echo $datos['documento'];?></a></td>
             </tr>
             <?php   
         }
