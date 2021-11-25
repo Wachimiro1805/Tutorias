@@ -17,7 +17,7 @@ $sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;
 $sql2 = "SELECT a.nombreA,a.apellido_p,a.apellido_m,a.numero_control,a.correo
           FROM alumnos a
           JOIN asignar_tutor ast on(ast.fk_alumno = a.id_alumnos)
-          WHERE ast.fk_docentes=1";
+          WHERE ast.fk_docentes=5";
 
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
@@ -59,26 +59,27 @@ $resultado2 = $conexion->query($sql2);
   </header>
 
   <main class="mainLogin">
-    <h2 class="titulo">Listado de tutorados</h2>
+    <h2 class="titulo">Solicitudes de canalización de estudiantes</h2>
 
     <table>
       <tr>
+        <td style="border: 1px solid #000; padding: 10px;">No.</td>
         <td style="border: 1px solid #000; padding: 10px;">Nombre</td>
         <td style="border: 1px solid #000; padding: 10px;">Apellido Paterno</td>
         <td style="border: 1px solid #000; padding: 10px;">Apellido Materno</td>
-        <td style="border: 1px solid #000;">Número de control</td>
-        <td style="border: 1px solid #000;">Correo</td>
+        <td style="border: 1px solid #000;">Tipo</td>
+        <td style="border: 1px solid #000;">Atendida</td>
+        <td style="border: 1px solid #000;">Fecha</td>
+        <td style="border: 1px solid #000;">Observación</td>
       </tr>
 
-      <?php while($datos=$resultado2->fetch_array()){?>
       <tr>
-        <td><?php echo $datos["nombreA"]?></td>
-        <td><?php echo $datos["apellido_p"]?></td>
-        <td><?php echo $datos["apellido_m"]?></td>
-        <td><?php echo $datos["numero_control"]?></td>
-        <td><?php echo $datos["correo"]?></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
-      <?php } ?>
 
     </table>
 
