@@ -28,7 +28,7 @@ $control = $_SESSION['control'];
         <ul class="navbar-nav">
            <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
            <li class="nav-item"><a href="expediente.php" class="nav-link">VER EXPEDIENTE</a></li>
-            <li class="nav-item"><a href="Canalizacion.php" class="nav-link">CANALIZACION</a></li>
+
             <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
             <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
             <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -38,6 +38,7 @@ $control = $_SESSION['control'];
     </header>
  
     <main>
+      <div align=center>
       <h2 style="color:#021d75;">Completa tu información</h2>
       <h6>Descarga los archivos y subelos con todos tus datos</h6>
       <br>
@@ -124,7 +125,7 @@ $control = $_SESSION['control'];
     <a href='#' onclick="location.href='verArchivos.php'" style="margin-right: 10px">Verificar tus archivos</a>
 
     
-        
+    </div>
     </main>
 
 
