@@ -70,6 +70,7 @@ if (isset($_POST['guardar'])){
           <p>Nombre: <?php echo $datos["nombreA"].' '.$datos["apellido_p"].' '.$datos["apellido_m"]?></p>
           <p>Correo: <?php echo $datos["correo"]?></p>
           <p>Semestre: <?php echo $datos["semestre"]?></p>
+          <p>Numero de control: <?php echo $datos["numero_control"]?></p>
           <p>Telefono: <?php if(isset($datos["telefono"])){
             echo $datos["telefono"];
           } else {
