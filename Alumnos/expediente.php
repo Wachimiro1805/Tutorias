@@ -102,92 +102,16 @@ $control = $_SESSION['control'];
         </div>
     </form>
 
-    <form method="post" action="" enctype="multipart/form-data">
-      <?php
-        if(filter_input(INPUT_POST, 'btnGuardarE')){
+    <form method="post" action="subirPDF.php?tipo=Entrevista" enctype="multipart/form-data">
 
-        $archivo_nombre=$_FILES['archivoE']['name'];
-        $archivo_tipo = $_FILES['archivoE']['type'];
-        $archivo_temp = $_FILES['archivoE']['tmp_name'];
-   
-        require "conexionA.php";
-  
-        $archivo_binario = (file_get_contents($archivo_temp));
-   
-        $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
-        $rowAl = $id_alumno->fetch_array();
-        if(isset($rowAl['id_alumnos'])){
-        $idal = $rowAl['id_alumnos'];
-        }
-        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Entrevista'");
-        $rowEx = $existe->fetch_array();
-        if(isset($rowEx['id_documento'])){
-        $comproba = $rowEx['id_documento'];
-        }
-        $direccion = "Alumnos/files/{$archivo_nombre}";
-        if (empty($comproba)){
-          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$direccion', 'Entrevista', '$idal')");
-          file_put_contents("files/{$archivo_nombre}", $archivo_binario);
-          if ($insercion) {echo "Se ha subido el archivo";}
-              else {
-                  echo "No se ha podido subir el archivo";
-              }
-          } else {
-              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Entrevista ' ");
-              file_put_contents("files/{$archivo_nombre}", $archivo_binario);
-              if ($insercion) {echo "Se ha actualizado el archivo";}
-              else {
-                  echo "No se ha podido actualizar el archivo";
-              }
-          }
-        }
- ?>
  <label for="archivoF">Subir Entrevista</label>
-        <input type="file" name="archivoE" require></input>
+        <input type="file" name="archivoF" require></input>
         <input class="button" type="submit" name="btnGuardarE" value="Guardar" />
     </form>
 
 
-    <form method="post" action="" enctype="multipart/form-data">
+    <form method="post" action="subirNSS.php?tipo=NSS" enctype="multipart/form-data">
 
-    <?php
-        if(filter_input(INPUT_POST, 'btnGuardarI')){
-
-        $archivo_nombre=$_FILES['archivoIMSS']['name'];
-        $archivo_tipo = $_FILES['archivoIMSS']['type'];
-        $archivo_temp = $_FILES['archivoIMSS']['tmp_name'];
-   
-        require "conexionA.php";
-  
-        $archivo_binario = (file_get_contents($archivo_temp));
-   
-        $id_alumno = $conexion->query("SELECT id_alumnos, semestre from Alumnos where numero_control = '".$_SESSION['control']."'");
-        $rowAl = $id_alumno->fetch_array();
-        $idal = $rowAl['id_alumnos'];
-        $semestre = $rowAl['semestre'];
-        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Entrevista'");
-        $rowEx = $existe->fetch_array();
-        if(isset($rowEx['id_documento'])){
-        $comproba = $rowEx['id_documento'];
-        }
-        $direccion = "Alumnos/files/{$archivo_nombre}";
-        if (empty($comproba)){
-          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$direccion', 'Entrevista', '$idal')");
-          file_put_contents("files/{$archivo_nombre}", $archivo_binario);
-          if ($insercion) {echo "Se ha subido el archivo";}
-              else {
-                  echo "No se ha podido subir el archivo";
-              }
-          } else {
-              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Entrevista ' ");
-              file_put_contents("files/{$archivo_nombre}", $archivo_binario);
-              if ($insercion) {echo "Se ha actualizado el archivo";}
-              else {
-                  echo "No se ha podido actualizar el archivo";
-              }
-          }
-        }
- ?>
 
     <label for="archivoF">Subir vigencia de derechos del IMSS</label>
         <input type="file" name="archivoIMSS" require></input>

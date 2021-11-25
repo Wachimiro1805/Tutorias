@@ -69,7 +69,7 @@ $resultado = $conexion->query($sql);
                 <td><a href="archivo.php?id=<?php echo $datos['id_documento']?>" target="_blank"><?php echo $datos['documento'];?></a></td>
                 <td>
                <button onclick="openModelPDF('<?php echo $val['url'] ?>')" class="btn btn-primary" type="button">Ver Archivo Modal</button>
-               <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['url']; ?>" >Ver Archivo pagina</a>
+               
                </td>
               </tr>
             <?php   

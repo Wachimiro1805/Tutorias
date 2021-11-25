@@ -41,7 +41,7 @@ session_start();
 
 if (isset($_POST['guardar'])){
   require "conexionA.php";
-  $numero = $conexion ->real_escape_string($_POST['guardar']);
+  $numero = $conexion ->real_escape_string($_POST['numeroT']);
 
 
   $update = $conexion->query("UPDATE alumnos set telefono = '$numero' where numero_control = '".$_SESSION['control']."'");
@@ -55,7 +55,7 @@ if (isset($_POST['guardar'])){
       <h2 class ="titulo">Información personal</h2>
       <div class="contenedor-form">
         <div class="input-contenedor">
-          <input class = "NC" type = "tel" placeholder="Telefono" required>
+          <input class = "NC" type = "tel" placeholder="Telefono" required name="numeroT">
           <input class = "NC" disabled type = "text" placeholder="Correo">
         </div>
       </div>      
