@@ -30,14 +30,14 @@ session_start();
       <meta charset = 'UTF-8'>
       <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
       <title>Reporte Coordinador</title>
-      <link rel = 'stylesheet' href = '../css/bootstrap.min.css'>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-      <script src = '../js/jquery-3.6.0.js'></script>
-      <link rel = 'stylesheet' href = '../css/estiloC.css'>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="../css/estiloC.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
-    <header class = 'navbar navbar-dark  navbar-expand-md'>
+    <header class="navbar navbar-dark bg-dark navbar-expand-md">
       <a style = 'margin-left: 10px' class = 'navbar-brand'>INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
       <button class = 'navbar-toggler' data-bs-toggle = 'collapse' data-bs-target = '#navbar'>
         <span class = 'navbar-toggler-icon'></span>
@@ -89,18 +89,18 @@ session_start();
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_docente"]?></td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_grupo"]?></td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["siglas"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "desertaron" id="desertaron"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "acreditaron" id="na"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "na" id="na"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input onchange="sumar(this.value); name = "desertaron" id="desertaron"  class = "NC monto" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input onchange="sumar(this.value); name = "acreditaron" id="na"  class = "NC monto" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input onchange="sumar(this.value); name = "na" id="na" class = "NC monto" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA" value="0" disabled readonly  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_in" id="tutoria_in"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_gr" id="tutoria_gr"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalC" id="totalC"   class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "conferencia" id="conferencia"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "taller" id="taller"  class = "NC" type = "text">  </td>
 
                     </tr>
                   <?php } ?>
@@ -132,3 +132,22 @@ session_start();
   </body>
 
 </html>
+
+<script>
+function sumar(valor)
+{
+  var total = 0;	
+        valor = parseInt(valor); // Convertir el valor a un entero (número).
+    	
+        total = document.getElementById('totalA').value;
+    	
+        // Aquí valido si hay un valor previo, si no hay datos, le pongo un cero "0".
+        total = (total == null || total == undefined || total == "") ? 0 : total;
+    	
+        /* Esta es la suma. */
+        total = (parseInt(total) + parseInt(valor));
+    	
+        // Colocar el resultado de la suma en el control "span".
+        document.getElementById('totalA').value = total;
+}
+</script>
