@@ -36,7 +36,7 @@
         </div>  
           <br> 
           <span class="material-icons"> password </span>
-          <input class = "NC" type = "password" placeholder="Contraseña" name = "pass"  require>
+          <input name = "pass" class = "NC" type = "password" placeholder="Contraseña"   require>
         </div>
       </div>      
       <div class = "rutas" style="margin-top: 10px">
