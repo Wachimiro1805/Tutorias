@@ -120,9 +120,11 @@
         $idas = $rowAs['id_asesorias'];
         $existe = $conexion->query("SELECT pk_solicitudes from solicitudes where fk_alumnos = '$idal' and fk_asesorias = '$idas'");
         $rowEx = $existe->fetch_array();
+        if(isset($rowEx['pk_solicitudes'])){
         $comproba = $rowEx['pk_solicitudes'];
+        }
         if (empty($comproba)){
-            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual', '$motivo', '$idal','$idas')");
+            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual', '$motivo', '$idal', null,'$idas')");
                 if ($insercion) {echo "Se ha hecho la solicitud";}
                     else {
                         echo "No se ha podido realizar la solicitud";

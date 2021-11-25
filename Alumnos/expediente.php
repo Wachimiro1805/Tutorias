@@ -1,6 +1,9 @@
 <?php 
 session_start();
 ?>
+<?php 
+$control = $_SESSION['control'];
+?>
 
 <!DOCTYPE html>
 <html lang="estilo">
@@ -53,8 +56,8 @@ session_start();
       <br>
 
       <h2 style="color:#021d75;">Sube tus archivos</h2>
-      <form method="post" action="" enctype="multipart/form-data">
-      <?php
+      <form method="post" action="subirPDF.php?tipo=Ficha" enctype="multipart/form-data">
+      <?php /*
         if(filter_input(INPUT_POST, 'btnGuardar')){
 
         $archivo_nombre=$_FILES['archivoF']['name'];
@@ -65,24 +68,24 @@ session_start();
   
         $archivo_binario = (file_get_contents($archivo_temp));
 
-        $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
-        $rowAl = $id_alumno->fetch_array();
-        $idal = $rowAl['id_alumnos'];
-        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Ficha'");
+        $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."';");
+        $rowAl = $id_alumno->fetch_array();       
+        $idal = $rowAl['id_alumnos'];       
+        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Ficha';");
         $rowEx = $existe->fetch_array();
         if(isset($rowEx['id_documento'])){
         $comproba = $rowEx['id_documento'];
         }
         $direccion = "Alumnos/files/{$archivo_nombre}";
         if (empty($comproba)){
-          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', $direccion, 'Ficha', '$idal')");
+          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', $direccion, 'Ficha', '$idal');");
           file_put_contents("files/{$archivo_nombre}", $archivo_binario);
           if ($insercion) {echo "Se ha subido el archivo";}
               else {
                   echo "No se ha podido subir el archivo";
               }
           } else {
-              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Ficha ' ");
+              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Ficha ' ;");
               file_put_contents("files/{$archivo_nombre}", $archivo_binario);
               if ($insercion) {echo "Se ha actualizado el archivo";}
               else {
@@ -90,57 +93,33 @@ session_start();
               }
           }
       }
-    
+    */
  ?>
       <div>
       <label for="archivoF">Subir ficha</label>
         <input type="file" name="archivoF" require></input>
-        <input class="button" type="submit" name="btnGuardar" value="Guardar" />
+        
+        <input class="buton" type="submit" name="btnGuardar" value="Guardar" />
+        
         </div>
     </form>
 
-    <form method="post" action="" enctype="multipart/form-data">
-      <?php
-        if(filter_input(INPUT_POST, 'btnGuardarE')){
+    <form method="post" action="subirPDF.php?tipo=Entrevista" enctype="multipart/form-data">
 
-        $archivo_nombre=$_FILES['archivoE']['name'];
-        $archivo_tipo = $_FILES['archivoE']['type'];
-        $archivo_temp = $_FILES['archivoE']['tmp_name'];
-   
-        require "conexionA.php";
-  
-        $archivo_binario = (file_get_contents($archivo_temp));
-   
-        $id_alumno = $conexion->query("SELECT id_alumnos from Alumnos where numero_control = '".$_SESSION['control']."'");
-        $rowAl = $id_alumno->fetch_array();
-        $idal = $rowAl['id_alumnos'];
-        $existe = $conexion->query("SELECT id_documento from documentos where fk_alumno = '$idal' and clase = 'Entrevista'");
-        $rowEx = $existe->fetch_array();
-        if(isset($rowEx['id_documento'])){
-        $comproba = $rowEx['id_documento'];
-        }
-        $direccion = "Alumnos/files/{$archivo_nombre}";
-        if (empty($comproba)){
-          $insercion = $conexion ->query("INSERT INTO documentos VALUES (null, '$archivo_nombre', '$archivo_tipo', '$direccion', 'Entrevista', '$idal')");
-          file_put_contents("files/{$archivo_nombre}", $archivo_binario);
-          if ($insercion) {echo "Se ha subido el archivo";}
-              else {
-                  echo "No se ha podido subir el archivo";
-              }
-          } else {
-              $insercion = $conexion ->query("UPDATE documentos SET nombre = '$archivo_nombre', tipo = '$archivo_tipo', archivo = '$direccion' where fk_alumno='$idal' and clase = 'Entrevista ' ");
-              file_put_contents("files/{$archivo_nombre}", $archivo_binario);
-              if ($insercion) {echo "Se ha actualizado el archivo";}
-              else {
-                  echo "No se ha podido actualizar el archivo";
-              }
-          }
-        }
- ?>
  <label for="archivoF">Subir Entrevista</label>
-        <input type="file" name="archivoE" require></input>
+        <input type="file" name="archivoF" require></input>
         <input class="button" type="submit" name="btnGuardarE" value="Guardar" />
     </form>
+
+
+    <form method="post" action="subirNSS.php?tipo=NSS" enctype="multipart/form-data">
+
+
+    <label for="archivoF">Subir vigencia de derechos del IMSS</label>
+        <input type="file" name="archivoIMSS" require></input>
+        <input class="button" type="submit" name="btnGuardarI" value="Guardar" />
+
+      </form>
 
     <a href='#' onclick="location.href='verArchivos.php'" style="margin-right: 10px">Verificar tus archivos</a>
 
