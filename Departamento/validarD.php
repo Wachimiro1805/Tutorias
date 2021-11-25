@@ -1,19 +1,26 @@
 <?php 
-$NumCon=$_POST['control'];
+$NumCon=$_POST['rfc'];
 $Pass=$_POST['pass'];
 session_start();
-$_SESSION['control']=$NumCon;
+
+$_SESSION["usuario"] = $NumCon;
 
 
 $conexion=mysqli_connect("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
-$consulta="SELECT * FROM jefe_departamento WHERE usuario = '$NumCon' and contrasena = '$Pass'";
+$consulta="SELECT * FROM jefe_departamento WHERE usuario = '$NumCon' AND contrasena = '$Pass';";
 $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
+
 if($filas){     
-    header("location:Departamento.php?numero=$NumCon");   
+    header("location:Departamento.php?numero=$NumCon");    
+
+
 }else{
-   
-   header("location:loginD.php?error=true");
+   echo "$NumCon";
+   echo " $Pass";
+   echo " $filas";
+   //header("location:loginC.php?error=true");
+
 
     
 }

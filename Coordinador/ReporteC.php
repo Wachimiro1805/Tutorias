@@ -31,7 +31,7 @@ session_start();
       <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
       <title>Reporte Coordinador</title>
       <link rel = 'stylesheet' href = '../css/bootstrap.min.css'>
-      <script src = '../js/bootstrap.bundle.min.js'></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
       <script src = '../js/jquery-3.6.0.js'></script>
       <link rel = 'stylesheet' href = '../css/estiloC.css'>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -6,7 +6,7 @@
 	$conexion = mysqli_connect( $servidor, $usuario, $password ) or die ("No se ha podido conectar al servidor de Base de datos");
 	$db = mysqli_select_db( $conexion, $basededatos ) or die ( "Upps! Pues va a ser que no se ha podido conectar a la base de datos" );
 
-	function file_name($string) {
+	/*function file_name($string) {
 		// Tranformamos todo a minusculas
 		$string = strtolower($string);
 		//Rememplazamos caracteres especiales latinos
@@ -22,6 +22,6 @@
 		$repl = array('', '-', '');
 		$string = preg_replace($find, $repl, $string);
 		return $string;
-	}
+	}*/
     
 ?>

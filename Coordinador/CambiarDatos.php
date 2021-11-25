@@ -21,7 +21,6 @@ if($conexion->connect_errno)
       $correo = $rows[4]; 
       $id = $rows[0];   
       }
-    //echo '<h4 style="text-align:center">'. $resultado .' </h4>' ; 
   }
 }
  
@@ -33,7 +32,12 @@ if($conexion->connect_errno)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualiza tus datos</title>
     
+<<<<<<< HEAD
+    <link rel="stylesheet" href="../css/Alumno/estiloA.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+=======
     <link rel="stylesheet" href="../css/estiloC.css">
+>>>>>>> 2ad5a511a816ba166699edcdc7669060c664fa0c
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

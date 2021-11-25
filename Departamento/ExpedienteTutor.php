@@ -27,11 +27,15 @@ if (mysqli_num_rows($result2) > 0) {
    
   }
 
-//reporte tutor
 
-  $sql3 = " SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control,RT.sesiones_individuales,RT.sesiones_grupales, RT.actividad_integradora, RT.conferencias, RT.tallares, RT.psicologia, RT.asesorias, RT.horas_cumplidas, EP.acredito, EP.no_acredito, EP.deserto, EP.acreditado_en_seguimiento, RT.valor_numerico, RT.nivel_dedesempeno  FROM alumnos A INNER JOIN reporte_tutorado RT ON (RT.fk_alumnos = A.id_alumnos) INNER JOIN  estatus_en_el_programa EP ON (EP.fk_alumno = A.id_alumnos) INNER JOIN generar_reporte_tutorias GRT ON(GRT.id_reporte = RT.fk_reporte) WHERE GRT.id_reporte =  $id_reporte; ";
-  $resultado = $conexion->query($sql3);
-  
+    $sql3= "SELECT A.id_alumnos ,A.nombreA,A.numero_control,RA.sesiones_individuales,RA.sesiones_grupales,RA.actividad_integradora as 'Integradora',RA.conferencias,RA.tallares,
+    RA.psicologia,RA.asesorias,RA.horas_cumplidas,E.acredito,E.no_acredito,E.deserto,E.acreditado_en_seguimiento,RA.valor_numerico,RA.nivel_dedesempeno FROM alumnos A 
+            INNER JOIN reporte_tutorado RA ON RA.fk_alumnos = A.id_alumnos
+            INNER JOIN estatus_en_el_programa E ON E.fk_alumno = A.id_alumnos";
+            
+    $resultado = $conexion->query($sql3);
+    $error=mysqli_error($conexion);
+
   //semestre atendido 
   $sql4 = "SELECT GRT.periodo_de_atencion FROM generar_reporte_tutorias GRT INNER JOIN docentes D ON(D.id_docente = GRT.fk_docente) WHERE D.id_docente = $id_docente; ";
   $result3 = $conexion->query($sql4);
@@ -92,10 +96,14 @@ if (mysqli_num_rows($result7) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departamento</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
+    <script src = '../js/dowloadFile.js'></script>
+      <script src = '../js/table2excel.js'></script>
     <link rel="stylesheet" href="../css/estiloD.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
   </head>
 
 <body>
@@ -112,75 +120,91 @@ if (mysqli_num_rows($result7) > 0) {
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
     </header>
+  <main>
 <h2>Reporte Elabarado por el Tutor: <?php echo "$tutores $apellido $apellido2"  ?></h2>
 
 <h4>Carrera: <?php echo "$carrera"?></h4>
 <h4>Grupo: <?php echo "$grupo"?></h4>
     <h3 align="center">Reporte Tutor</h3>
-    <table width="100%" border="2px" align="center">
+    <table id="tblStocks" style="font-size: 9px;" >
+                  <tr style="border: 1px solid #000;text-align: center;">
+                    <th rowspan='2' style="border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;">NÚMERO</th>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NOMBRE DEL ESTUDIANTE</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NO.CONTROL</TH>
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>NÚMERO DE SESIONES CON EL TUTOR (HORA/SESIÓN)</TH>
+                    <TH colspan='3' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>PARTICIPACIÓN EN ACTIVIDADESDE APOYO (NÚMERO DE HORAS DE LA ACTIVIDAD)</TH>
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>CANALIZACIÓN (NÚMERO DE HORA/SESIÓN)</TH>
+                    <TH rowspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>TOTAL DE HORAS CUMPLIDAS</TH>
+                    <TH colspan='4' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>ESTATUS EN EL PROGRAMA (MARQUE X EN SOLO UNA COLUMNA)</TH>
+                    <TH colspan='2' style='border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;'>EVALUACIÓN DEL TUTORADO</TH>
+
+                  </tr>
+                  <tr style='border: 1px solid #000;text-align: center;'>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>SESIONES INDIVIDUALES</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>SESIONES GRUPALES</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACTIVIDAD<br> INTEGRADORA<br> (Max. 4 horas)</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>CONFERENCIAS</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>TALLERES</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>PSICOLOGÍA</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ASESORÍA</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITÓ</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NO<BR> ACREDITÓ</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>DESERTÓ</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>ACREDITADO EN <BR>SEGUIMIENTO</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>VALOR<BR>NUMERICO</td>
+                    <td style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;'>NIVEL DE <BR>DESEMPEÑO</td>
+                  </tr>          
+
+                <form method="POST">  
+                  <!--Datos DE LA TABLA-->
+                  <?php while($datos=$resultado->fetch_array()){?>
+                    <tr align="center">
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["id_alumnos"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombreA"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["numero_control"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["sesiones_individuales"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["sesiones_grupales"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["Integradora"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["conferencias"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["tallares"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["psicologia"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["asesorias"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["horas_cumplidas"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["acredito"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["no_acredito"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["deserto"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["acreditado_en_seguimiento"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["valor_numerico"]?></td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nivel_dedesempeno"]?></td>
+                    </tr>
+                  <?php } ?>
+        
+
+                  </table>
+                  <h4>Observaciones: <?php echo "$observaciones"?></h4>
+               
+                <div style="margin-top: 5%" class = "buton"><button id="boton_descarga"style="padding-left: 10px; padding-right: 10px;" ><span class="material-icons"> arrow_circle_down </span> Descargar Excel</button></div>
+                      </div>
+                    </div>
+                </form>
+
+              </div>
 
 
-    <tr align="center">
-        <td>Nombre Alumno</td>
-        <td>apellido paterno</td>
-        <td>apellido materno</td>
-        <td>Numero de control</td>
-        <td>Sesiones Indiduales</td>
-        <td>Sesiones Grupales</td>
-        <td>Actividad Integradora</td>
-        <td>Conferencias</td>
-        <td>Talleres</td>
-        <td>Psicologia</td>
-        <td>Asesorias</td>
-        <td>Horas cumplidas</td>
-        <td>Acredito</td>
-        <td>No acredito</td>
-        <td>Deserto</td>
-        <td>A. Seguimiento</td>
-        <td>Valor numerico</td>
-        <td>Desemepeño</td>
-
-    </tr>
-    </tr>
-    <?php 
-        while($datos=$resultado->fetch_array()){
-        ?>
-        <tr align="center">
-                <td><?php echo $datos["nombreA"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
-                <td><?php echo $datos["apellido_m"]?></td>
-                <td><?php echo $datos["numero_control"]?></td>
-                <td><?php echo $datos["sesiones_individuales"]?></td>
-                <td><?php echo $datos["sesiones_grupales"]?></td>
-                <td><?php echo $datos["actividad_integradora"]?></td>
-                <td><?php echo $datos["conferencias"]?></td>
-                <td><?php echo $datos["tallares"]?></td>
-                <td><?php echo $datos["psicologia"]?></td>
-                <td><?php echo $datos["asesorias"]?></td>
-                <td><?php echo $datos["horas_cumplidas"]?></td>
-                <td><?php echo $datos["acredito"]?></td>
-                <td><?php echo $datos["no_acredito"]?></td>
-                <td><?php echo $datos["deserto"]?></td>
-                <td><?php echo $datos["acreditado_en_seguimiento"]?></td>
-                <td><?php echo $datos["valor_numerico"]?></td>
-                <td><?php echo $datos["nivel_dedesempeno"]?></td>
-
-            </tr>
-            <?php   
-        }
-     ?>
- </table>
-
- <br>
-<br>  
- <h4>observaciones: </h4>
- <h4><?php echo "$observaciones"?></h4>  
-    </main>
+      </div>
+    </body>
+  </main>
 
 
 
+  </body>
 
-
-
-</body>
 </html>
+
+<script>
+  document.getElementById("boton_descarga").addEventListener('click',()=>{
+    var table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll("#tblStocks"),"Reporte_tutorados");
+  });
+
+</script>
