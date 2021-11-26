@@ -37,7 +37,12 @@
     
     <input name = "contra3" class = "NC" type = "password" placeholder="Confirme contraseña">
    
-
+    <?php
+          if (isset($_GET['error'])) {
+          echo "no se actualizo";   
+          } else {
+          echo "se actualizo";
+        }?>
        <div class = "rutas">
         <div class = "buton" style="margin-top: 8%"><button type="submit">ACTUALIZAR</button></div>
         </form>

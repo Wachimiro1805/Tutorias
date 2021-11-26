@@ -24,17 +24,17 @@ if($contra2 == $contra3 ){
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){
-        header ("Location: ActualizarUS.php");
+        header ("Location: ActualizarUS.php?error=true");
       
     }else{
         header ("Location: ActualizarUS.php");
     }
     //CONFIRMAR CONTRASEÑA
 }else{
-    header ("Location: ActualizarUS.php");
+    header ("Location: ActualizarUS.php?error=true");
 }
  //CONFIRMA CONTRASEÑA ANTIGUA   
 }else{
-    header ("Location: ActualizarUS.php");
+    header ("Location: ActualizarUS.php?error=true");
 }
 ?>﻿

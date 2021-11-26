@@ -44,17 +44,38 @@
               echo "</option>";      
           }
           echo "<select>";
-          mysqli_close( $conexion );
-     
-                    
+          mysqli_close( $conexion );           
           ?>
-         <?php
+          <br>
+    <Label >Periodo de Atencion: </Label>
+    
+
+<?php
+          include 'conexionCT.php';
+          $consulta = "SELECT S.semestre FROM semestre S;";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select required name = 'semestre'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['semestre']."'>";
+              echo $columna['semestre'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );           
+          ?>
+
+          <br>
+
+      
+        <?php
           if (isset($_GET['error'])) {
-          echo "no tienene Reporte";   
+          echo "no tienene reporte en ese periodo";   
           } else {
-          // 
-        }
-?>
+        }?>
+        <br>
+
+
       <div class = "rutas">
           <div class = "buton"><button type="submit">VER REPORTES</button></div>
       

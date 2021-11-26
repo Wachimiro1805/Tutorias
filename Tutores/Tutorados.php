@@ -22,19 +22,6 @@ $sql2 = "SELECT a.nombreA,a.apellido_p,a.apellido_m,a.numero_control,a.correo
 
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
-<<<<<<< HEAD
-$resultado3 = $conexion->query($sql3);
-$resultado4 =  $conexion->query($sql1);
-
-$result = $conexion->query($sql);
-if (mysqli_num_rows($resultado4) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-      $id_docente = $row["id_docente"];}}else {
-    echo "0 results";
-  }
-echo " $id_docente ";
-=======
->>>>>>> 343b34a68e1974c0ae61f9145dc0dd94b34884b9
 ?>
 
 
@@ -92,12 +79,8 @@ echo " $id_docente ";
         <td><?php echo $datos["numero_control"]?></td>
         <td><?php echo $datos["correo"]?></td>
       </tr>
-<<<<<<< HEAD
-   
-=======
       <?php } ?>
 
->>>>>>> 343b34a68e1974c0ae61f9145dc0dd94b34884b9
     </table>
 
   </main>
