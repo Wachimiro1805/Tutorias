@@ -1,24 +1,33 @@
 <?php
-session_start();
-?>
-<?php
-    require "conexionT.php";
-    $conexionT = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
-    if($conexionT->connect_errno){
-        echo "Error de conexion de la base datos".$conexionT->connect_error;
-        exit();
-    }
+require "conexionT.php";
+$conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
+if($conexion->connect_errno)
+{
+    echo "Error de conexion de la base datos".$conexion->connect_error;
+    exit();
+}else {
+  session_start();
 
-    $sql = "SELECT * FROM reporte_tutorado;";
-    $sql2 = "SELECT rt.id_reporte_tutorado,rt.nombre,rt.no_control,rt.sesione_individuales,
-                    rt.sesiones_grupales,rt.actividad_integradora,rt.conferencias,rt.tallares,
-                    rt.psicologia,rt.asesorías,rt.horas_cumplidas,rt.valor_numerico,
-                    rt.nivel_dedesempeño   
-                    FROM reporte_tutorado rt;";
-    $resultado = $conexionT->query($sql);
-    $resultado2 = $conexionT->query($sql2);
+  if (empty($_SESSION["usuario"])) {
+     
+  }else{
+    $usuario = $_SESSION["usuario"];
+    $consulta="SELECT * FROM docentes WHERE usuario = '$usuario'";
+    $resultado = $conexion->query($consulta);
+    while($rows=$resultado->fetch_array()){
+      $nombre  = $rows[1];
+      $carrera = $rows[7];
+      $grupo   = $rows[8];      
 
+      
+      }
+  }
+}
+ 
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang='estilo'>
@@ -66,16 +75,16 @@ session_start();
                         <h6 style='text-align: center;'>Datos Generales</h6>
                         <div class='InfoIzq' style=" margin: 0 auto;padding: 10px;  border: 1px solid black;">
                             <h6>Tutor:</h6>
-                            <input type='text' id='Tutor'>
+                            <input type='text' id='Tutor' value="<?php  echo "$nombre";?>">
                             <h6>Carrera:</h6>
-                            <input type='text' id='Carrera'>
+                            <input type='text' id='Carrera' value="<?php  echo "$carrera";?>">
                             <!--<h6>Periodo de Atención:</h6>
                   <input type = 'text' id = 'PeriodoAtencion'>-->
                         </div>
                         <!-- &&  &&  &&  && & Encabezado Derecho &&  &&  &&  && & -->
                         <div class='InfoDer' style="margin: 0 auto;padding: 10px;border: 1px solid black;">
                             <h6 style=''>Grupo:</h6>
-                            <input style='display:flex;' type='text' id='Grupo'>
+                            <input style='display:flex;' type='text' id='Grupo' value="<?php  echo "$grupo";?>">
                             <!--<h6 style = ''">Hora:</h6>
                 <input   style="' type=' text' id='Hora">-->
                         </div>
@@ -128,10 +137,12 @@ session_start();
                             <div style=" margin: 0 ;padding: 10px;border: 1px solid black;">
 
                                 <p>Selecciona uno:<br>
-                                    <h6 style="font size=4"><input type="radio" name="seguimiento" value="acredito"required>Acreditó</h6><br>
-                                    <h6><input type="radio" name="seguimiento" value="noacredito">No acreditó</h6><br>
-                                    <h6><input type="radio" name="seguimiento" value="deserto">Desertó</h6><br>
-                                    <h6><input type="radio" name="seguimiento" value="AcreditadoSe">Acreditado en Seguimiento</h6>
+                                <h6 style="font size=4"><input type="radio" name="seguimiento" value="acredito"
+                                        required>Acreditó</h6><br>
+                                <h6><input type="radio" name="seguimiento" value="noacredito">No acreditó</h6><br>
+                                <h6><input type="radio" name="seguimiento" value="deserto">Desertó</h6><br>
+                                <h6><input type="radio" name="seguimiento" value="AcreditadoSe">Acreditado en
+                                    Seguimiento</h6>
                                 </p>
                                 <h6 style="">Valor Numerico:</h6>
                                 <input name='ValorNu' type='text'>
@@ -141,7 +152,7 @@ session_start();
                         </div>
                     </div>
 
-                    
+
 
 
                     <div style="display:flex;flex-direction:column">
