@@ -21,6 +21,7 @@
         <ul class="navbar-nav">
         <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
+            <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR</a></li>
             <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>

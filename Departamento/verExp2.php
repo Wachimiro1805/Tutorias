@@ -5,7 +5,7 @@ include('conexionCT.php');
 $tmp = array();
 $res = array();
 
-$sel = $conexion->query("SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);");
+$sel = $conexion->query("SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras) ORDER BY D.id_documento DESC;");
 while ($row = $sel->fetch_assoc()) {
     $tmp = $row;
     array_push($res, $tmp);
