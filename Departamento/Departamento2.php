@@ -7,7 +7,7 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT S.pk_solicitudes ,A.nombreA, A.apellido_p, A.numero_control, C.siglas, G.nombre_grupo, AR.nombre, S.fecha, AR.fecha, AR.tipo_de_asesoria, S.status FROM alumnos A  INNER JOIN  carreras C ON(C.id_carreras = A.fk_carreras) INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN solicitudes S ON(S.fk_alumnos= A.id_alumnos) INNER JOIN asesorias AR ON(AR.id_asesorias= S.fk_asesorias);";
+$sql = "SELECT S.semestre FROM semestre;";
 $resultado = $conexion->query($sql);
 
 ?>
@@ -36,7 +36,7 @@ $resultado = $conexion->query($sql);
             <li class="nav-item"><a href="verExp2.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
             <li class="nav-item"><a href="Departamento2.php" class="nav-link">FINALIZAR SEMESTRE</a></li> 
             <li class="nav-item"><a href="GestionarDatosJD.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
-            <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
+            <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -53,11 +53,20 @@ $resultado = $conexion->query($sql);
 
     <div class = "rutasInicio">
     
-    <div class = "buton"><button onclick="location.href='ReporteCordi.php'" >COORDINADORES DE TUTORIAS</button></div>
-    
+    <div class = "buton"><button onclick="location.href='TerminarSemestre.php'" >FINALIZAR SEMESTRE</button></div>
+    <label> semestre impartiendo: </label>
     <br>
-    <div class = "buton"><button onclick="location.href='reporteTutor.php'" >TUTORES</button></div>
-    <br>
+    <?php
+    echo "<select required name = 'semestre'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['semestre']."'>";
+              echo $columna['semestre'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );
+          ?>
  
     </div>
     </div>

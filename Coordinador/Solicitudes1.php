@@ -81,8 +81,6 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["status"]?></td>
                 <td> 
-                <?php echo"<td><a href='status.php?id=".$datos["pk_solicitudes"]."'>Aceptar</a></td>";?>
-                <?php echo"<td><a href='status1.php?id=".$datos["pk_solicitudes"]."'>Negar</a></td>";?>
                 </td>
             </tr>
             <?php   

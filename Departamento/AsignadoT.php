@@ -7,11 +7,13 @@ if($conexion->connect_errno)
     exit();
 }
 $sql = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D;";
-$sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, A.nombreA, A.apellido_p, A.numero_control, G.nombre_grupo,C.siglas  FROM docentes D INNER JOIN asignar_tutor AST ON(AST.fk_docentes=D.id_docente) INNER JOIN alumnos A ON(A.id_alumnos = AST.fk_alumno) INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras)";
-$sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m FROM docentes D LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) WHERE AST.fk_docentes IS NULL;";
+$sql2 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p AS 'ApellidoD', D.apellido_m AS 'ApellidoD2', A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, G.nombre_grupo,C.siglas  FROM docentes D INNER JOIN asignar_tutor AST ON(AST.fk_docentes=D.id_docente) INNER JOIN alumnos A ON(A.id_alumnos = AST.fk_alumno) INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras) ORDER BY D.nombre_docente;";
+$sql3 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m  FROM docentes D LEFT JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente) WHERE AST.fk_docentes IS NULL;";
+$sql4 = "SELECT DISTINCT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D INNER JOIN asignar_tutor ATR ON(D.id_docente = ATR.fk_docentes) INNER JOIN carreras C ON (C.id_carreras = D.fk_carreras);";
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado3 = $conexion->query($sql3);
+$resultado4 = $conexion->query($sql4);
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -36,6 +38,7 @@ $resultado3 = $conexion->query($sql3);
         <ul class="navbar-nav">
         <li class="nav-item"><a href="ReporteTutor.php" class="nav-link">REPORTE</a></li>
             <li class="nav-item"><a href="AsignadoT.php" class="nav-link">TUTORES ASIGNADOS</a></li>
+            <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR</a></li>
             <li class="nav-item"><a href="gestionarTutores.php" class="nav-link">REGISTRAR</a></li>
             <li class="nav-item"><a href="EliminarT.php" class="nav-link">ELIMINAR</a></li>
             <li class="nav-item"><a href="ActualizarT.php" class="nav-link">ACTUALIZAR</a></li>
@@ -48,7 +51,7 @@ $resultado3 = $conexion->query($sql3);
     <main>
    
     <h2 class ="titulo">Tutores</h2>
-    <h3 align="center">Todos los Tutores</h3>
+    <h3 align="center">Todos los Docentes</h3>
     <table width="70%" border="2px" align="center">
 
     <tr align="center">
@@ -59,6 +62,30 @@ $resultado3 = $conexion->query($sql3);
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
+        ?>
+            <tr align="center">
+                <td><?php echo $datos["id_docente"]?></td>
+                <td><?php echo $datos["nombre_docente"]?></td>
+                <td><?php echo $datos["apellido_p"]?></td>
+                <td><?php echo $datos["apellido_m"]?></td>
+
+            </tr>
+            <?php   
+        }
+     ?>
+    </table>
+
+    <h3 align="center">Todos los Tutores</h3>
+    <table width="70%" border="2px" align="center">
+
+    <tr align="center">
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Apellido Paterno</td>
+        <td>Apellido Materno</td>
+    </tr>
+    <?php 
+        while($datos=$resultado4->fetch_array()){
         ?>
             <tr align="center">
                 <td><?php echo $datos["id_docente"]?></td>
@@ -88,8 +115,8 @@ $resultado3 = $conexion->query($sql3);
         ?>
             <tr align="center">
                 <td><?php echo $datos["id_docente"]?></td>
-                <td><?php echo $datos["nombre_docente"]?></td>
-                <td><?php echo $datos["nombreA"]?></td>
+                <td><?php echo $datos["nombre_docente"], " ", $datos["ApellidoD"] , " ", $datos["ApellidoD2"] ?></td>
+                <td><?php echo $datos["nombreA"], " ", $datos["apellido_p"] , " ", $datos["apellido_m"] ?></td>
                 <td><?php echo $datos["numero_control"]?></td>
                 <td><?php echo $datos["nombre_grupo"]?></td>
                 <td><?php echo $datos["siglas"]?></td>

@@ -30,16 +30,31 @@ if (mysqli_num_rows($result) > 0) {
     echo "0 results";
   }
 
-  $sql="INSERT INTO asignar_tutor VALUES ($id_alumno,$id_docente)";
-$ejecutar=mysqli_query($conexion, $sql);
-$error=mysqli_error($conexion);
-
+    //consulta para ver si el tutor ya tiene asignando a alguien
+    $pk_asigna = "SELECT pk_asingatutor FROM asignar_tutor WHERE	fk_alumno=$id_alumno";
+    $result = $conexion->query($pk_asigna);
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+      $sql="UPDATE asignar_tutor  SET fk_alumno=$id_alumno WHERE fk_docentes= $id_docente AND fk_alumno IS NULL;";
+      $ejecutar=mysqli_query($conexion, $sql);
+      $error=mysqli_error($conexion);
+    }
+  } else {
+    $sql="INSERT INTO asignar_tutor VALUES (DEFAULT,
+                                     $id_alumno,
+                                     $id_docente)";
+  $ejecutar=mysqli_query($conexion, $sql);
+  $error=mysqli_error($conexion);
 if(!$ejecutar){
-    echo"Error al asignar tutor al alumno <br> <br> <a href='AsignarTutores.php'>Regresar</a> <br> <br>";
-    echo"Error: $error";
+  header ("Location: AsignarTutores.php");
 }else{
-    echo"datos guardado correctamente <br> <br> <a href='AsignarTutores.php'>Asignar otro tutor</a>";
-}
+  header ("Location: AsignarTutores.php");;}
+
+
+
+  }
+
 
 
  

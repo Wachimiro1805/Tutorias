@@ -107,6 +107,38 @@ session_start();
 
 
                 </table>
+                <div align="center" class="row-input" >
+                  <div class="formulario">  
+                  <div class = "contenedor-form">
+                    <div class="row-input">
+                    <h5>Fecha de entrega</h5>  
+                    <input class="NC" name = "fecha" type="date" placeholder="Fecha de inicio">
+                    </div>
+                    <div class="row-input"> 
+                    <h5>Periodo</h5>  
+                    <?php
+                      include 'conexionC.php';
+                      $consulta = "SELECT DISTINCT * FROM semestre;";
+                      $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+                      echo "<select class='NC'  required name = 'periodo'>";
+                      while ($columna = mysqli_fetch_array( $resultado ))
+                      {
+                          echo "<option value='". $columna['pk_semestre']."'>";
+                          echo $columna['semestre'];
+                          echo "</option>";      
+                      }
+                      echo "<select>";
+                      mysqli_close( $conexion ); 
+                    ?>   
+                    </div>
+
+                      <div class="row-input">
+                      <textarea name = "descripcion" cols = "30" rows="5" placeholder=" Escribe tus comentarios" class="NC"></textarea>
+                      </div>
+                
+                    </div>
+                  </div>                  
+                </div>                   
                 <div style="margin-top: 5%" class = "buton"><button style="padding-left: 10px; padding-right: 10px;" ><span class="material-icons"> check_circle </span> Enviar Reporte</button></div>
                       </div>
                     </div>
@@ -128,7 +160,7 @@ session_start();
         <img class = 'logo5' src = '../Imagenes/Incio/Icono5.png' alt = 'Icono5' width = '200'>
       </div>
     </footer>
-
+ 
   </body>
 
 </html>

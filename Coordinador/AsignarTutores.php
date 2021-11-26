@@ -13,15 +13,22 @@ $sql = "SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, G.nombre
 $sql2 = "SELECT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas 
           FROM docentes D 
             INNER JOIN carreras C ON(C.id_carreras = D.fk_carreras);";
-$sql3= "SELECT AL.nombreA,CA.siglas as 'CarreraAlumno',D.nombre_docente,C.siglas 
-          FROM asignar_tutor A 
-            INNER JOIN docentes D ON D.id_docente = A.fk_docentes 
-              INNER JOIN carreras C ON D.fk_carreras = C.id_carreras 
-                INNER JOIN alumnos AL ON AL.id_alumnos = A.fk_alumno 
-                  INNER JOIN carreras CA ON AL.fk_carreras = CA.id_carreras";
+
+$sql3= "SELECT AL.nombreA, AL.apellido_p AS 'ApellidoAl', AL.apellido_m AS 'ApellidoAl1',CA.siglas AS 'CarreraAlumno',
+D.nombre_docente,D.apellido_p, D.apellido_m, C.siglas
+   FROM asignar_tutor A 
+     INNER JOIN docentes D ON D.id_docente = A.fk_docentes 
+       INNER JOIN carreras C ON D.fk_carreras = C.id_carreras 
+         INNER JOIN alumnos AL ON AL.id_alumnos = A.fk_alumno 
+           INNER JOIN carreras CA ON AL.fk_carreras = CA.id_carreras ORDER BY D.nombre_docente;";
+
+$sql4 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m  
+FROM docentes D INNER JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente);";         
+
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado3 = $conexion->query($sql3);
+$resultado4 = $conexion->query($sql4);
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -29,10 +36,10 @@ $resultado3 = $conexion->query($sql3);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coordinador</title>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
-  <link rel="stylesheet" href="../css/estiloC.css">
+    <link rel="stylesheet" href="../css/estiloC.css">
   </head>
 
 <body>
@@ -65,18 +72,18 @@ $resultado3 = $conexion->query($sql3);
     <table width="70%" border="2px" align="center">
 
     <tr align="center">
-        <td>Nombre_Alumno</td>
-        <td>Carrera_Alumno</td> 
-        <td>Nombre_Tutor</td>
-        <td>Carrera_Tutor</td>
+        <td>Nombre Alumno</td>
+        <td>Carrera Alumno</td> 
+        <td>Nombre Tutor</td>
+        <td>Carrera Tutor</td>
     </tr>
     <?php 
         while($datos=$resultado3->fetch_array()){
         ?>
             <tr align="center">
-                <td><?php echo $datos["nombreA"]?></td>
+                <td><?php echo $datos["nombreA"]," ",$datos["ApellidoAl"]," ", $datos["ApellidoAl1"]?></td>
                 <td><?php echo $datos["CarreraAlumno"]?></td>
-                <td><?php echo $datos["nombre_docente"]?></td>
+                <td><?php echo $datos["nombre_docente"]," ",$datos["apellido_p"]," ", $datos["apellido_m"]?></td>
                 <td><?php echo $datos["siglas"]?></td>
             </tr>
             <?php   
@@ -88,31 +95,39 @@ $resultado3 = $conexion->query($sql3);
         <h2 align="center">Asignar tutor a un alumno</h2>
         <br>
         <div style="margin-left: 40%;">
-        <h4>Docente</h4>
+        <h4>Tutor</h4>
+
         <?php
           include 'conexionC.php';
-          $consulta = "SELECT * FROM docentes";
+          $consulta = "SELECT DISTINCT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D 
+          INNER JOIN asignar_tutor ATR ON(D.id_docente = ATR.fk_docentes) 
+          INNER JOIN carreras C ON (C.id_carreras = D.fk_carreras);";
           $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
           echo "<select  required name = 'docente'>";
           while ($columna = mysqli_fetch_array( $resultado ))
           {
               echo "<option value='". $columna['nombre_docente']."'>";
-              echo $columna['nombre_docente'];
+              echo $columna['nombre_docente']," ", $columna['apellido_p']," ",$columna['apellido_m'];
               echo "</option>";      
           }
           echo "<select>";
           mysqli_close( $conexion ); 
           ?>
+
+
+
+
+
           <h4>Asignar a:</h4>
           <?php
           include 'conexionC.php';
-          $consulta = "SELECT * FROM alumnos";
+          $consulta = "SELECT A.nombreA, A.apellido_p, A.apellido_m FROM alumnos A LEFT JOIN asignar_tutor AST ON (AST.fk_alumno = A.id_alumnos) WHERE AST.fk_alumno IS NULL;";
           $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
           echo "<select required name = 'alumno'>";
           while ($columna = mysqli_fetch_array( $resultado ))
           {
               echo "<option value='". $columna['nombreA']."'>";
-              echo $columna['nombreA'];
+              echo $columna['nombreA'] ," ", $columna['apellido_p']," ",$columna['apellido_m'];
               echo "</option>";      
           }
           echo "<select>";

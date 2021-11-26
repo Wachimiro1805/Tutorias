@@ -16,10 +16,8 @@ if($filas){
 
 
 }else{
-   echo "$NumCon";
-   echo " $Pass";
-   echo " $filas";
-   //header("location:loginC.php?error=true");
+
+header("location:loginD.php?error=true");
 
 
     

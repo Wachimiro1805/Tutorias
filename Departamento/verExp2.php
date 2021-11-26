@@ -5,7 +5,7 @@ include('conexionCT.php');
 $tmp = array();
 $res = array();
 
-$sel = $conexion->query("SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras);");
+$sel = $conexion->query("SELECT D.id_documento, A.nombreA, A.apellido_p, A.numero_control, C.siglas, D.documento FROM alumnos A INNER JOIN documentos D ON(D.fk_alumno=A.id_alumnos ) INNER JOIN carreras C ON(C.id_carreras = A.fk_carreras) ORDER BY D.id_documento DESC;");
 while ($row = $sel->fetch_assoc()) {
     $tmp = $row;
     array_push($res, $tmp);
@@ -68,8 +68,8 @@ while ($row = $sel->fetch_assoc()) {
                                     <td><?php echo $val['siglas'] ?></td>
                                     <td><a href="archivo.php?id=<?php echo $val['id_documento']?>" target="_blank"><?php echo $val['documento'];?></a></td>
                                     <td>
-                                        <button onclick="openModelPDF('<?php echo $val['documento'] ?>')" class="btn btn-primary" type="button">Ver Archivo Modal</button>
-                                        <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['documento']; ?>" >Ver Archivo pagina</a>
+                                        <button onclick="openModelPDF('<?php echo $val['documento'] ?>')" class="btn btn-primary" type="button">Ver Archivo Ventana</button>
+                                        <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['documento']; ?>" >Ver Archivo Pagina</a>
                                     </td>
                                 </tr>
                             <?php } ?>

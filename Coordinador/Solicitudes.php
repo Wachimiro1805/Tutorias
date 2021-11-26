@@ -30,7 +30,6 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
-        <li class="nav-item"><a href="Solicitudes.php" class="nav-link">SOLICITUDES</a></li>
             <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">GESTIONAR TUTORADOS</a></li>
             <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR TUTORES</a></li>
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
@@ -84,10 +83,8 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["fecha"]?></td>
                 <td><?php echo $datos["tipo_de_asesoria"]?></td>
                 <td><?php echo $datos["status"]?></td>
-                <?php echo"<td><a href='status.php?id=".$datos["pk_solicitudes"]."'>Aceptar</a></td>";?>
-                <?php echo"<td><a href='status1.php?id=".$datos["pk_solicitudes"]."'>Negar</a></td>";?>
                 <td> 
-                  <?php 
+                <?php 
   
                // <?php echo"<td><input type='submit' href = 'status.php?id=".$datos["pk_solicitudes"]."' name ='btnAceptar' value='Aceptar'></td>";?>
                  
