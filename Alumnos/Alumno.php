@@ -42,9 +42,9 @@
             </button>
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a href="Alumno.php" class="nav-link">VER SOLICITUDES</a></li>
-                    <li class="nav-item"><a href="tieneTutor.php" class="nav-link">VER EXPEDIENTE</a></li>
-
+                    <li class="nav-item"><a href="Alumno.php" class="nav-link">SOLICITUDES</a></li>
+                    <li class="nav-item"><a href="mensajes.php" class="nav-link">MENSAJES</a></li>
+                    <li class="nav-item"><a href="tieneTutor.php" class="nav-link">EXPEDIENTE</a></li>
                     <li class="nav-item"><a href="CambiarDatos.php" class="nav-link">CAMBIAR DATOS</a></li>
                     <li class="nav-item"><a href="cambiarContraseña.php" class="nav-link">CAMBIAR CONTRASEÑA</a></li>
                     <li class="nav-item"><a href="loginA.php" class="nav-link">CERRAR SESIÓN</a></li>
@@ -122,25 +122,20 @@
         $rowAs = $id_asesoria->fetch_array();
         $idal = $rowAl['id_alumnos'];
         $idas = $rowAs['id_asesorias'];
-        $fk_docent = $conexion->query("SELECT fk_docentes from asignar_tutor where fk_alumno = '$idal'");
+         
+                $fk_docent = $conexion->query("SELECT fk_docentes from asignar_tutor where fk_alumno = '$idal'");
         $rowAx = $fk_docent->fetch_array();
         if (isset($rowAx['fk_docentes'])){
         $idax = $rowAx['fk_docentes'];
         } else { return 'No se te ha asignado un tutor';}
-        $existe = $conexion->query("SELECT pk_solicitudes from solicitudes where fk_alumnos = '$idal' and fk_asesorias = '4' and status = 'Solicitada' ");
-        $rowEx = $existe->fetch_array();
-        if(isset($rowEx['pk_solicitudes'])){
-        $comproba = $rowEx['pk_solicitudes'];
-        }
-        if (empty($comproba)){
-            $insercion = $conexion->query("INSERT into solicitudes Values (NULL, 'Solicitada', '$fecha_actual', '$motivo', '$idal', $idax,'$idas')");
+            $insercion = $conexion->query("INSERT into solicitudes (status,fecha,motivo,fk_alumnos,fk_docentes,fk_asesorias) Values ('Solicitada', '$fecha_actual', '$motivo', '$idal', $idax,'$idas')");
                 if ($insercion) {echo "Se ha hecho la solicitud";}
                     else {
                         echo "No se ha podido realizar la solicitud";
                     }
-        } else {
-            echo "Ya has solicitado esta asesoria";
-        }
+            
+            
+        
     }
     ?>
     <?php

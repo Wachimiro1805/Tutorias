@@ -6,6 +6,18 @@ require "conexionA.php";
 $sqlA = "SELECT * from alumnos where numero_control = '".$_SESSION['control']."'";
       
 $resultado = $conexion->query($sqlA);
+
+$id_alumno = $conexion->query("SELECT id_alumnos from alumnos where numero_control = '".$_SESSION['control']."'");
+$rowAl = $id_alumno->fetch_array();
+$idal = $rowAl['id_alumnos'];
+
+$id_docente = $conexion->query("SELECT fk_docentes from asignar_tutor where fk_alumno = '$idal'");
+$rowdo = $id_docente->fetch_array();
+if (isset($rowdo['fk_docentes'])){
+$iddoc = $rowdo['fk_docentes'];
+} else { echo "No te han asignado tutor";}
+$sqlB = "SELECT * from solicitudes where fk_alumnos = '".$idal."'";
+$resultadoB = $conexion->query($sqlB);
 ?>
 
 <!DOCTYPE html>
@@ -43,53 +55,42 @@ $resultado = $conexion->query($sqlA);
 
   <main class="mainLogin">   
     <div div align="center">
-    <form class="formulario" action="" method='post' align="center">
-    <?php
 
-if (isset($_POST['guardar'])){
-  require "conexionA.php";
-  $numero = $conexion ->real_escape_string($_POST['numeroT']);
+    <h1 align="center">Solicitudes realizadas</h1>
+        <div align="center">
+        <table width="70%" border="1px" align="center">
 
-
-  $update = $conexion->query("UPDATE alumnos set telefono = '$numero' where numero_control = '".$_SESSION['control']."'");
-  if ($update) {echo "Se ha actualizado el número telefonico";}
-  else {
-    echo "No se pudo actualizar el número telefonico";
-  }
-
-}
-?>
-
-      <h2 class ="titulo">Información personal</h2>
-      <div class="contenedor-form">
-      <?php 
-            while($datos=$resultado->fetch_array()){
-                
+            <tr align="center">
+                <td>Fecha</td>
+                <td>Estado</td>
+                <td>motivo</td>
+                <td>Ver conversación</td>
+                <td>Eliminar</td>
+            </tr>
+        <?php 
+            while($datosB=$resultadoB->fetch_array()){
         ?>
-        <div class="input-contenedor">
-          <p>Nombre: <?php echo $datos["nombreA"].' '.$datos["apellido_p"].' '.$datos["apellido_m"]?></p>
-          <p>Correo: <?php echo $datos["correo"]?></p>
-          <p>Semestre: <?php echo $datos["semestre"]?></p>
-          <p>Numero de control: <?php echo $datos["numero_control"]?></p>
-          <p>Telefono: <?php if(isset($datos["telefono"])){
-            echo $datos["telefono"];
-          } else {
-            echo "No se ha registrado numero telefonico";
-          }?></p>
-          <br></br>
-        <p>Registra o actualiza tu número telefonico</p>
-        <input class = "NC" type = "tel" placeholder="Telefono" required name="numeroT">
-          <?php   
+            <tr align="center">
+                <td><?php echo $datosB["fecha"]?></td>
+                <td><?php echo $datosB["status"]?></td>
+                <td><?php echo $datosB["motivo"]?></td>
+                <td><?php if(isset($datosB["id_sala"])){ ?>
+                    <a href="sala.php?file=<?php echo $datosB['id_sala']?>&fk_docente=<?php echo $iddoc?>">Ver conversación
+                    <?php }  else {echo "--"; }?></td>
+                <td><a href="eliminar.php?id_sala=<?php echo $datosB['id_sala'] ?>&id_solicitud=<?php echo $datosB['pk_solicitudes']?>">Eliminar</td>
+            </tr>
+            <?php   
         }
+
      ?>
-        </div>
-      </div>      
-      <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button  name="guardar" >ACTUALIZAR INFORMACIÓN</button></div>
-      </div>
-    </form>
+    </table >
     
+    
+    <br></br>
+    <div class = "buton">
+        <button  onclick="location.href='tieneTutorM.php'" name="btnMensaje">Mandar mensaje a tu tutor</button>
     </div>
+
       </div>
     </main>
 

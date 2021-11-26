@@ -9,7 +9,7 @@
 
          <?php
         include 'conexionCT.php';
-            $sql = "SELECT * FROM documentos WHERE id_documento=".$_GET['id'];
+            $sql = "SELECT documento FROM documentos WHERE id_documento=".$_GET['id'];
             $result = $conexion->query($sql);
             while($datos=mysqli_fetch_array( $result )){
                 if($datos['documento']==""){?>

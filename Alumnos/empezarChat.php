@@ -3,9 +3,11 @@ session_start();
 ?>
 <?php 
 require "conexionA.php";
+$fk_docente = $_GET['fk_docente'];
 $sqlA = "SELECT * from alumnos where numero_control = '".$_SESSION['control']."'";
       
 $resultado = $conexion->query($sqlA);
+
 ?>
 
 <!DOCTYPE html>
@@ -41,56 +43,20 @@ $resultado = $conexion->query($sqlA);
     <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
   </header>
 
-  <main class="mainLogin">   
-    <div div align="center">
-    <form class="formulario" action="" method='post' align="center">
-    <?php
-
-if (isset($_POST['guardar'])){
-  require "conexionA.php";
-  $numero = $conexion ->real_escape_string($_POST['numeroT']);
-
-
-  $update = $conexion->query("UPDATE alumnos set telefono = '$numero' where numero_control = '".$_SESSION['control']."'");
-  if ($update) {echo "Se ha actualizado el número telefonico";}
-  else {
-    echo "No se pudo actualizar el número telefonico";
-  }
-
-}
-?>
-
-      <h2 class ="titulo">Información personal</h2>
-      <div class="contenedor-form">
-      <?php 
-            while($datos=$resultado->fetch_array()){
-                
-        ?>
-        <div class="input-contenedor">
-          <p>Nombre: <?php echo $datos["nombreA"].' '.$datos["apellido_p"].' '.$datos["apellido_m"]?></p>
-          <p>Correo: <?php echo $datos["correo"]?></p>
-          <p>Semestre: <?php echo $datos["semestre"]?></p>
-          <p>Numero de control: <?php echo $datos["numero_control"]?></p>
-          <p>Telefono: <?php if(isset($datos["telefono"])){
-            echo $datos["telefono"];
-          } else {
-            echo "No se ha registrado numero telefonico";
-          }?></p>
-          <br></br>
-        <p>Registra o actualiza tu número telefonico</p>
-        <input class = "NC" type = "tel" placeholder="Telefono" required name="numeroT">
-          <?php   
-        }
-     ?>
+    <main class="mainLogin">   
+    <h1 align="center">Escribe tu mensaje</h1>
+        <div div align="center">
+            
+        <form class="formulario" action="crearSala.php?fk_docente=<?php echo $fk_docente?>" method=post>
+        <input class = "NC" type = "text" placeholder="Motivo" required name="motivo">
+        <br></br>
+        <textarea name="mensaje" rows="2" cols="50" placeholder="Escribe tu mensaje" required></textarea>
+        <div class = "buton">
+            <button name="btnMensaje">Enviar</button>
         </div>
-      </div>      
-      <div class = "rutas" style="margin-top: 10px">
-        <div class = "buton"><button  name="guardar" >ACTUALIZAR INFORMACIÓN</button></div>
-      </div>
-    </form>
-    
-    </div>
-      </div>
+
+        </form>
+        </div>
     </main>
 
 
