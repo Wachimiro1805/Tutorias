@@ -1,3 +1,8 @@
+<?php 
+session_start();
+$NumCon=$_SESSION['usuario'];
+
+?>
 <?php
 require "conexionC.php";
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
@@ -6,18 +11,17 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }else {
-  session_start();
 
-  if (empty($_SESSION["usuario"])) { 
+  if (empty($_SESSION['usuario'])) { 
      
   }else{
-    $usuario = $_SESSION["usuario"];
+    $usuario = $NumCon; 
     $consulta="SELECT * FROM coordinador_de_tutorias WHERE usuario = '$usuario'";
     $resultado = $conexion->query($consulta);
     while($rows=$resultado->fetch_array()){
       $nombre = $rows[1];
       $apellidoM = $rows[2];
-      $apellidoP = $rows[3]; 
+      $apellidoP = $rows[3];  
       $correo = $rows[4]; 
       $id = $rows[0];   
       }

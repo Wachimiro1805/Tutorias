@@ -1,7 +1,7 @@
 <?php 
+session_start();
 $NumCon=$_POST['rfc'];
 $Pass=$_POST['pass'];
-session_start();
 
 $_SESSION["usuario"] = $NumCon;
 

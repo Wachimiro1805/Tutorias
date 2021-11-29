@@ -1,3 +1,10 @@
+<?php 
+
+session_start();
+ $usuario=(isset($_POST['rfc']))?$_POST['rfc']:"";
+ $pass=(isset($_POST['pass']))?$_POST['pass']:"";
+ 
+?>
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
