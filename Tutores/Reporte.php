@@ -15,11 +15,7 @@ if($conexion->connect_errno)
     $consulta="SELECT * FROM docentes WHERE usuario = '$usuario'";
     $resultado = $conexion->query($consulta);
     while($rows=$resultado->fetch_array()){
-      $nombre  = $rows[1];
-      $carrera = $rows[7];
-      $grupo   = $rows[8];      
-
-      
+          $nombre = $rows[1];    
       }
   }
 }

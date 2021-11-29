@@ -4,7 +4,8 @@ session_start();
 <?php
 require "conexionT.php";
 
-
+$_SESSION['control'];
+$_docente=$_SESSION['control'];
 //$tutores=$_POST['control'];
 
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
@@ -15,17 +16,18 @@ if($conexion->connect_errno)
 }
 $sql1 = "SELECT id_docente,usuario FROM docentes WHERE usuario = 'U4'";
 $sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
-$sql2 = "SELECT D.id_docente, A.nombreA, A.apellido_p, A.numero_control, A.semestre 
+
+$sql2 = "SELECT D.id_docente, A.nombreA, A.apellido_p,A.apellido_m, A.numero_control,A.semestre, A.correo 
           FROM alumnos A INNER JOIN asignar_tutor ATR ON (ATR.fk_alumno =A.id_alumnos) 
-            INNER JOIN docentes D ON(D.id_docente = ATR.fk_docentes) WHERE D.usuario = 'U4';";
+            INNER JOIN docentes D ON(D.id_docente = ATR.fk_docentes) WHERE D.usuario = '".$_docente."';";
         
 
 $resultado = $conexion->query($sql);
 $resultado2 = $conexion->query($sql2);
 $resultado4 =  $conexion->query($sql1);
 
-$result = $conexion->query($sql);
-if (mysqli_num_rows($resultado4) > 0) {
+$result = $conexion->query($sql2);
+if (mysqli_num_rows($resultado2) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       $id_docente = $row["id_docente"];}}else{
     echo "0 results";
@@ -33,7 +35,7 @@ if (mysqli_num_rows($resultado4) > 0) {
 echo " $id_docente ";
 
 
-if (mysqli_num_rows($resultado4) > 0) {
+if (mysqli_num_rows($resultado2) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       $usuario=$row["usuario"];}}else{
     echo "0 results";
@@ -86,6 +88,7 @@ echo " $usuario ";
         <td style="border: 1px solid #000; padding: 10px;">Apellido Paterno</td>
         <td style="border: 1px solid #000; padding: 10px;">Apellido Materno</td>
         <td style="border: 1px solid #000;">Número de control</td>
+        <td style="border: 1px solid #000;">Semestre</td>
         <td style="border: 1px solid #000;">Correo</td>
       </tr>
 
@@ -95,6 +98,7 @@ echo " $usuario ";
         <td><?php echo $datos["apellido_p"]?></td>
         <td><?php echo $datos["apellido_m"]?></td>
         <td><?php echo $datos["numero_control"]?></td>
+        <td><?php echo $datos["semestre"]?></td>
         <td><?php echo $datos["correo"]?></td>
       </tr>
       <?php } ?>
