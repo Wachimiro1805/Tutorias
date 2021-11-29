@@ -18,8 +18,7 @@ if($conexion->connect_errno)
       $nombre  = $rows[1];
       $carrera = $rows[7];
       $grupo   = $rows[8];      
-
-      
+  
       }
   }
 }
