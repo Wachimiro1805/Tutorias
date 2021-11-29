@@ -4,12 +4,17 @@ session_start();
 <?php 
 require "conexionA.php";
 $sqlA = "SELECT * from alumnos where numero_control = '".$_SESSION['control']."'";
+
       
 $resultado = $conexion->query($sqlA);
+
 
 $id_alumno = $conexion->query("SELECT id_alumnos from alumnos where numero_control = '".$_SESSION['control']."'");
 $rowAl = $id_alumno->fetch_array();
 $idal = $rowAl['id_alumnos'];
+
+$sqlC = "SELECT * from sala where fk_alumno = '$idal'";
+$resultadoC = $conexion->query($sqlC);
 
 $id_docente = $conexion->query("SELECT fk_docentes from asignar_tutor where fk_alumno = '$idal'");
 $rowdo = $id_docente->fetch_array();
@@ -18,6 +23,10 @@ $iddoc = $rowdo['fk_docentes'];
 } else { echo "No te han asignado tutor";}
 $sqlB = "SELECT * from solicitudes where fk_alumnos = '".$idal."'";
 $resultadoB = $conexion->query($sqlB);
+
+$docente = $conexion->query("SELECT nombre_docente,apellido_p,apellido_m from docentes where id_docente = '$iddoc'");
+$rowd = $docente->fetch_array();
+$profNombre = $rowd['nombre_docente'].' '.$rowd['apellido_p'].' '.$rowd['apellido_m'];
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +72,7 @@ $resultadoB = $conexion->query($sqlB);
             <tr align="center">
                 <td>Fecha</td>
                 <td>Estado</td>
-                <td>motivo</td>
+                <td>Motivo</td>
                 <td>Ver conversación</td>
                 <td>Eliminar</td>
             </tr>
@@ -75,9 +84,36 @@ $resultadoB = $conexion->query($sqlB);
                 <td><?php echo $datosB["status"]?></td>
                 <td><?php echo $datosB["motivo"]?></td>
                 <td><?php if(isset($datosB["id_sala"])){ ?>
-                    <a href="sala.php?file=<?php echo $datosB['id_sala']?>&fk_docente=<?php echo $iddoc?>">Ver conversación
+                    <a href="sala.php?id_sala=<?php echo $datosB['id_sala']?>&fk_docente=<?php echo $iddoc?>">Ver conversación
                     <?php }  else {echo "--"; }?></td>
                 <td><a href="eliminar.php?id_sala=<?php echo $datosB['id_sala'] ?>&id_solicitud=<?php echo $datosB['pk_solicitudes']?>">Eliminar</td>
+            </tr>
+            <?php   
+        }
+
+     ?>
+    </table >
+
+    <h1 align="center">Todos los mensajes</h1>
+        <div align="center">
+        <table width="70%" border="1px" align="center">
+
+            <tr align="center">
+                <td>Docente</td>
+                <td>Motivo</td>
+                <td>Ver conversación</td>
+                <td>Eliminar</td>
+            </tr>
+        <?php 
+            while($datosC=$resultadoC->fetch_array()){
+        ?>
+            <tr align="center">
+                <td><?php echo $profNombre?></td>
+                <td><?php echo $datosC["motivo"]?></td>
+                <td><?php if(isset($datosC["id"])){ ?>
+                    <a href="sala.php?id_sala=<?php echo $datosC['id']?>&fk_docente=<?php echo $iddoc?>">Ver conversación
+                    <?php }  else {echo "--"; }?></td>
+                <td><a href="eliminar.php?id_sala=<?php echo $datosC['id'] ?>">Eliminar</td>
             </tr>
             <?php   
         }
