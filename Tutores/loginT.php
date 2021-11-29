@@ -1,6 +1,9 @@
 <?php 
-session_start();
 
+session_start();
+ $usuario=(isset($_POST['control']))?$_POST['control']:"";
+ $pass=(isset($_POST['pass']))?$_POST['pass']:"";
+ 
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -36,7 +39,8 @@ session_start();
         <form action="validarT.php" method="post" class="formulario">
             <h2 class="titulo">Iniciar Sesion</h2>
             <div class="contenedor-form">
-                <form action="Tutor.html" method='post' class="formulario">
+    
+
                     <div class="input-contenedor">
                         <span class="material-icons icon"> account_circle </span>
                         <input name="control" class="NC" type="text" placeholder="Usuario">
@@ -46,10 +50,11 @@ session_start();
                     <input name="pass" class="NC" type="password" placeholder="Contraseña" require>
             </div>
             <div class="rutas" style="margin-top: 10px">
-        </form>
+
         <div class="buton">
             <button style="margin-right: 10px" onclick="location.href='Tutor.html'">INGRESAR</button>
         </div>
+        
         <?php
 if (isset($_GET['error'])) {
     echo "Error al iniciar sesion";   

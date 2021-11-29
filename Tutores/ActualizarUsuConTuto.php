@@ -1,3 +1,25 @@
+<?php
+session_start();
+?>
+<?php
+    require "conexionT.php";
+    $conexionT = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
+    if($conexionT->connect_errno){
+        echo "Error de conexion de la base datos".$conexionT->connect_error;
+        exit();
+    }
+
+    $sql = "SELECT id_docente,nombre_docente,usuario,contrasena FROM docentes;";
+    $sql2 = "SELECT rt.id_reporte_tutorado,rt.nombre,rt.no_control,rt.sesione_individuales,
+                    rt.sesiones_grupales,rt.actividad_integradora,rt.conferencias,rt.tallares,
+                    rt.psicologia,rt.asesorías,rt.horas_cumplidas,rt.valor_numerico,
+                    rt.nivel_dedesempeño   
+                    FROM reporte_tutorado rt;";
+    $resultado = $conexionT->query($sql);
+    $resultado2 = $conexionT->query($sql2);
+
+?>
+
 <!DOCTYPE html>
 <html lang="estilo">
 <head>
@@ -26,6 +48,26 @@
     </header>
     <main>
     <h2 class ="titulo">Actulizar Usuario y contraseña</h2>
+
+    <table style="border: 1px solid #000;text-align: center;">
+      <tr style="border: 1px solid #000;text-align: center;">
+        <td style="border: 1px solid #000;text-align: center;">Id</td>
+        <td style="border: 1px solid #000;text-align: center;">Nombre</td>
+        <td style="border: 1px solid #000;text-align: center;">Usuario</td>
+        <td style="border: 1px solid #000;text-align: center;">Contraseña</td>
+      </tr>
+
+      <!--Datos DE LA TABLA-->
+      <?php while($datos=$resultado->fetch_array()){?>
+        <tr>
+          <td style="border: 1px solid #000;text-align: center;"><?php echo $datos["id_docente"]?></td>
+          <td style="border: 1px solid #000;text-align: center;"><?php echo $datos["nombre_docente"]?></td>
+          <td style="border: 1px solid #000;text-align: center;"><?php echo $datos["usuario"]?></td>
+          <td style="border: 1px solid #000;text-align: center;"><?php echo $datos["contrasena"]?></td>
+        </tr>
+      <?php } ?>
+
+    </table>
 
     <form action="actualizaus.php" method="POST">  
     <div class = "IncioSnecio">

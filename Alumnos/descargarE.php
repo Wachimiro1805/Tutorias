@@ -1,7 +1,7 @@
 <?php
 if(!empty($_GET['file'])){
     $fileName = basename($_GET['file']);
-    $filePath = '//XANNAX/files/'.$fileName;
+    $filePath = 'files/'.$fileName;
     if(!empty($fileName) && file_exists($filePath)){
         // Define headers
         header("Cache-Control: public");
