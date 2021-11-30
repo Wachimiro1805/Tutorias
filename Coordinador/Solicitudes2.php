@@ -48,12 +48,11 @@ $resultado = $conexion->query($sql);
     <h2 class ="titulo">Solicitudes</h2>
       
     <div class = "botones_consulta">
-    <div class = "buton"><button onclick="location.href='Solicitudes.php'">SOLICITUDES ALUMNOS</button></div>
-    <div class = "buton"><button onclick="location.href='Solicitudes1.php'">SOLICITUDES TUTORES</button></div>
-    <div class = "buton"><button onclick="location.href='Solicitudes2.php'">TUTORES A TUTORADOS</button></div>
+    <div class = "buton"><button onclick="location.href='Solicitudes.php'">SOLICITADAS</button></div>
+    <div class = "buton"><button onclick="location.href='Solicitudes1.php'">ACEPTADAS</button></div>
+    <div class = "buton"><button style=" width: 200px;padding-left: 10px; padding-right: 10px;" onclick="location.href='Solicitudes2.php'">RETROALIMENTACION</button></div>
     </div>
     <br>
-    <h3 align="center">Docentes a alumnos</h3>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">

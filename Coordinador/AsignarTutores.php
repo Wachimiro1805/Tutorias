@@ -68,29 +68,7 @@ $resultado4 = $conexion->query($sql4);
  
 
   <main>
-    <h1 align="center">Relacion de tutorados</h1>
-    <table width="70%" border="2px" align="center">
 
-    <tr align="center">
-        <td>Nombre Alumno</td>
-        <td>Carrera Alumno</td> 
-        <td>Nombre Tutor</td>
-        <td>Carrera Tutor</td>
-    </tr>
-    <?php 
-        while($datos=$resultado3->fetch_array()){
-        ?>
-            <tr align="center">
-                <td><?php echo $datos["nombreA"]," ",$datos["ApellidoAl"]," ", $datos["ApellidoAl1"]?></td>
-                <td><?php echo $datos["CarreraAlumno"]?></td>
-                <td><?php echo $datos["nombre_docente"]," ",$datos["apellido_p"]," ", $datos["apellido_m"]?></td>
-                <td><?php echo $datos["siglas"]?></td>
-            </tr>
-            <?php   
-        }
-
-     ?>
-    </table> 
     <form action="asignarTutor.php" method="POST" class="formulario"  style="margin-top:2%">  
         <h2 align="center">Asignar tutor a un alumno</h2>
         <br>
@@ -139,6 +117,29 @@ $resultado4 = $conexion->query($sql4);
         </div>
      
           </form>
+          <h1 align="center">Relacion de tutorados</h1>
+          <table width="70%" border="2px" align="center">
+
+          <tr align="center">
+              <td>Nombre Alumno</td>
+              <td>Carrera Alumno</td> 
+              <td>Nombre Tutor</td>
+              <td>Carrera Tutor</td>
+          </tr>
+          <?php 
+              while($datos=$resultado3->fetch_array()){
+              ?>
+                  <tr align="center">
+                      <td><?php echo $datos["nombreA"]," ",$datos["ApellidoAl"]," ", $datos["ApellidoAl1"]?></td>
+                      <td><?php echo $datos["CarreraAlumno"]?></td>
+                      <td><?php echo $datos["nombre_docente"]," ",$datos["apellido_p"]," ", $datos["apellido_m"]?></td>
+                      <td><?php echo $datos["siglas"]?></td>
+                  </tr>
+                  <?php   
+              }
+
+          ?>
+          </table>           
              
   </main>
 
