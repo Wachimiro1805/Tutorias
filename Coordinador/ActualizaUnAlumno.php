@@ -1,13 +1,17 @@
 <?php
 require "conexionC.php";
+$id=$_GET['id'];
+echo "$id";
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT * FROM alumnos;";
+$sql = "SELECT * FROM alumnos where alumnos.id_alumnos = $id;";
+echo "$sql";
 $resultado = $conexion->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="estilo">
@@ -55,15 +59,19 @@ $resultado = $conexion->query($sql);
     </tr>
     <?php 
         while($datos=$resultado->fetch_array()){
+            $id = $datos["id_alumnos"];
+            $nombre = $datos["nombreA"];
+            $apellidoM = $datos["apellido_m"];
+            $apellidoP = $datos["apellido_p"];  
+            $semestre = $datos["semestre"]; 
         ?>
             <tr align="center">
                 <td><?php echo $datos["id_alumnos"]?></td>
                 <td><?php echo $datos["nombreA"]?></td>
-                <td><?php echo $datos["apellido_p"]?></td>
+                <td><?php echo $datos["apellido_p"]?></td> 
                 <td><?php echo $datos["apellido_m"]?></td>
                 <td><?php echo $datos["numero_control"]?></td>
                 <td><?php echo $datos["semestre"]?></td>
-                <td> <a style="margin-top: 5%" class="btn btn-primary" href="ActualizaUnAlumno.php?id=<?php echo $datos['id_alumnos']?>"> <span class="material-icons"> drive_file_rename_outline </span></a></td>
 
             </tr>
             <?php   
@@ -71,6 +79,12 @@ $resultado = $conexion->query($sql);
 
      ?>
     </table>
+    
+    <input style="margin-top:5%" name = "id" class = "NC" type = "text" placeholder="ID a Actualizar"  value="<?php  echo "$id";?>">
+    <input name = "nombre" class = "NC" type = "text" placeholder="Nombre"  value="<?php  echo "$nombre";?>">
+    <input name = "apellido_p" class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo "$apellidoP";?>">
+    <input name = "apellido_m" class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo "$apellidoM";?>">
+    <input name = "semestre" class = "NC" type = "number" placeholder="Semestre" value="<?php  echo "$semestre";?>">
 
        </div>
        
