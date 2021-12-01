@@ -63,7 +63,7 @@ $resultado = $conexion->query($sql);
                 <td><?php echo $datos["apellido_m"]?></td>
                 <td><?php echo $datos["numero_control"]?></td>
                 <td><?php echo $datos["semestre"]?></td>
-                <td> <a style="margin-top: 5%" class="btn btn-primary" href="ActualizaUnAlumno.php?id=<?php echo $datos['id_alumnos']?>"> <span class="material-icons"> drive_file_rename_outline </span></a></td>
+                <td> <a style="margin-top: 10% " class="btn btn-primary" href="ActualizaUnAlumno.php?id=<?php echo $datos['id_alumnos']?>"> <span class="material-icons"> drive_file_rename_outline </span></a></td>
 
             </tr>
             <?php   
@@ -73,10 +73,6 @@ $resultado = $conexion->query($sql);
     </table>
 
        </div>
-       
-       <div class = "rutas">
-    
-        <div class = "buton" style="margin-top: 8%"><button type="submit">Actualizar</button></div>
  
        </form>
     </main>

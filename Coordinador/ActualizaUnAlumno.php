@@ -1,7 +1,6 @@
 <?php
 require "conexionC.php";
 $id=$_GET['id'];
-echo "$id";
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
 {
@@ -9,7 +8,6 @@ if($conexion->connect_errno)
     exit();
 }
 $sql = "SELECT * FROM alumnos where alumnos.id_alumnos = $id;";
-echo "$sql";
 $resultado = $conexion->query($sql);
 
 ?>
@@ -46,7 +44,7 @@ $resultado = $conexion->query($sql);
     
     <main>
     <form action="actualizarA.php" method="POST" class="formulario">  
-    <h2 class ="titulo">Actualizar datos</h2>
+    <h2 class ="titulo">Alumno a actualizar</h2>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">
