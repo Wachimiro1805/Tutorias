@@ -57,7 +57,7 @@ $estudiantesCanalizados,
 
 $ejecutar2=mysqli_query($conexion, $sql2);
 
-if(!$ejecuta2){
+if(!$ejecutar2){
     echo"Hubo algun error al genenerar el reporte <br> <br> <a href='ReporteC.php'>Regresar</a>";
 }else{
     echo"Agregado a tabla de Reporte Coordinador Exitoso <br> <br> <a href='ReporteC.php'>Regresar</a>";

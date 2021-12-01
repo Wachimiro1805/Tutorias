@@ -60,13 +60,28 @@ $resultado4 = $conexion->query($sql4);
 
   <main>
 
-    <form action="asignarTutor.php" method="POST" class="formulario"  style="margin-top:2%">  
-        <h2 align="center">Asignar tutor a un alumno</h2>
+    <form action="cambiarT.php" method="POST" class="formulario"  style="margin-top:2%">  
+        <h2 align="center">Cambiar tutor a un alumno</h2>
         <br>
         <div style="margin-left: 40%;">
-        <h4>Tutor</h4>
-
+        <h4>Alumno</h4>
         <?php
+          include 'conexionC.php';
+          $consulta = "SELECT A.nombreA, A.apellido_p, A.apellido_m FROM alumnos A LEFT JOIN asignar_tutor AST ON (AST.fk_alumno = A.id_alumnos) WHERE AST.fk_alumno IS NULL;";
+          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+          echo "<select required name = 'alumno'>";
+          while ($columna = mysqli_fetch_array( $resultado ))
+          {
+              echo "<option value='". $columna['nombreA']."'>";
+              echo $columna['nombreA'] ," ", $columna['apellido_p']," ",$columna['apellido_m'];
+              echo "</option>";      
+          }
+          echo "<select>";
+          mysqli_close( $conexion );
+          ?>
+
+          <h4>Cambiar a:</h4>
+          <?php
           include 'conexionC.php';
           $consulta = "SELECT DISTINCT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D 
           INNER JOIN asignar_tutor ATR ON(D.id_docente = ATR.fk_docentes) 
@@ -83,25 +98,6 @@ $resultado4 = $conexion->query($sql4);
           mysqli_close( $conexion ); 
           ?>
 
-
-
-
-
-          <h4>Asignar a:</h4>
-          <?php
-          include 'conexionC.php';
-          $consulta = "SELECT A.nombreA, A.apellido_p, A.apellido_m FROM alumnos A LEFT JOIN asignar_tutor AST ON (AST.fk_alumno = A.id_alumnos) WHERE AST.fk_alumno IS NULL;";
-          $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-          echo "<select required name = 'alumno'>";
-          while ($columna = mysqli_fetch_array( $resultado ))
-          {
-              echo "<option value='". $columna['nombreA']."'>";
-              echo $columna['nombreA'] ," ", $columna['apellido_p']," ",$columna['apellido_m'];
-              echo "</option>";      
-          }
-          echo "<select>";
-          mysqli_close( $conexion );
-          ?>
           </div>
         <div class = "rutas"style="margin-top:5%">
           <div class = "buton"><button type="submit"><a style="margin:20px">Asignar</a> </button></div>

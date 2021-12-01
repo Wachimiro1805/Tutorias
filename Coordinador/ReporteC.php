@@ -53,7 +53,7 @@ session_start();
     <main class = 'mainLogin' style = 'display: inline;padding-right: 40px;padding-top: 10px;'>
       <body style = 'display: flex; padding-right: 40px;'>
               <div class="' style='display:flex;flex-direction: column;padding: 5px;">
-                               
+              <h2 style='border: 1px solid #ddd;padding: 2px; text-align: center;width: 90%;'>FORMATO SUGERIDO</h2>                                  
                 <table id="tblStocks" style="font-size: 9px;" >
                   <tr style="border: 1px solid #000;text-align: center;">
                     <th rowspan='2' style="border: 1px solid #ddd;padding: 5px; background-color: #294c67; color:white;">NÚMERO</th>
@@ -89,18 +89,18 @@ session_start();
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_docente"]?></td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_grupo"]?></td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["siglas"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "desertaron" id="desertaron"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "acreditaron" id="na"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "na" id="na" class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA" class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_in" id="tutoria_in"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_gr" id="tutoria_gr"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalC" id="totalC"   class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "desertaron" id="desertaron"  class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "acreditaron" id="na"  class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "na" id="na" class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA" class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_in" id="tutoria_in"  class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_gr" id="tutoria_gr"  class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalC" id="totalC"   class = "NC" type = "text" disabled readonly>  </td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text" disabled readonly>  </td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text" disabled readonly>  </td>
                       <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "conferencia" id="conferencia"  class = "NC" type = "text">  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "taller" id="taller"  class = "NC" type = "text">  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "conferencia" id="conferencia"  class = "NC" type = "text" disabled readonly>  </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "taller" id="taller"  class = "NC" type = "text" disabled readonly>  </td>
 
                     </tr>
                   <?php } ?>
@@ -124,6 +124,11 @@ session_start();
                     <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "tutoria_gr" id="tutoria_gr"  class = "NC-2" type = "text" placeholder="Tutoria grupal">
                     </div>
                     <input  name = "totalC" id="totalC" class = "NC" type = "text" placeholder="Número de estudiantes canalizados">
+                    <h5 style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;width: 90%;'>Participación en actividades de apoyo (número de tutorados)</h5>   
+                    <div style="flex-direction: row;justify-content:space-evently; width: 90%;align-items: center; margin-bottom:10px;" >
+                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "conferencia" id="conferencia" type = "text" placeholder="Conferencias">
+                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "taller" id="taller"  class = "NC-2" type = "text" placeholder="Talleres">
+                    </div>
                     
                     <div class="row-input"> 
                     <h5 style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;width: 90%;'>Periodo</h5>   
