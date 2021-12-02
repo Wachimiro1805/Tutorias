@@ -27,12 +27,16 @@ $resultado2 = $conexion->query($sql2);
 $resultado4 =  $conexion->query($sql1);
 
 $result = $conexion->query($sql2);
+
 if (mysqli_num_rows($resultado2) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       $id_docente = $row["id_docente"];}}else{
     echo "0 results";
   }
 echo " $id_docente ";
+
+$error=mysqli_error($conexion);
+echo"Error: $error ";
 
 
 if (mysqli_num_rows($resultado2) > 0) {
