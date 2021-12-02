@@ -6,7 +6,11 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT S.pk_solicitudes ,A.nombreA, A.apellido_p, A.numero_control, C.siglas, G.nombre_grupo, AR.nombre, S.fecha, AR.fecha, AR.tipo_de_asesoria, S.status FROM alumnos A  INNER JOIN  carreras C ON(C.id_carreras = A.fk_carreras) INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) INNER JOIN solicitudes S ON(S.fk_alumnos= A.id_alumnos) INNER JOIN asesorias AR ON(AR.id_asesorias= S.fk_asesorias);";
+$sql = "SELECT S.pk_solicitudes ,A.nombreA, A.apellido_p, A.numero_control, C.siglas, G.nombre_grupo, AR.nombre, S.fecha, AR.fecha, AR.tipo_de_asesoria, S.status FROM alumnos A  
+        INNER JOIN  carreras C ON(C.id_carreras = A.fk_carreras) 
+        INNER JOIN grupos G ON(G.id_grupo = A.fk_grupo) 
+        INNER JOIN solicitudes S ON(S.fk_alumnos= A.id_alumnos) 
+        INNER JOIN asesorias AR ON(AR.id_asesorias= S.fk_asesorias) WHERE S.status = 'Solicitada';";
 $resultado = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -30,8 +34,9 @@ $resultado = $conexion->query($sql);
     </button>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="navbar-nav">
+        <li class="nav-item"><a href="Solicitudes.php" class="nav-link">SOLICITUDES</a></li>
             <li class="nav-item"><a href="gestionarAlumnos.php" class="nav-link">GESTIONAR TUTORADOS</a></li>
-            <li class="nav-item"><a href="AsignarTutores.php" class="nav-link">ASIGNAR TUTORES</a></li>
+            <li class="nav-item"><a href="GestionarAsignacion.php" class="nav-link">ASIGNAR TUTORES</a></li>
             <li class="nav-item"><a href="gestionarGruposCarreras.html" class="nav-link">GRUPOS/CARRERAS</a></li>
             <li class="nav-item"><a href="gestionarAsesorias.php" class="nav-link">GESTIONAR ASESORIAS</a></li>
             <li class="nav-item"><a href="GestionarReportes.php" class="nav-link">REPORTES</a></li>
@@ -47,13 +52,12 @@ $resultado = $conexion->query($sql);
     <h2 class ="titulo">Solicitudes</h2>
       
     <div class = "botones_consulta">
-    <div class = "buton"><button onclick="location.href='Solicitudes.php'">SOLICITUDES ALUMNOS</button></div>
-    <div class = "buton"><button onclick="location.href='Solicitudes1.php'">SOLICITUDES TUTORES</button></div>
-    <div class = "buton"><button onclick="location.href='Solicitudes2.php'">TUTORES A TUTORADOS</button></div>
+    <div class = "buton"><button onclick="location.href='Solicitudes.php'">SOLICITADAS</button></div>
+    <div class = "buton"><button onclick="location.href='Solicitudes1.php'">ACEPTADAS</button></div>
+    <div class = "buton"><button style=" width: 200px;padding-left: 10px; padding-right: 10px;" onclick="location.href='Solicitudes2.php'">RETROALIMENTACION</button></div>
     </div>
 
   <br>
-    <h3 align="center">Alumnos</h3>
     <table width="100%" border="2px" align="center">
 
     <tr align="center">

@@ -9,7 +9,7 @@ if($conexion->connect_errno)
 }else {
   session_start();
 
-  if (empty($_SESSION["usuario"])) {
+  if (empty($_SESSION["control"])) {
      
   }else{
     $usuario = $_SESSION["usuario"];
@@ -61,7 +61,7 @@ if($conexion->connect_errno)
           <input class = "NC" type = "text" placeholder="Apellido materno" value="<?php  echo "$apellidoM";?>" name = "apellidom">
           <input class = "NC" type = "text" placeholder="Apellido paterno" value="<?php  echo "$apellidoP";?>" name = "apellidop">
    
-
+   
        <div class = "rutas">
         <div class = "buton" style="margin-top: 8%"><button type="submit">ACTUALIZAR</button></div>
         </form>

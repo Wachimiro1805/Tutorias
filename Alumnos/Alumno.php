@@ -1,15 +1,19 @@
 <?php 
-    session_start();
+session_start();
+$NumCon=$_SESSION['control'];
+
 ?>
 <?php
     require "conexionA.php";
+
+    $alumno=$NumCon;
     $conexionA = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
     if($conexionA->connect_errno){
         echo "Error de conexion de la base datos".$conexionA->connect_error;
         exit();
     }
 
-    $id_alumno = $conexion->query("SELECT id_alumnos from alumnos where numero_control = '".$_SESSION['control']."'");
+    $id_alumno = $conexion->query("SELECT id_alumnos from alumnos where numero_control = '$alumno'");
         $rowAl = $id_alumno->fetch_array();
         $idal = $rowAl['id_alumnos'];
 

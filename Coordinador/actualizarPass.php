@@ -22,13 +22,13 @@
         $contra2=$_POST['contra2']; 
         $contra3=$_POST['contra3'];
 
-        $consulta = "SELECT contraseña FROM coordinador_de_tutorias WHERE 	id_coordinador_tutorias= $id";
+        $consulta = "SELECT contrasena FROM coordinador_de_tutorias WHERE 	id_coordinador_tutorias= $id";
         $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
         $error=mysqli_error($conexion);
 
         if (mysqli_num_rows($resultado) > 0) {
             while($row = mysqli_fetch_assoc($resultado)) {
-             $contra = $row["contraseña"];
+             $contra = $row["contrasena"];
               }    
         }
         else {
@@ -37,7 +37,7 @@
 if($contra == $contra1){
  
 if($contra2 == $contra3 ){
-    $sql = "UPDATE coordinador_de_tutorias SET  contraseña = '$contra2' WHERE coordinador_de_tutorias.id_coordinador_tutorias = $id;";
+    $sql = "UPDATE coordinador_de_tutorias SET  contrasena = '$contra2' WHERE coordinador_de_tutorias.id_coordinador_tutorias = $id;";
     $ejecutar=mysqli_query($conexion, $sql);
 
     if(!$ejecutar){

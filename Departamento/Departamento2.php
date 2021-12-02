@@ -7,9 +7,9 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql = "SELECT S.semestre FROM semestre;";
+$sql = "SELECT S.semestre FROM semestre S ORDER by S.pk_semestre DESC;";
 $resultado = $conexion->query($sql);
-
+$ano = date("Y");
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,47 @@ $resultado = $conexion->query($sql);
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../css/estiloDe.css">
+    
+    <style>
+.button {
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 20px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px 50px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #FF3300;
+}
+
+.button1:hover {
+  background-color: #FF3300;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+</style>
+
+
   </head>
 
 <body>
@@ -36,7 +77,7 @@ $resultado = $conexion->query($sql);
             <li class="nav-item"><a href="verExp2.php" class="nav-link">VER EXPEDIENTES ALUMNOS</a></li>
             <li class="nav-item"><a href="Departamento2.php" class="nav-link">FINALIZAR SEMESTRE</a></li> 
             <li class="nav-item"><a href="GestionarDatosJD.php" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
-            <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li
+            <li class="nav-item"><a href="loginD.php" class="nav-link">CERRAR SESIÓN</a></li>
         </ul>
       </div>
       <a href="../index.html"><img  src ="../Imagenes/Incio/Icono4.png"  alt ="Icono2" width="250"></a>
@@ -44,42 +85,41 @@ $resultado = $conexion->query($sql);
 
 
     <main>
-    <div class ="TituloIncio">
+ 
     <h2>Departamento de Tutorias</h2>
-    </div> 
+   
+    <button class="button button1" onclick="location.href='TerminarSemestre.php'">FINALIZAR SEMESTRE</button>
 
-    <div class="contenido_Inicio">
-
-
-    <div class = "rutasInicio">
+ <form  action="IniciarSemestre.php" method="POST">
+    <button class="button button2" >INICIAR SEMESTRE</button>
     
-    <div class = "buton"><button onclick="location.href='TerminarSemestre.php'" >FINALIZAR SEMESTRE</button></div>
-    <label> semestre impartiendo: </label>
-    <br>
-    <?php
-    echo "<select required name = 'semestre'>";
-          while ($columna = mysqli_fetch_array( $resultado ))
-          {
-              echo "<option value='". $columna['semestre']."'>";
-              echo $columna['semestre'];
-              echo "</option>";      
-          }
-          echo "<select>";
-          mysqli_close( $conexion );
-          ?>
+    <select required name='PER'>
+    <option >Agosto - Diciembre</option>
+    <option >Enero - Junio</option>
+    </select>
+    <label style="color:#9A979D;font-weight:500;margin:60px 40px;" > Periodo Actual: <?php echo "$ano"; ?> </label>
+ </form>
+   
+
  
-    </div>
-    </div>
+ 
+
+    
     </main>
- 
+   <?php $datos=$resultado->fetch_array()?>
+    <label style="color:black;font-weight:500;margin:60px 40px;" > Semestre en Atencion: <?php echo $datos["semestre"]?> </label>
+  
+
+    <?php
+if (isset($_GET['error'])) {
+    echo "Semestre ya ingresado";   
+} else {
+    // Fallback behaviour goes here
+}
+?>
 
 
-    <footer>
 
-    </footer>
-
-
-    <img class = "logo5" src ="../Imagenes/Incio/Icono5.png" alt ="Icono5" width="200">
 
 
 </body>

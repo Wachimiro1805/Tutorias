@@ -1,12 +1,13 @@
 <?php 
 session_start();
+$NumCon=$_SESSION['control'];
+
 ?>
 <?php
 require "conexionT.php";
 
-$_SESSION['control'];
-$_docente=$_SESSION['control'];
-//$tutores=$_POST['control'];
+
+$tutores=$NumCon;
 
 $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
 if($conexion->connect_errno)
@@ -14,38 +15,52 @@ if($conexion->connect_errno)
     echo "Error de conexion de la base datos".$conexion->connect_error;
     exit();
 }
-$sql1 = "SELECT id_docente,usuario FROM docentes WHERE usuario = 'U4'";
-$sql = "SELECT id_docente, nombre_docente, apellido_p, apellido_m FROM docentes;";
+$sql1 = "SELECT * FROM docentes WHERE usuario = '$tutores'";
+$resultado = $conexion->query($sql1);//id
+$resultado1 =  $conexion->query($sql1);//nombre
+$resultado2 =  $conexion->query($sql1);//apellidop
+$resultado3 =  $conexion->query($sql1);//apellidom
 
-$sql2 = "SELECT D.id_docente, A.nombreA, A.apellido_p,A.apellido_m, A.numero_control,A.semestre, A.correo 
-          FROM alumnos A INNER JOIN asignar_tutor ATR ON (ATR.fk_alumno =A.id_alumnos) 
-            INNER JOIN docentes D ON(D.id_docente = ATR.fk_docentes) WHERE D.usuario = '".$_docente."';";
-        
 
-$resultado = $conexion->query($sql);
-$resultado2 = $conexion->query($sql2);
-$resultado4 =  $conexion->query($sql1);
-
-$result = $conexion->query($sql2);
-
-if (mysqli_num_rows($resultado2) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
+//id docente
+if (mysqli_num_rows($resultado) > 0) {
+    while($row = mysqli_fetch_assoc($resultado)) {
       $id_docente = $row["id_docente"];}}else{
     echo "0 results";
   }
-echo " $id_docente ";
 
 $error=mysqli_error($conexion);
 echo"Error: $error ";
 
 
-if (mysqli_num_rows($resultado2) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-      $usuario=$row["usuario"];}}else{
+
+//nombre docente
+if (mysqli_num_rows($resultado1) > 0) {
+    while($row = mysqli_fetch_assoc($resultado1)) {
+      $nombreD=$row["nombre_docente"];}}else{
     echo "0 results";
   }
 
-echo " $usuario ";
+//apellido docente
+if (mysqli_num_rows($resultado2) > 0) {
+  while($row = mysqli_fetch_assoc($resultado2)) {
+    $apellidoD=$row["apellido_p"];}}else{
+  echo "0 results";
+}
+
+//apellido2 docente
+if (mysqli_num_rows($resultado3) > 0) {
+  while($row = mysqli_fetch_assoc($resultado3)) {
+    $apellidoM=$row["apellido_m"];}}else{
+  echo "0 results";
+}
+
+$sql2 = "SELECT A.nombreA, A.apellido_p, A.apellido_m, A.numero_control, A.semestre, A.correo, C.siglas 
+FROM alumnos A INNER JOIN asignar_tutor ATR ON (ATR.fk_alumno =A.id_alumnos) 
+INNER JOIN docentes D ON(D.id_docente = ATR.fk_docentes) 
+INNER JOIN carreras C ON(C.id_carreras= A.fk_carreras) 
+INNER JOIN grupos G ON(G.id_grupo= A.fk_grupo) WHERE D.id_docente=  $id_docente;;";
+$resultado4 = $conexion->query($sql2);
 ?>
 
 
@@ -71,9 +86,8 @@ echo " $usuario ";
     </button>
     <div class="navbar-collapse collapse end-justify" id="navbar">
       <ul class="navbar-nav">
-        <!-- <li class="nav-item"><a href="Tutor.html" class="nav-link">TUTORIAS</a></li>-->
+   
         <li class="nav-item"><a href="Tutorados.php" class="nav-link">TUTORADOS</a></li>
-        <!--  <li class="nav-item"><a href="Canalizacion.html" class="nav-link">CANALIZACION</a></li>-->
         <li class="nav-item"><a href="Solicitudes.php" class="nav-link">SOLICITUDES</a></li>
         <li class="nav-item"><a href="Reporte.php" class="nav-link">GENERAR REPORTE</a></li>
         <li class="nav-item"><a href="GestionarDatosT.html" class="nav-link">ACTUALIZAR DATOS DE USUARIO</a></li>
@@ -94,9 +108,10 @@ echo " $usuario ";
         <td style="border: 1px solid #000;">Número de control</td>
         <td style="border: 1px solid #000;">Semestre</td>
         <td style="border: 1px solid #000;">Correo</td>
+        <td style="border: 1px solid #000;">Siglas</td>
       </tr>
 
-      <?php while($datos=$resultado2->fetch_array()){?>
+      <?php while($datos=$resultado4->fetch_array()){?>
       <tr>
         <td><?php echo $datos["nombreA"]?></td>
         <td><?php echo $datos["apellido_p"]?></td>
@@ -104,6 +119,7 @@ echo " $usuario ";
         <td><?php echo $datos["numero_control"]?></td>
         <td><?php echo $datos["semestre"]?></td>
         <td><?php echo $datos["correo"]?></td>
+        <td><?php echo $datos["siglas"]?></td>
       </tr>
       <?php } ?>
 

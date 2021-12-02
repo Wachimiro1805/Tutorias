@@ -39,7 +39,7 @@ session_start();
       <script src = '../js/table2excel.js'></script>
     </head>
 
-    <header class = 'navbar navbar-dark  navbar-expand-md'>
+    <header class="navbar navbar-dark bg-dark navbar-expand-md">
       <a style = 'margin-left: 10px' class = 'navbar-brand'>INSTITUTO TECNOLOGICO <br> DE TEPIC</a>
       <button class = 'navbar-toggler' data-bs-toggle = 'collapse' data-bs-target = '#navbar'>
         <span class = 'navbar-toggler-icon'></span>

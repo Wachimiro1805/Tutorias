@@ -67,10 +67,7 @@ while ($row = $sel->fetch_assoc()) {
                                     <td><?php echo $val['numero_control'] ?></td>
                                     <td><?php echo $val['siglas'] ?></td>
                                     <td><a href="archivo.php?id=<?php echo $val['id_documento']?>" target="_blank"><?php echo $val['documento'];?></a></td>
-                                    <td>
-                                        <button onclick="openModelPDF('<?php echo $val['documento'] ?>')" class="btn btn-primary" type="button">Ver Archivo Ventana</button>
-                                        <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/uploadfile/' . $val['documento']; ?>" >Ver Archivo Pagina</a>
-                                    </td>
+                           
                                 </tr>
                             <?php } ?>
                         </tbody>

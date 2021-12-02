@@ -109,7 +109,13 @@ label{
     font-size: 2rem;
     padding-bottom: 10%;
 }
-
+.NC-2{
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: 45%;
+}
 .NC{
     font-size: 20px;
     padding: 5px;

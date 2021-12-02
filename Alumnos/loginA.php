@@ -1,5 +1,12 @@
+<?php 
+
+session_start();
+ $usuario=(isset($_POST['control']))?$_POST['control']:"";
+ $pass=(isset($_POST['pass']))?$_POST['pass']:"";
+ 
+?> 
 <!DOCTYPE html>
-<html lang="estilo">
+<html lang="estilo"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
