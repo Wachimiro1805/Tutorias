@@ -107,7 +107,7 @@ echo"Error: $error ";
                 <td style="border: 1px solid #000; padding: 10px;"><?php echo $datos["status"]?></td>
                 <td style="border: 1px solid #000; padding: 10px;"><?php echo $datos["fecha"]?></td>
                 <td style="border: 1px solid #000; padding: 10px;"><?php echo $datos["motivo"]?></td>
-                <td style="border: 1px solid #000; padding: 10px;"><?php echo $datos["mensaje"]?></td>
+                <td style="border: 1px solid #000; padding: 10px;"><?php echo $datos["motivo"]?></td>
 
             </tr>
             <?php } ?>
@@ -125,22 +125,16 @@ echo"Error: $error ";
                     echo"id_docente";
 
                     $fecha_actual = date('Y-m-d');
-                    
-                    $motivo = $conexion->real_escape_string($_POST['motivo']);
                     $asesoriaE =  $conexion->real_escape_string($_POST['alumnos']);
                     $id_alumno = $conexion->query("SELECT id_alumnos from alumnos where numero_control = '".$_SESSION['control']."'");
                     $rowAl = $id_alumno->fetch_array();
                     $id_asesoria = $conexion->query("SELECT id_asesorias from asesorias where nombre = '$asesoriaE'");
                     $rowAs = $id_asesoria->fetch_array();
-                    $idal = $rowAl['id_alumnos'];
-                    $idas = $rowAs['id_asesorias'];
-                    
-                    $fk_docent = $conexion->query("SELECT fk_docentes from asignar_tutor where fk_alumno = '$idal'");
-                    $rowAx = $fk_docent->fetch_array();
                     if (isset($rowAx['fk_docentes'])){
                     $idax = $rowAx['fk_docentes'];
                     } else { return 'No se te ha asignado un tutor';}
-                        $insercion = $conexion->query("INSERT into mensaje (mensaje,fecha,fk_alumno,fk_docente) Values ('Solicitada', '$fecha_actual', '$motivo', '$idal', $idax,'$idas')");
+                        $insercion = $conexion->query("INSERT into mensaje (mensaje,fecha,fk_alumno,fk_docente) 
+                                                        Values ('Solicitada', '$fecha_actual', '$motivo', '$idal', $idax,'$idas')");
                             if ($insercion) {echo "Se ha hecho la solicitud";}
                                 else {
                                     echo "No se ha podido responder la solicitud";
