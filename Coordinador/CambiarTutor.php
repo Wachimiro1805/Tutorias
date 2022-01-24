@@ -67,7 +67,7 @@ $resultado4 = $conexion->query($sql4);
         <h4>Alumno</h4>
         <?php
           include 'conexionC.php';
-          $consulta = "SELECT A.nombreA, A.apellido_p, A.apellido_m FROM alumnos A LEFT JOIN asignar_tutor AST ON (AST.fk_alumno = A.id_alumnos) WHERE AST.fk_alumno IS NULL;";
+          $consulta = "SELECT A.nombreA, A.apellido_p, A.apellido_m FROM alumnos A LEFT JOIN asignar_tutor AST ON (AST.fk_alumno = A.id_alumnos);";
           $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
           echo "<select required name = 'alumno'>";
           while ($columna = mysqli_fetch_array( $resultado ))

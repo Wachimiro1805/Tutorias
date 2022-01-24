@@ -6,7 +6,7 @@ session_start();
     $conexion = new mysqli("94.242.61.132","txrlfgbv_tutorias","XannaxVarela1234","txrlfgbv_tutorias");
     if($conexion->connect_errno){
         echo "Error de conexion de la base datos".$conexion->connect_error;
-        exit();
+        exit(); 
     }
 
     //$sql1 = "SELECT * FROM reporte_coordinador;";
@@ -14,8 +14,12 @@ session_start();
             INNER JOIN reporte_coordinador RC ON RC.fk_docentes = D.id_docente
             INNER JOIN grupos G ON G.id_grupo = D.fk_grupo
             INNER JOIN carreras C ON C.id_carreras = D.fk_carreras";
+
+    $sql4 = "SELECT D.id_docente, D.nombre_docente, D.apellido_p, D.apellido_m  
+    FROM docentes D INNER JOIN asignar_tutor AST ON (AST.fk_docentes = D.id_docente);";             
             
     $resultado = $conexion->query($sql);
+    $resultado4 = $conexion->query($sql4);
     $error=mysqli_error($conexion); 
     //echo"Error: $error ";
 
@@ -83,27 +87,25 @@ session_start();
 
                 <form method="POST" action="generarReporteC.php">  
                   <!--Datos DE LA TABLA-->
-                  <?php while($datos=$resultado->fetch_array()){?>
-                    <tr align="center">
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["id_docente"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_docente"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["nombre_grupo"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><?php echo $datos["siglas"]?></td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "desertaron" id="desertaron"  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "acreditaron" id="na"  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "na" id="na" class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalA" id="totalA" class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_in" id="tutoria_in"  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "tutoria_gr" id="tutoria_gr"  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "totalC" id="totalC"   class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "" id=""  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "conferencia" id="conferencia"  class = "NC" type = "text" disabled readonly>  </td>
-                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input name = "taller" id="taller"  class = "NC" type = "text" disabled readonly>  </td>
+                  <tr align="center">
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
+                      <td style='border: 1px solid #000;padding: 2px;font-size: 1rem;'><input class = "NC" type = "text" disabled readonly> </td>
 
                     </tr>
-                  <?php } ?>
 
 
                 </table>
@@ -112,11 +114,11 @@ session_start();
                   <div class = "contenedor-form">
                   <h5 style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;width: 90%;'>Estutiantes atendidos</h5>   
                     <div style="flex-direction: row;justify-content:space-evently; width: 90%;align-items: center; margin-bottom:10px;" >
-                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "desertaron" id="desertaron" type = "text" placeholder=" Desertaron">
-                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "acreditaron" id="acreditaron"  class = "NC-2" type = "text" placeholder="Acreditaron">
-                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "na" id="na" class = "NC-2" type = "text" placeholder=" No Acreditaron">
+                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "desertaron" id="desertaron" class="monto" type = "text" placeholder=" Desertaron"  onchange="sumar();" >
+                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "acreditaron" id="acreditaron"  class = "monto" type = "text" placeholder="Acreditaron"  onchange="sumar();" >
+                    <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "na" id="na" class = "monto" type = "text" placeholder=" No Acreditaron"  onchange="sumar();" >
                     </div>
-                    <input name = "totalA" id="totalA" class = "NC" type = "text" placeholder="Total de estudiantes atendidos">
+                    <input name = "totalA" id="totalA" class = "NC" type = "text" placeholder="Total de estudiantes atendidos" value="0">
 
                     <h5 style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;width: 90%;'>N° de sesiones en el semestre</h5>   
                     <div style="flex-direction: row;justify-content:space-evently; width: 90%;align-items: center; margin-bottom:10px;" >
@@ -129,6 +131,24 @@ session_start();
                     <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "conferencia" id="conferencia" type = "text" placeholder="Conferencias">
                     <input style="font-size: 20px;padding: 5px;border-radius: 10px;width: 30%;" name = "taller" id="taller"  class = "NC-2" type = "text" placeholder="Talleres">
                     </div>
+                    
+                    <h5 style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;width: 90%;'>Docente</h5>   
+                    <?php
+                      include 'conexionC.php';
+                      $consulta = "SELECT DISTINCT D.nombre_docente, D.apellido_p, D.apellido_m, C.siglas FROM docentes D 
+                      INNER JOIN asignar_tutor ATR ON(D.id_docente = ATR.fk_docentes) 
+                      INNER JOIN carreras C ON (C.id_carreras = D.fk_carreras);";
+                      $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+                      echo "<select class='NC'  required name = 'docente'>";
+                      while ($columna = mysqli_fetch_array( $resultado ))
+                      {
+                          echo "<option value='". $columna['nombre_docente']."'>";
+                          echo $columna['nombre_docente']," ", $columna['apellido_p']," ",$columna['apellido_m'];
+                          echo "</option>";      
+                      }
+                      echo "<select>";
+                      mysqli_close( $conexion ); 
+                    ?>
                     
                     <div class="row-input"> 
                     <h5 style='border: 1px solid #ddd;padding: 2px; background-color: #294c67; color:white;width: 90%;'>Periodo</h5>   
@@ -180,5 +200,18 @@ session_start();
   </body>
 
 </html>
+<script>
+function sumar()
+{
+  const $total = document.getElementById('totalA');
+  let subtotal = 0;
+  [ ...document.getElementsByClassName( "monto" ) ].forEach( function ( element ) {
+    if(element.value !== '') {
+      subtotal += parseFloat(element.value);
+    }
+  });
+  $total.value = subtotal;
+}
+</script>
 
 
