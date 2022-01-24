@@ -29,6 +29,9 @@ if (mysqli_num_rows($resultado) > 0) {
     echo "0 results";
   }
 
+$error=mysqli_error($conexion);
+echo"Error: $error ";
+
 
 
 //nombre docente
